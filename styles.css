@@ -8,16 +8,13 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: rgb(255, 255, 255);
-
-    max-width: 940px;
-
-    margin: 0 auto;
 }
 
 header {
-    width: 100%;
+    width: 940px;
+    margin: 0 auto;
 
-    padding: 36px 1px 30px;
+    padding: 36px 1px;
 }
 
 header img {
@@ -37,7 +34,6 @@ header img {
     line-height: 19px;
     color: #111111;
     text-decoration: none;
-    background-color: rgb(255, 255, 255);
     padding: 5px;
 }
 
@@ -48,18 +44,19 @@ header img {
 
 .links a:hover {
     filter: brightness(95%);
+    background-color: rgba(167, 167, 167, 0.13);
     border-radius: 30px;
 
     color: rgba(0, 0, 0, 0.57);
 
-    transition: 400ms;
+    transition: 550ms;
 }
 
 #container {
     display: flex;
-    width: 100%;
     height: 366px;
-    margin-bottom: 50px;
+    max-width: 940px;
+    margin: 0 auto 50px;
 
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.349);
     background-color: #FBDFDB;
@@ -69,6 +66,7 @@ header img {
 
 #container_content {
     width: 316px;
+    height: 132px;
 
     margin: 117px 248px 117px 60px;
 }
@@ -95,20 +93,36 @@ header img {
    margin-top: 66px;
 }
 
-h2 {
+#popular {
+    margin: 0 auto 20px;
+    width: 929px;
+}
+
+#popular h2 {
     font-size: 24px;
     color: #111111;
     font-weight: bold;
     text-shadow: 1px 0 1px rgba(0, 0, 0, 0.2);
 
     line-height: 28px;
-    margin-bottom: 20px;
 }
 
-#recipes {
-    max-width: 980px;
-    max-height: 434px;
-    margin-bottom: 50px;
+.recipes {
+    max-width: 940px;
+    max-height: 100%;
+
+    margin: 0 auto 50px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.recipes_just {
+    max-width: 940px;
+    max-height: 100%;
+
+    margin: 20px auto 50px;
     
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -119,7 +133,6 @@ h2 {
     max-width: 300px;
     max-height: 202px;
 
-    margin-bottom: 10px;
     padding: 4px;
 }
 
@@ -163,12 +176,10 @@ h2 {
 }
 
 .rights {
-    position: absolute;
     text-align: center;
     padding: 23px 0;
     
     width: 100%;
-    left: 0;
 
     background-color: #EEEEEE;
 }
@@ -185,6 +196,8 @@ h2 {
 .about_begin {
     max-width: 940px;
     max-height: 328px;
+
+    margin: 0 auto;
 }
 
 #wrapper_main h1 {
@@ -213,6 +226,7 @@ h2 {
     font-size: 20px;
 
     margin-top: 26px;
+    margin-bottom: 20px;
     padding-bottom: 1px;
     line-height: 24px;
 }
@@ -221,7 +235,7 @@ h2 {
     max-width: 940px;
     max-height: 156px;
 
-    margin-bottom: 50px;
+    margin: 0 auto 50px;
 }
 
 #wrapper_thi h2 {
@@ -231,4 +245,92 @@ h2 {
     margin-top: 26px;
     padding-bottom: 1px;
     line-height: 24px;
+}
+
+            /*MODAL*/
+
+.modal_full {
+    position: fixed;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, .6);
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modal {
+    position: relative;
+
+    width: 44.478%;
+    height: 353px;
+
+    margin: 17vh auto;
+    padding: 30px;
+    text-align: center;
+
+    background-color: #FFFFFF;
+    border-radius: 16px;
+}
+
+.modal img {
+    width: 100%;
+    height: 56.65%;
+
+    border-radius: 15px;
+
+    margin-bottom: 20px;
+ }
+
+.modal img:hover {
+     filter: brightness(70%);
+     transition: 490ms;
+ }
+
+ .modal_content h1 {
+     font-size: 24px;
+     color: #111111;
+
+     line-height: 28px;
+     margin-bottom: 5px;
+ }
+
+.modal_content p {
+    font-size: 18px;
+    color: #777777;
+
+    line-height: 21px;
+    margin-bottom: 60px;
+}
+
+.close_modal {
+    font-size: 16px;
+    color: rgb(255, 40, 40);
+    font-weight: bold;
+
+    max-width: 120px;
+    max-height: 19px;
+
+    line-height: 19px;
+    margin: 0 auto;
+    padding: 1px;
+}
+
+.close_modal:hover {
+    cursor: pointer;
+    
+    filter: brightness(95%);
+    background-color: rgba(167, 167, 167, 0.4);
+    border-radius: 30px;
+    color: rgb(255, 16, 16);
+
+    transition: 550ms;
+}
+
+.modal_full.active {
+    opacity: 1;
+    visibility: visible;
 }
