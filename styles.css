@@ -38,8 +38,12 @@ header img {
 }
 
 .links #home {
-    color: rgb(255, 40, 40);
+    background-color: rgb(255, 85, 59);
     font-weight: bold;
+    color: white;
+    border-radius: 30px;
+
+    padding: 10px 25px;
 }
 
 .links a:hover {
@@ -334,7 +338,7 @@ header img {
     transition: 550ms;
 }
 
-/*EXPAND MODAL
+/*EXPAND MODAL*/
 
 .modal.none {
     display: none;
@@ -364,7 +368,7 @@ header img {
     opacity: 0;
 }
 
-.maximized.active {
+.maximized.maximize {
     position: absolute;
     top: 10vh;
     right: 12vh;
@@ -376,16 +380,16 @@ header img {
     opacity: 1;
 }
 
-.maximized.active .expand_modal{
+.maximized.maximize .expand_modal{
     bottom: 1vh;
 }
 
-.maximized.active img {
+.maximized.maximize img {
     width: 100%;
     height: 100%;
 
     border-radius: 20px;
-}*/
+}
 
 /*MODAL JS*/
 
