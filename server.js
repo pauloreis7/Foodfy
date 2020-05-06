@@ -14,9 +14,10 @@ nunjucks.configure("views", {
     noCache: true
 })
 
-server.get("/", function (req, res) {
+server.get("/", function (req, res) { 
+   const recipesPop = recipes.filter((recipes, index) => index < 6 ? false : true)
 
-    return res.render("index", { recipes })
+    return res.render("index", { recipesPop })
 })
 
 server.get("/food_about", function (req, res) {

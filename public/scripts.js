@@ -1,10 +1,15 @@
 const recipes = document.querySelectorAll('.recipe');
 
-for (let recipe of recipes) {
-    recipe.addEventListener("click", function () {
-        const recipePosition = recipes[recipe]
+const hidden = document.querySelectorAll('.hide')
+const details = document.querySelectorAll('.make')
 
-        window.location.href = `http://localhost:5000/details/${recipe}`
-    })
-
+for (let i = 0; i < recipes.length; i++) {
+    recipes[i].addEventListener('click', function () {
+      window.location.href = `/details/${i}`;
+    });
 }
+for (let hide of hidden)
+    hide.addEventListener('click', function () {
+
+    
+})

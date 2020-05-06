@@ -3,24 +3,88 @@
 {% block title %}<title>Detalhes receita</title>{% endblock %}
 
 {% block content %}
+    <section class="details">
 
-    <article class="recipe" id="{{recipe.title}}">
+            <article class="detail_image">
 
-        <div class="recipe_img">
+                <img src="{{recipe.image}}" alt="Triplo bacon burger">
 
-            <img src="{{recipe.image}}" alt="Triplo bacon burger">
+            </article>
 
-        </div>
+            <article class="detail_desc">
 
-        <div class="recipe_desc">
+                <h1>{{recipe.title}}</h1>
 
-            <h3>{{recipe.title}}</h3>
+                <p>{{recipe.author}}</p>
 
-            <p>{{recipe.author}}</p>
+            </article>
 
-        </div>
+            <article class="detail_make">
+            
+                <div class="make_title">
+                
+                    <h1>Ingredientes</h1><p class="hide" id="hide1">ESCONDER</p>
+                
+                </div>
 
-    </article>
+                <div class="make" id="hide1">
+                
+                    <ul>
 
+                        {% for ingredient in recipe.ingredients %}
+                    
+                            <li> {{ingredient}} </li>
+
+                        {% endfor %}
+
+                    </ul>
+                
+                </div>
+            
+            </article>
+
+            <article class="detail_make">
+            
+                <div class="make_title">
+                
+                    <h1>Modo de preparo</h1><p class="hide" id="hide2">ESCONDER</p>
+                
+                </div>
+
+                <div class="make" id="hide2">
+                
+                    <ul>
+
+                        {% for method in recipe.preparation %}
+                    
+                            <li> {{method}} </li>
+
+                        {% endfor %}
+
+                    </ul>
+                
+                </div>
+            
+            </article>
+
+            <article class="add_info">
+            
+                <div class="make_title">
+                
+                    <h1>Informações adicionais</h1><p class="hide" id="hide3">ESCONDER</p>
+                
+                </div>
+
+                <div class="make" id="hide3">
+                
+                    <p>{{recipe.information}}</p>
+                
+                </div>
+            
+            </article>
+
+    </section>
+
+    <script src="/scripts.js"></script>
 
 {% endblock %}
