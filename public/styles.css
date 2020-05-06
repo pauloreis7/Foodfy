@@ -344,6 +344,8 @@ header img {
 .make {
     width: 100%;
     height: 100%;
+
+    transition: 250ms;
 }
 
 .make ul {
@@ -366,8 +368,14 @@ header img {
 }
 
 .none {
-    display: none;
+    height: 0;
+
+    visibility: hidden;
     opacity: 0;
 
-    transition: 300ms;
+    transition: 200ms;
+}
+
+#info_foo .none{
+    margin-bottom: 76px;
 }

@@ -8,8 +8,16 @@ for (let i = 0; i < recipes.length; i++) {
       window.location.href = `/details/${i}`;
     });
 }
-for (let hide of hidden)
-    hide.addEventListener('click', function () {
 
-    
-})
+for (let i = 0; i < hidden.length; i++) {
+  hidden[i].addEventListener("click", function() {
+    if (hidden[i].textContent == "ESCONDER") {
+      hidden[i].textContent = "Mostrar";
+      details[i].classList.add("none");
+    }
+    else {
+      hidden[i].textContent = "ESCONDER";
+      details[i].classList.remove("none");
+    }
+  })
+}
