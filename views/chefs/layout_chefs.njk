@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+
+         {% block title %}<title>Foodfy</title>{% endblock %}
+
+        <link rel="stylesheet" href="/styles.css">
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    </head>
+
+    <body>
+
+        <header class="header_admin">
+
+            <img src="/assets/logo_white.png" alt="Foodfy Logo">
+
+        </header>
+
+        <section class="recipe_content">
+
+            <div class="recipe_header">
+
+                {% block header %}{% endblock %}
+
+            </div>
+
+
+            {% block content %} {% endblock %}
+
+        </section>
+
+    </body>
+
+</html>
