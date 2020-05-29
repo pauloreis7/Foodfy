@@ -18,11 +18,18 @@ routes.get("/recipes", users.recipes)
 routes.get("/details/:index", users.detail)
 
 //Chefs
-routes.get("/admin/create", admin.create)
+routes.get("/admin", admin.index)
 
-routes.get("/admin/:index", admin.show)
+routes.get("/admin/create", admin.create)
 
 routes.post('/admin', admin.post)
 
+routes.get("/admin/:index", admin.show)
+
+routes.get("/admin/:index/edit", admin.edit)
+
+routes.put("/admin", admin.put)
+
+routes.delete("/admin", admin.delete)
 
 module.exports = routes

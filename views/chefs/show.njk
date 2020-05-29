@@ -1,0 +1,94 @@
+{% extends 'chefs/layout_chefs.njk' %}
+
+{% block title %} <title>Show</title> {% endblock title %}
+
+{% block header %} 
+
+    <h1>Receita: {{ recipe.title }}</h1>
+
+    <a href="/admin/{{ recipeIndex }}/edit" class="edit">Editar receita</a>
+
+{% endblock header %}
+
+{% block content %}
+
+    <article class="details_header">
+    
+        <div class="details_img" style="background: url({{ recipe.recipe_url }}/940x280) no-repeat center center / cover"></div>
+
+        <div class="details_chef">
+        
+            <h1>{{ recipe.title }}</h1>
+
+            <p>por {{ recipe.author }}</p>
+        
+        </div>
+    
+    </article>
+
+    <article class="details_content">
+
+        <article class="detail_make">
+        
+            <div class="make_title">
+            
+                <h1>Ingredientes</h1>
+            
+            </div>
+
+            <div class="make">
+            
+                <ul>
+
+                    {% for ingredient in recipe.recipe_ingredents %}
+                        <li>{{ ingredient }}</li>
+                    {% endfor %}
+
+                </ul>
+            
+            </div>
+        
+        </article>
+
+        <article class="detail_make">
+        
+            <div class="make_title">
+            
+                <h1>Modo de preparo</h1>
+            
+            </div>
+
+            <div class="make">
+            
+                <ul>
+
+                    {% for make in recipe.recipe_making %}
+                        <li>{{ make }}</li>
+                    {% endfor %}
+
+                </ul>
+            
+            </div>
+        
+        </article>
+
+        <article class="add_info">
+        
+            <div class="make_title">
+            
+                <h1>Informações adicionais</h1>
+            
+            </div>
+
+            <div class="make">
+            
+                <p>{{ recipe.recipe_specs }}</p>
+            
+            </div>
+        
+        </article>
+
+    
+    </article>
+
+{% endblock content %}

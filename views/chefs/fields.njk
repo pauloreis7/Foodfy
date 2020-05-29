@@ -1,0 +1,37 @@
+<article class="field_item">
+    
+    <h2>Imagem da receita</h2>
+
+    <input name="recipe_url" value="{{ recipe.recipe_url }}" />
+
+</article>
+
+<article class="field_item">
+
+    <h2>Ingredientes</h2>
+
+    <input name="recipe_ingredents" value="{{ recipe.recipe_ingredents }}" />
+
+    <button type="button" class="buttons">Adicionar novo ingrediente</button>
+
+</article>
+
+<article class="field_item">
+
+    <h2>Modo de preparo</h2>
+
+    <input name="recipe_making" value="{{ recipe.recipe_making }}" />
+
+    <button type="button" class="buttons">Adicionar novo passo</button>
+
+</article>
+
+<article class="field_item">
+
+    <h2>Informações adicionais</h2>
+
+    <textarea name="recipe_specs" cols="30" rows="10">{{ recipe.recipe_specs }}</textarea>
+
+</article>
+
+</form>

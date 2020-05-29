@@ -14,12 +14,14 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: rgb(255, 255, 255);
+    box-sizing: border-box;
+    /*padding: 135px 10px;*/
 }
 
 header {
     width: 940px;
-    margin: 0 auto;
 
+    margin: 0 auto;
     padding: 36px 1px;
 }
 
@@ -419,7 +421,7 @@ header img {
     line-height: 28px;
 }
 
-button[type="submit"] {
+button[type="submit"], .edit {
     max-width: 230px;
 
     font-weight: bold;
@@ -429,12 +431,13 @@ button[type="submit"] {
     background-color: #6558C3;
     border-radius: 4px;
     cursor: pointer;
+    text-decoration: none;
 
     line-height: 19px;
     padding: 9px 20px;
 }
 
-button[type="submit"]:hover {
+button[type="submit"]:hover, .edit:hover {
     filter: brightness(90%);
     transition: 250ms;
 }
@@ -533,4 +536,57 @@ button[type="submit"]:hover {
 
 .item_info .buttons {
     font-size: 14px;
+}
+
+/* SHOW */
+
+.details_header {
+    margin-bottom: 31px;
+}
+
+.details_img {
+    max-width: 100%;
+    height: 280px;
+
+    margin-bottom: 50px;
+
+    border-radius: 15px;
+}
+
+.details_chef {
+    text-align: center;
+}
+
+.details_chef h1 {
+    color: #111111;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+.details_chef p {
+    font-size: 20px;
+    color: #777777;
+    line-height: 24px;
+}
+
+.details_content ul {
+    padding-left: 10px;
+    box-sizing: border-box;
+
+    list-style-type: "- ";
+}
+
+.details_content .detail_make {
+    margin-bottom: 41px;
+}
+
+/* EDIT */
+
+.form_edit_header {
+    display: flex;
+}
+
+.form_edit_header .delete {
+    background-color: #DC4747;
+    margin-right: 10px;
 }

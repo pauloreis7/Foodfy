@@ -5,83 +5,83 @@
 {% block content %}
     <section class="details">
 
-            <article class="detail_image">
+        <article class="detail_image">
 
-                <img src="{{recipe.image}}" alt="Triplo bacon burger">
+            <img src="{{recipe.image}}" alt="Triplo bacon burger">
 
-            </article>
+        </article>
 
-            <article class="detail_desc">
+        <article class="detail_desc">
 
-                <h1>{{recipe.title}}</h1>
+            <h1>{{recipe.title}}</h1>
 
-                <p>{{recipe.author}}</p>
+            <p>{{recipe.author}}</p>
 
-            </article>
+        </article>
 
-            <article class="detail_make">
+        <article class="detail_make">
+        
+            <div class="make_title">
             
-                <div class="make_title">
-                
-                    <h1>Ingredientes</h1><p class="hide" id="hide1">ESCONDER</p>
-                
-                </div>
-
-                <div class="make" id="hide1">
-                
-                    <ul>
-
-                        {% for ingredient in recipe.ingredients %}
-                    
-                            <li> {{ingredient}} </li>
-
-                        {% endfor %}
-
-                    </ul>
-                
-                </div>
+                <h1>Ingredientes</h1><p class="hide" id="hide1">ESCONDER</p>
             
-            </article>
+            </div>
 
-            <article class="detail_make">
+            <div class="make" id="hide1">
             
-                <div class="make_title">
-                
-                    <h1>Modo de preparo</h1><p class="hide" id="hide2">ESCONDER</p>
-                
-                </div>
+                <ul>
 
-                <div class="make" id="hide2">
+                    {% for ingredient in recipe.ingredients %}
                 
-                    <ul>
+                        <li> {{ingredient}} </li>
 
-                        {% for method in recipe.preparation %}
-                    
-                            <li> {{method}} </li>
+                    {% endfor %}
 
-                        {% endfor %}
-
-                    </ul>
-                
-                </div>
+                </ul>
             
-            </article>
+            </div>
+        
+        </article>
 
-            <article class="add_info" id="info_foo">
+        <article class="detail_make">
+        
+            <div class="make_title">
             
-                <div class="make_title">
-                
-                    <h1>Informações adicionais</h1><p class="hide" id="hide3">ESCONDER</p>
-                
-                </div>
+                <h1>Modo de preparo</h1><p class="hide" id="hide2">ESCONDER</p>
+            
+            </div>
 
-                <div class="make" id="hide3">
-                
-                    <p>{{recipe.information}}</p>
-                
-                </div>
+            <div class="make" id="hide2">
             
-            </article>
+                <ul>
+
+                    {% for method in recipe.preparation %}
+                
+                        <li> {{method}} </li>
+
+                    {% endfor %}
+
+                </ul>
+            
+            </div>
+        
+        </article>
+
+        <article class="add_info" id="info_foo">
+        
+            <div class="make_title">
+            
+                <h1>Informações adicionais</h1><p class="hide" id="hide3">ESCONDER</p>
+            
+            </div>
+
+            <div class="make" id="hide3">
+            
+                <p>{{recipe.information}}</p>
+            
+            </div>
+        
+        </article>
 
     </section>
 

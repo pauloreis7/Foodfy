@@ -1,0 +1,33 @@
+{% extends 'chefs/layout_chefs.njk' %}
+
+{% block title %} <title>Editar - Foodfy</title> {% endblock %}
+
+{% block header %}
+
+    <h1>Editando receita</h1>
+
+    <div class="form_edit_header">
+
+        <form action="/admin?_method=delete" method="post">
+        
+            <input type="hidden" name="index" value="{{ recipeIndex }}">
+
+            <button type="submit" class="delete">Deletar</button>
+        
+        </form>
+
+        <form action="/admin?_method=put" method="post">
+
+            <input type="hidden" name="index" value="{{ recipeIndex }}">
+
+            <button type="submit">Salvar receita</button>
+
+    </div>
+    
+{% endblock %}   
+
+{% block content %}
+
+    {% include 'chefs/fields.njk' %}
+
+{% endblock %}
