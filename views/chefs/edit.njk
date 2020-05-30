@@ -8,7 +8,7 @@
 
     <div class="form_edit_header">
 
-        <form action="/admin?_method=delete" method="post">
+        <form action="/admin?_method=delete" id="delete" method="post">
         
             <input type="hidden" name="index" value="{{ recipeIndex }}">
 
@@ -30,4 +30,22 @@
 
     {% include 'chefs/fields.njk' %}
 
+    {% include 'chefs/edit_scripts.njk' %}
+
+    <script>
+    
+        //Delete verify
+        const formDelete = document.querySelector("#delete")
+
+        formDelete.addEventListener("submit", function (event) {
+            const comfirm = confirm("Deseja mesmo apagar essa receita?")
+
+            if (!comfirm) {
+                event.preventDefault()
+            }
+        })
+    
+    </script>
+
 {% endblock %}
+

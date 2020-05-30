@@ -1,10 +1,10 @@
 const fs = require('fs')
 const data = require('../data.json')
-const utils = require('../utils')
 
 //index
 exports.index = function (req, res) {
-    return res.render("chefs/recipe_manager")
+
+    return res.render("chefs/recipe_manager", { recipes: data.recipes })
 }
 
 //create
@@ -22,9 +22,11 @@ exports.post = function (req, res) {
         }
     }
 
-    let { recipe_url, recipe_ingredents, recipe_making, recipe_specs } = req.body
+    let { recipe_url, recipe_ingredents, recipe_making, recipe_specs, title, author } = req.body
 
     data.recipes.push({
+        title,
+        author,
         recipe_url,
         recipe_ingredents,
         recipe_making,
@@ -47,9 +49,7 @@ exports.show = function (req, res) {
     if(!recipe) return res.send("Recipe not found")
 
     recipe = {
-        ...recipe,
-        recipe_ingredents: recipe.recipe_ingredents.split(","),
-        recipe_making: recipe.recipe_making.split(",")
+        ...recipe
     }
 
     return res.render("chefs/show.njk", { recipe, recipeIndex })
@@ -88,7 +88,24 @@ exports.put = function (req, res) {
 exports.delete = function (req, res) {
     const { index } = req.body
 
-    const recipeFilter = data.recipes.filter(function (recipe) {
-        return data.recipes[recipe] !=index
+    let recipeFilter = []
+    for ( recipe of data.recipes) {
+        if (recipe != data.recipes[index]) {
+            recipeFilter.push({
+                ...recipe
+            })
+        }
+    }
+
+    data.recipes = recipeFilter
+
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
+        if (err) return res.send("Erro ao deltar o arquivo!! Porfavor tente novamente")
+
+        return res.redirect("/admin")
     })
+
 }
+//const recipeFilter = data.recipes.filter(function (recipe) {
+      //  return recipe != data.recipes[index]
+    //})

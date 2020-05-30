@@ -416,6 +416,14 @@ header img {
     margin-bottom: 30px;
 }
 
+.create_header {
+    width: 100%;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
 .recipe_header h1{
     color: #111111;
     line-height: 28px;
@@ -482,7 +490,7 @@ button[type="submit"]:hover, .edit:hover {
     padding: 18px 43px 18px 20px;
 }
 
-.buttons {
+.buttons, .buttons_ingredient, .buttons_make {
     color: #6558C3;
     font-weight: bold;
     background-color: white;
@@ -492,7 +500,7 @@ button[type="submit"]:hover, .edit:hover {
     outline: none;
 }
 
-.buttons:hover {
+.buttons:hover, .buttons_ingredient, .buttons_make {
     filter: brightness(106%);
 }
 

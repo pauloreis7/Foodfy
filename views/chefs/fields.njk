@@ -2,17 +2,43 @@
     
     <h2>Imagem da receita</h2>
 
-    <input name="recipe_url" value="{{ recipe.recipe_url }}" />
+    <input name="recipe_url" value="{{ recipe.recipe_url }}" placeholder="http://" />
 
 </article>
 
+<div class="create_header">
+
+    <article class="field_item">
+        
+        <h2>Título da receita</h2>
+
+        <input name="title" value="{{ recipe.title }}" />
+
+    </article>
+
+    <article class="field_item">
+        
+        <h2>Autor da receita</h2>
+
+        <input name="author" value="{{ recipe.author }}" />
+
+    </article>
+
+</div>
+
 <article class="field_item">
 
-    <h2>Ingredientes</h2>
+    <div id="ingredients">
 
-    <input name="recipe_ingredents" value="{{ recipe.recipe_ingredents }}" />
+        <h2>Ingredientes</h2>
 
-    <button type="button" class="buttons">Adicionar novo ingrediente</button>
+        <div class="ingredient">
+            <input name="recipe_ingredents[]" value="{{ recipe.recipe_ingredents }}" placeholder="Ingredientes" />
+        </div>
+
+    </div>
+
+    <button type="button" class="buttons_ingredient">Adicionar novo ingrediente</button>
 
 </article>
 
@@ -20,9 +46,9 @@
 
     <h2>Modo de preparo</h2>
 
-    <input name="recipe_making" value="{{ recipe.recipe_making }}" />
+    <input name="recipe_making[]" value="{{ recipe.recipe_making }}" placeholder="Passos" />
 
-    <button type="button" class="buttons">Adicionar novo passo</button>
+    <button type="button" class="buttons_make">Adicionar novo passo</button>
 
 </article>
 

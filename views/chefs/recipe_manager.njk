@@ -11,102 +11,26 @@
 {% block content %}
 
     <article class="recipe_list">
+
+        {% for recipe in recipes %}
     
-        <div class="list_item">
-        
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/251966/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
+            <div class="list_item">
             
-                <h3>Triplo bacon burger</h3>
+                <div class="item_img" style="background: url({{ recipe.recipe_url }}172x80) no-repeat center center / cover"></div>
 
-                <p>por Jorge Relato</p>
+                <div class="item_info">
+                
+                    <h3>{{ recipe.title }}</h3>
 
-                <button class="buttons">Visualizar</button>
-            
-            </div>
-        
-        </div>
+                    <p>por {{ recipe.author }}</p>
 
-        <div class="list_item">
-        
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/251966/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
-            
-                <h3>Triplo bacon burger</h3>
-
-                <p>por Jorge Relato</p>
-
-                <button class="buttons">Visualizar</button>
+                    <button class="buttons" id="view">Visualizar</button>
+                
+                </div>
             
             </div>
-        
-        </div>
 
-        <div class="list_item">
-        
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/251966/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
-            
-                <h3>Triplo bacon burger</h3>
-
-                <p>por Jorge Relato</p>
-
-                <button class="buttons">Visualizar</button>
-            
-            </div>
-        
-        </div>
-    
-        <div class="list_item">
-        
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/251966/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
-            
-                <h3>Triplo bacon burger</h3>
-
-                <p>por Jorge Relato</p>
-
-                <button class="buttons">Visualizar</button>
-            
-            </div>
-        
-        </div>
-
-        <div class="list_item">
-        
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/251966/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
-            
-                <h3>Triplo bacon burger</h3>
-
-                <p>por Jorge Relato</p>
-
-                <button class="buttons">Visualizar</button>
-            
-            </div>
-        
-        </div>
-
-        <div class="list_item">
-        
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/251966/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
-            
-                <h3>Triplo bacon burger</h3>
-
-                <p>por Jorge Relato</p>
-
-                <button class="buttons">Visualizar</button>
-            
-            </div>
-        
-        </div>
+        {% endfor %}
     
     </article>
 
