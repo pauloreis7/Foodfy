@@ -2,11 +2,6 @@
 
     {% block title %}<title>Home Foodfy</title>{% endblock %}
 
-    {% block init %}
-        <a href="/food_about">Sobre</a>
-        <a href="/recipes">Receitas</a>
-    {% endblock %}
-
     {% block content %}
 
         <section id="container">
@@ -35,11 +30,11 @@
 
             {% for recipe in recipesPop %}
 
-                <article class="recipe" id="{{recipe.id}}">
+                <article class="recipe">
 
                     <div class="recipe_img">
 
-                        <img src="{{recipe.image}}" alt="{{recipe.title}}">
+                        <img src="{{recipe.recipe_url}}" alt="{{recipe.title}}">
 
                     </div>
 
@@ -47,7 +42,7 @@
 
                         <h3>{{recipe.title}}</h3>
 
-                        <p>{{recipe.author}}</p>
+                        <p>por {{recipe.author}}</p>
 
                     </div>
 
@@ -57,6 +52,4 @@
 
         </section>
 
-    <script src="/scripts.js"></script>
-
-    {% endblock %}
+{% endblock %}

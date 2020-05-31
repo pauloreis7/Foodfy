@@ -45,23 +45,21 @@ header img {
     padding: 5px;
 }
 
-.links #home {
+.links .home {
     background-color: rgb(255, 85, 59);
     font-weight: bold;
     color: white;
     border-radius: 30px;
 
     padding: 10px 25px;
+    transition: 250ms;
 }
 
 .links a:hover {
     filter: brightness(95%);
-    background-color: rgba(167, 167, 167, 0.13);
-    border-radius: 30px;
+    font-weight: bold;
 
-    color: rgba(0, 0, 0, 0.57);
-
-    transition: 550ms;
+    transition: 250ms;
 }
 
 #container {
@@ -394,11 +392,60 @@ header img {
     width: 100%;
     height: 80px;
 
-    padding: 26px 0 26px 231px;
+    padding: 26px 231px;
     margin-bottom: 55px;
     box-sizing: border-box;
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
     background-color: #111111;
+}
+
+.header_admin img {
+    width: 100px;
+    margin-right: 50px;
+}
+
+.header_admin .edit_create {
+    padding: 9px 15px;
+}
+
+.header_admin nav:first-child a:nth-child(2) {
+    margin-right: 24px;
+}
+
+.header_admin nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    position: relative;
+}
+
+.header_admin nav:first-child a:last-child {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.header_admin nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+
+    width: 0;
+    height: 1px;
+
+    background-color: white;
+}
+
+.header_admin nav a:hover::after {
+    width: 100%;
+
+    transition: width 250ms ease-in-out;
 }
 
 /* CREATE */
@@ -429,7 +476,7 @@ header img {
     line-height: 28px;
 }
 
-button[type="submit"], .edit {
+button[type="submit"], .edit_create {
     max-width: 230px;
 
     font-weight: bold;
@@ -445,7 +492,7 @@ button[type="submit"], .edit {
     padding: 9px 20px;
 }
 
-button[type="submit"]:hover, .edit:hover {
+button[type="submit"]:hover, .edit_create:hover {
     filter: brightness(90%);
     transition: 250ms;
 }

@@ -3,7 +3,6 @@ const data = require('../data.json')
 
 //index
 exports.index = function (req, res) {
-
     return res.render("chefs/recipe_manager", { recipes: data.recipes })
 }
 

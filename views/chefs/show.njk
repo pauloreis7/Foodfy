@@ -1,12 +1,12 @@
 {% extends 'chefs/layout_chefs.njk' %}
 
-{% block title %} <title>Show</title> {% endblock title %}
+{% block title %} <title>Especificações receita</title> {% endblock title %}
 
 {% block header %} 
 
     <h1>Receita: {{ recipe.title }}</h1>
 
-    <a href="/admin/{{ recipeIndex }}/edit" class="edit">Editar receita</a>
+    <a href="/admin/{{ recipeIndex }}/edit" class="edit_create">Editar receita</a>
 
 {% endblock header %}
 

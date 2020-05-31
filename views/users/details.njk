@@ -7,7 +7,7 @@
 
         <article class="detail_image">
 
-            <img src="{{recipe.image}}" alt="Triplo bacon burger">
+            <img src="{{recipe.recipe_url}}" alt="{{ recipe.title }}">
 
         </article>
 
@@ -31,7 +31,7 @@
             
                 <ul>
 
-                    {% for ingredient in recipe.ingredients %}
+                    {% for ingredient in recipe.recipe_ingredents %}
                 
                         <li> {{ingredient}} </li>
 
@@ -55,7 +55,7 @@
             
                 <ul>
 
-                    {% for method in recipe.preparation %}
+                    {% for method in recipe.recipe_making %}
                 
                         <li> {{method}} </li>
 
@@ -77,14 +77,12 @@
 
             <div class="make" id="hide3">
             
-                <p>{{recipe.information}}</p>
+                <p>{{recipe.recipe_specs}}</p>
             
             </div>
         
         </article>
 
     </section>
-
-    <script src="/scripts.js"></script>
 
 {% endblock %}

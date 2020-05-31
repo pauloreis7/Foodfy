@@ -10,17 +10,17 @@
 
     <article class="field_item">
         
-        <h2>Título da receita</h2>
-
-        <input name="title" value="{{ recipe.title }}" />
-
-    </article>
-
-    <article class="field_item">
-        
         <h2>Autor da receita</h2>
 
         <input name="author" value="{{ recipe.author }}" />
+
+    </article>
+    
+    <article class="field_item">
+        
+        <h2>Título da receita</h2>
+
+        <input name="title" value="{{ recipe.title }}" />
 
     </article>
 
@@ -33,7 +33,7 @@
         <h2>Ingredientes</h2>
 
         <div class="ingredient">
-            <input name="recipe_ingredents[]" value="{{ recipe.recipe_ingredents }}" placeholder="Ingredientes" />
+            <input name="recipe_ingredents[]" value="{{ recipe.recipe_ingredents }}" placeholder="Ingrediente" />
         </div>
 
     </div>
@@ -46,7 +46,7 @@
 
     <h2>Modo de preparo</h2>
 
-    <input name="recipe_making[]" value="{{ recipe.recipe_making }}" placeholder="Passos" />
+    <input name="recipe_making[]" value="{{ recipe.recipe_making }}" placeholder="Passo" />
 
     <button type="button" class="buttons_make">Adicionar novo passo</button>
 

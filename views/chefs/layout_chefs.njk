@@ -21,8 +21,14 @@
 
         <header class="header_admin">
 
-            <img src="/assets/logo_white.png" alt="Foodfy Logo">
+            <nav>
+                <img src="/assets/logo_white.png" alt="Foodfy Logo">
 
+                <a href="/">Receitas</a>
+                <a href="/admin">Chefs</a>
+            </nav>
+
+            {% block create %}{% endblock %}
         </header>
 
         <section class="recipe_content">

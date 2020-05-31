@@ -1,9 +1,15 @@
-const recipes = require('../data')
+const data = require('../data.json')
 
 //loob
 exports.index = function (req, res) {
-    const recipesPop = recipes.filter((recipes, index) => index < 6 ? false : true)
- 
+    let recipesPop = []
+
+    data.recipes.filter(function (recipe) {
+        if(recipesPop.length < 6) {
+            recipesPop.push(recipe)
+        }
+    })
+
     return res.render("users/index", { recipesPop })
 }
 
@@ -14,15 +20,15 @@ exports.about = function (req, res) {
 
 //recipesAll
 exports.recipes = function (req, res) {
-    return res.render("users/recipes", { recipes })
+    return res.render("users/recipes", { recipes: data.recipes })
 }
 
 //recipeDetails
 exports.detail = function (req, res) {
     const recipeIndex = req.params.index
-    const recipe = recipes[recipeIndex]
+    const recipe = data.recipes[recipeIndex]
 
     if (!recipe) return res.send("Recipe not found")
     
-    return res.render("users/details", {recipe})
+    return res.render("users/details", { recipe })
 }
