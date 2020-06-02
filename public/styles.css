@@ -15,7 +15,7 @@ body {
     font-family: 'Roboto', sans-serif;
     background-color: rgb(255, 255, 255);
     box-sizing: border-box;
-    /*padding: 135px 10px;*/
+    padding-bottom: 40px;
 }
 
 header {
@@ -453,6 +453,21 @@ header img {
 .recipe_content {
     max-width: 940px;
     margin: 0 auto;
+    position: relative;
+}
+
+.recipe_content button[type="submit"] {
+    position: absolute;
+    right: 0;
+    top: 24px;
+}
+
+.recipe_content h1 {
+    margin-bottom: 30px;
+}
+
+.form_header {
+    margin-bottom: 30px;
 }
 
 .recipe_header {
@@ -471,7 +486,7 @@ header img {
     gap: 20px;
 }
 
-.recipe_header h1{
+.recipe_header h1 {
     color: #111111;
     line-height: 28px;
 }
@@ -641,7 +656,12 @@ button[type="submit"]:hover, .edit_create:hover {
     display: flex;
 }
 
-.form_edit_header .delete {
+#delete  {
+    position: absolute;
+    top: 0;
+    right: 156px;
+}
+
+#delete_button {
     background-color: #DC4747;
-    margin-right: 10px;
 }

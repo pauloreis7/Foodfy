@@ -1,19 +1,14 @@
 {% extends 'chefs/layout_chefs.njk' %}
 
-{% block title %} <title>Criando - Foodfy</title> {% endblock %}
+{% block title %} <title>Nova Receita - Foodfy</title> {% endblock %}
 
-{% block header %}
+{% block content %}
 
-    <h1>Criando receita</h1>
+    <h1 class="form_header">Criando receita</h1>
 
     <form action="/admin" method="post">
 
     <button type="submit">Salvar receita</button>
-    
-{% endblock %}   
-
-{% block content %}
-
     {% include 'chefs/fields.njk' %}
 
     {% include 'chefs/add_item.njk' %}

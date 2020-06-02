@@ -27,7 +27,7 @@ exports.post = function (req, res) {
         title,
         author,
         recipe_url,
-        recipe_ingredents,
+        recipe_ingredents: String(req.body.recipe_ingredents),
         recipe_making,
         recipe_specs
     })
@@ -48,7 +48,8 @@ exports.show = function (req, res) {
     if(!recipe) return res.send("Recipe not found")
 
     recipe = {
-        ...recipe
+        ...recipe,
+        recipe_ingredents: recipe.recipe_ingredents.split(",")
     }
 
     return res.render("chefs/show.njk", { recipe, recipeIndex })
@@ -69,18 +70,19 @@ exports.put = function (req, res) {
     
     const recipe = {
         ...data.recipes[req.body.index],
-        ...req.body
+        ...req.body,
+        recipe_ingredents: String(req.body.recipe_ingredents)
     }
-    
+    console.log(recipe)
     if(!recipe) return res.send("Recipe not found")
     
     data.recipes[recipe.index] = recipe
 
-    fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
-      if (err) return res.send("Erro ao editar receita!! Tente novamente")
+    //fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
+      //if (err) return res.send("Erro ao editar receita!! Tente novamente")
 
-       return res.redirect(`/admin/${recipe.index}`)
-    })
+      // return res.redirect(`/admin/${recipe.index}`)
+    //})
 }
 
 //delete

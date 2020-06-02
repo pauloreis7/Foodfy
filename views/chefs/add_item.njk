@@ -1,4 +1,5 @@
 <script>
+
 //AddItemToList
 function addIngredient() {
     const ingredients = document.querySelector("#ingredients")
@@ -13,5 +14,20 @@ function addIngredient() {
 }
 
     document.querySelector(".buttons_ingredient").addEventListener("click", addIngredient)
+
+function addStep() {
+    const steps = document.querySelector("#steps")
+    const fieldContainer = document.querySelectorAll(".step")
+
+    const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true)
+    console.log(newField)
+
+    if (newField.children[0].value == "") return false;
+
+    newField.children[0].value = "";
+    steps.appendChild(newField);
+}
+
+    document.querySelector(".buttons_make").addEventListener("click", addStep)
 
 </script>

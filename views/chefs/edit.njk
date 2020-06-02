@@ -2,31 +2,23 @@
 
 {% block title %} <title>Editar receita</title> {% endblock %}
 
-{% block header %}
+{% block content %}
 
     <h1>Editando receita</h1>
 
-    <div class="form_edit_header">
-
-        <form action="/admin?_method=delete" id="delete" method="post">
-        
-            <input type="hidden" name="index" value="{{ recipeIndex }}">
-
-            <button type="submit" class="delete">Deletar</button>
-        
-        </form>
-
-        <form action="/admin?_method=put" method="post">
-
-            <input type="hidden" name="index" value="{{ recipeIndex }}">
-
-            <button type="submit">Salvar receita</button>
-
-    </div>
+    <form action="/admin?_method=delete" id="delete" method="post">
     
-{% endblock %}   
+        <input type="hidden" name="index" value="{{ recipeIndex }}">
 
-{% block content %}
+        <button type="submit" id="delete_button">Deletar</button>
+    
+    </form>
+
+    <form action="/admin?_method=put" method="post">
+
+    <input type="hidden" name="index" value="{{ recipeIndex }}">
+
+    <button type="submit">Salvar receita</button>
 
     {% include 'chefs/fields.njk' %}
 
