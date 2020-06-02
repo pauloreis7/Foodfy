@@ -44,9 +44,15 @@
 
 <article class="field_item">
 
-    <h2>Modo de preparo</h2>
+    <div id="steps">
 
-    <input name="recipe_making[]" value="{{ recipe.recipe_making }}" placeholder="Passo" />
+        <h2>Modo de preparo</h2>
+
+        <div class="step">
+            <input name="recipe_making[]" value="{{ recipe.recipe_making }}"  placeholder="Passo" />
+        </div>
+    
+    </div>
 
     <button type="button" class="buttons_make">Adicionar novo passo</button>
 

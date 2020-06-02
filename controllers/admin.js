@@ -28,7 +28,7 @@ exports.post = function (req, res) {
         author,
         recipe_url,
         recipe_ingredents: String(req.body.recipe_ingredents),
-        recipe_making,
+        recipe_making: String(req.body.recipe_making),
         recipe_specs
     })
 
@@ -49,7 +49,8 @@ exports.show = function (req, res) {
 
     recipe = {
         ...recipe,
-        recipe_ingredents: recipe.recipe_ingredents.split(",")
+        recipe_ingredents: recipe.recipe_ingredents.split(","),
+        recipe_making: recipe.recipe_making.split(",")
     }
 
     return res.render("chefs/show.njk", { recipe, recipeIndex })
@@ -71,32 +72,28 @@ exports.put = function (req, res) {
     const recipe = {
         ...data.recipes[req.body.index],
         ...req.body,
-        recipe_ingredents: String(req.body.recipe_ingredents)
+        recipe_ingredents: String(req.body.recipe_ingredents),
+        recipe_making: String(req.body.recipe_making)
     }
-    console.log(recipe)
+
     if(!recipe) return res.send("Recipe not found")
     
     data.recipes[recipe.index] = recipe
 
-    //fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
-      //if (err) return res.send("Erro ao editar receita!! Tente novamente")
+    fs.writeFile("data.json", JSON.stringify(data, null, 2), function (err) {
+      if (err) return res.send("Erro ao editar receita!! Tente novamente")
 
-      // return res.redirect(`/admin/${recipe.index}`)
-    //})
+       return res.redirect(`/admin/${recipe.index}`)
+    })
 }
 
 //delete
 exports.delete = function (req, res) {
     const { index } = req.body
 
-    let recipeFilter = []
-    for ( recipe of data.recipes) {
-        if (recipe != data.recipes[index]) {
-            recipeFilter.push({
-                ...recipe
-            })
-        }
-    }
+    const recipeFilter = data.recipes.filter(function (recipe) {
+        return recipe != data.recipes[index]
+    })
 
     data.recipes = recipeFilter
 
@@ -107,6 +104,3 @@ exports.delete = function (req, res) {
     })
 
 }
-//const recipeFilter = data.recipes.filter(function (recipe) {
-      //  return recipe != data.recipes[index]
-    //})

@@ -26,7 +26,13 @@ exports.recipes = function (req, res) {
 //recipeDetails
 exports.detail = function (req, res) {
     const recipeIndex = req.params.index
-    const recipe = data.recipes[recipeIndex]
+    let recipe = data.recipes[recipeIndex]
+
+    recipe = {
+        ...recipe,
+        recipe_ingredents: recipe.recipe_ingredents.split(","),
+        recipe_making: recipe.recipe_making.split(",")
+    }
 
     if (!recipe) return res.send("Recipe not found")
     
