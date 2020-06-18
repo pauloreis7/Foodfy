@@ -1,0 +1,94 @@
+{% extends 'admin/layout_admin.njk' %}
+
+{% block title %}<title>Foodfy - Nome do chef</title>{% endblock %}
+
+{% block header %}
+
+    <h1>Chef: Nome do chef</h1>
+
+    <a href="/chefs/{{ chef.id }}/edit" class="edit_create">Editar Chef</a>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="chef_data">
+    
+    <div class="chef_img"></div>
+
+    <h1>Manuel Quejadilha</h1>
+
+    <p>4 receitas</p>
+    
+    </section>
+
+    <h2 class="chef_title">Receitas</h2>
+
+    <article class="chef_recipes recipe_list">
+    
+        <div class="list_item">
+        
+            <div class="item_img" style="background: url(https://source.unsplash.com/collection/465338/172x80) no-repeat center center / cover"></div>
+
+            <div class="item_info">
+            
+                <h3>Empada</h3>
+
+                <p>por Manuel Quejadilha</p>
+
+                <button class="buttons" id="view">Visualizar</button>
+            
+            </div>
+        
+        </div>
+
+        <div class="list_item">
+        
+            <div class="item_img" style="background: url(https://source.unsplash.com/collection/465338/172x80) no-repeat center center / cover"></div>
+
+            <div class="item_info">
+            
+                <h3>Empada</h3>
+
+                <p>por Manuel Quejadilha</p>
+
+                <button class="buttons" id="view">Visualizar</button>
+            
+            </div>
+        
+        </div>
+
+           <div class="list_item">
+        
+            <div class="item_img" style="background: url(https://source.unsplash.com/collection/465338/172x80) no-repeat center center / cover"></div>
+
+            <div class="item_info">
+            
+                <h3>Empada</h3>
+
+                <p>por Manuel Quejadilha</p>
+
+                <button class="buttons" id="view">Visualizar</button>
+            
+            </div>
+        
+        </div>
+
+        <div class="list_item">
+        
+            <div class="item_img" style="background: url(https://source.unsplash.com/collection/465338/172x80) no-repeat center center / cover"></div>
+
+            <div class="item_info">
+            
+                <h3>Empada</h3>
+
+                <p>por Manuel Quejadilha</p>
+
+                <button class="buttons" id="view">Visualizar</button>
+            
+            </div>
+        
+        </div>
+    </article>
+
+{% endblock %}

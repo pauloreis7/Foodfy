@@ -1,4 +1,4 @@
-{% extends 'chefs/layout_chefs.njk' %}
+{% extends 'admin/layout_admin.njk' %}
 
 {% block title %} <title>Editar receita</title> {% endblock %}
 
@@ -6,7 +6,7 @@
 
     <h1>Editando receita</h1>
 
-    <form action="/admin?_method=delete" id="delete" method="post">
+    <form action="/recipes?_method=delete" id="delete" method="post">
     
         <input type="hidden" name="index" value="{{ recipeIndex }}">
 
@@ -14,15 +14,15 @@
     
     </form>
 
-    <form action="/admin?_method=put" method="post">
+    <form action="/recipes?_method=put" method="post">
 
     <input type="hidden" name="index" value="{{ recipeIndex }}">
 
     <button type="submit">Salvar receita</button>
 
-    {% include 'chefs/fields.njk' %}
+    {% include 'admin/recipes/fields.njk' %}
 
-    {% include 'chefs/add_item.njk' %}
+    {% include 'admin/recipes/add_item.njk' %}
 
     <script>
     

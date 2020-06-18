@@ -1,6 +1,6 @@
-{% extends 'chefs/layout_chefs.njk' %}
+{% extends 'admin/layout_admin.njk' %}
 
-{% block title %} <title>Receitas admin</title> {% endblock %}
+{% block title %} <title>Receitas</title> {% endblock %}
 
 {% block header %}
 
@@ -8,7 +8,7 @@
     
 {% endblock %}
 
-{% block create %} <a href="/admin/create" class="edit_create">Criar Receita</a> {% endblock %}
+{% block create %} <a href="/recipes/create" class="edit_create">Criar Receita</a> {% endblock %}
 
 {% block content %}
 

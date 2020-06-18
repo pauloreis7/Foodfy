@@ -416,10 +416,6 @@ header img {
     padding: 9px 15px;
 }
 
-.header_admin nav:first-child a:nth-child(2) {
-    margin-right: 24px;
-}
-
 .header_admin nav a {
     color: white;
     text-decoration: none;
@@ -427,9 +423,13 @@ header img {
     position: relative;
 }
 
-.header_admin nav:first-child a:last-child {
-    font-weight: bold;
+.header_admin .home { 
     font-size: 20px;
+    font-weight: bold;
+}
+
+.header_admin nav a + a {
+    margin-left: 24px;
 }
 
 .header_admin nav a::after {
@@ -465,15 +465,12 @@ header img {
     top: 24px;
 }
 
-.recipe_content h1 {
-    margin-bottom: 30px;
-}
 
 .form_header {
     margin-bottom: 30px;
 }
 
-.recipe_header {
+.admin_header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -489,7 +486,7 @@ header img {
     gap: 20px;
 }
 
-.recipe_header h1 {
+.admin_header h1 {
     color: #111111;
     line-height: 28px;
 }
@@ -667,4 +664,53 @@ button[type="submit"]:hover, .edit_create:hover {
 
 #delete_button {
     background-color: #DC4747;
+}
+
+/* CHEFS */
+
+/* SHOW CHEF */
+
+.chef_data {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    text-align: center;
+    align-items: center;
+
+    padding: 20px;
+    margin: 0 auto 50px;
+
+    max-width: 200px;
+}
+
+.chef_data .chef_img {
+    border-radius: 50%;
+    background: url(https://images.unsplash.com/photo-1577219491135-ce391730fb2c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=325&q=80/200x200) no-repeat center center / cover;
+
+    width: 200px;
+    height: 200px;
+
+    margin-bottom: 30px;
+}
+
+.chef_data h1 {
+    font-size: 36px;
+    line-height: 42px;
+    color: #111111;
+
+    margin-bottom: 4px;
+}
+
+.chef_data p {
+    color: #777777;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.chef_title {
+    margin-bottom: 30px;
+    
+    font-size: 24px;
+    line-height: 28px;
+    color: #111111;
 }

@@ -20,7 +20,6 @@ function addStep() {
     const fieldContainer = document.querySelectorAll(".step")
 
     const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true)
-    console.log(newField)
 
     if (newField.children[0].value == "") return false;
 

@@ -25,15 +25,16 @@ for (let i = 0; i < hidden.length; i++) {
 
 //MenuUser
 const page = location.pathname
-const menuItens = document.querySelectorAll("header .links a")
 
-  for ( item of menuItens) {
-    let link = item.getAttribute("href").slice(1)
-    let currentPage = page.slice(1)
-    if (link == currentPage || link =="" && currentPage=="loob") {
-      item.classList.add("home")
-    }
+const menuItens = document.querySelectorAll("header a")
+for ( item of menuItens) {
+  let link = item.getAttribute("href").slice(1)
+  let currentPage = page.slice(1)
+
+  if (link == currentPage || link =="" && currentPage=="loob") {
+    item.classList.add("home")
   }
+}
 
 //View by admin
 const views = document.querySelectorAll("#view")
