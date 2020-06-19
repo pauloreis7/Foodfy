@@ -1,3 +1,5 @@
+const Chef = require('../models/Chef')
+const { date } = require('../../lib/utils')
 
 module.exports = {
 
@@ -15,16 +17,19 @@ module.exports = {
 
     //createChef
     post(req, res) {
-
+        
         const keys = Object.keys(req.body)
-
+        
         for ( key of keys) {
             if (req.body[key] == "") {
                 return res.send('Por favor preencha todos os campos')
             }
         }
-
-        return res.redirect(`/chefs/${chef.id}`)
+        
+        Chef.create(req.body, function name(chef) {
+            
+            return res.redirect("/chefs")
+        }) 
     },
 
     //details

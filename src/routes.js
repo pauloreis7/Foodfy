@@ -15,7 +15,7 @@ routes.get("/loob", users.index)
 routes.get("/food_about", users.about)
  
 routes.get("/recipes", users.recipes)
- 
+
 routes.get("/details/:index", users.detail)
 
 //Recipes

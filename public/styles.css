@@ -29,6 +29,7 @@ header img {
     margin-bottom: -6px;
 }
 
+
 .links {
     display: inline-block;
     position: relative;
@@ -277,6 +278,10 @@ header img {
     padding: 0 20px;
 }
 
+.admin_header .show_title {
+    margin-bottom: 0;
+}
+
 .detail_image {
     width: 100%;
     height: 280px;
@@ -395,7 +400,7 @@ header img {
     width: 100%;
     height: 80px;
 
-    padding: 26px 231px;
+    padding: 26px 20px;
     margin-bottom: 55px;
     box-sizing: border-box;
     position: relative;
@@ -405,6 +410,17 @@ header img {
     align-items: center;
 
     background-color: #111111;
+}
+
+.header_admin .header_content {
+    max-width: 950px;
+    width: 100%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0 auto;
 }
 
 .header_admin img {
@@ -459,10 +475,14 @@ header img {
     position: relative;
 }
 
+.recipe_content h1 {
+    margin-bottom: 30px;
+}
+
 .recipe_content button[type="submit"] {
     position: absolute;
     right: 0;
-    top: 24px;
+    top: 0;
 }
 
 
@@ -474,8 +494,6 @@ header img {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-bottom: 30px;
 }
 
 .create_header {
@@ -524,7 +542,7 @@ button[type="submit"]:hover, .edit_create:hover {
     font-size: 16px;
 }
 
-.field_item input, textarea {
+.field_item input, textarea, select {
     width: 100%;
     height: 49px;
 
@@ -550,6 +568,8 @@ button[type="submit"]:hover, .edit_create:hover {
     height: 257px;
 
     padding: 18px 43px 18px 20px;
+
+    font-family: 'Roboto', sans-serif;
 }
 
 .buttons, .buttons_ingredient, .buttons_make {
@@ -618,7 +638,7 @@ button[type="submit"]:hover, .edit_create:hover {
     max-width: 100%;
     height: 280px;
 
-    margin-bottom: 50px;
+    margin: 30px 0 50px;
 
     border-radius: 15px;
 }
@@ -668,7 +688,7 @@ button[type="submit"]:hover, .edit_create:hover {
 
 /* CHEFS */
 
-/* SHOW CHEF */
+/* SHOW */
 
 .chef_data {
     display: flex;
@@ -714,3 +734,6 @@ button[type="submit"]:hover, .edit_create:hover {
     line-height: 28px;
     color: #111111;
 }
+
+/* CREATE */
+

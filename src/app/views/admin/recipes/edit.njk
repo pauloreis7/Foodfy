@@ -16,11 +16,13 @@
 
     <form action="/recipes?_method=put" method="post">
 
-    <input type="hidden" name="index" value="{{ recipeIndex }}">
+        <input type="hidden" name="index" value="{{ recipeIndex }}">
 
-    <button type="submit">Salvar receita</button>
+        <button type="submit">Salvar receita</button>
 
-    {% include 'admin/recipes/fields.njk' %}
+        {% include 'admin/recipes/fields.njk' %}
+
+    </form>
 
     {% include 'admin/recipes/add_item.njk' %}
 
@@ -40,4 +42,3 @@
     </script>
 
 {% endblock %}
-

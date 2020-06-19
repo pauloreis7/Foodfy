@@ -21,24 +21,23 @@
 
         <header class="header_admin">
 
-            <nav>
-                <img src="/assets/logo_white.png" alt="Foodfy Logo">
+            <div class="header_content">
 
-                <a href="/">Loob</a>
-                <a href="/recipes/recipe_manager">Receitas</a>
-                <a href="/chefs">Chefs</a>
-            </nav>
+                <nav>
+                    <img src="/assets/logo_white.png" alt="Foodfy Logo">
 
-            {% block create %}{% endblock %}
+                    <a href="/">Loob</a>
+                    <a href="/recipes/recipe_manager">Receitas</a>
+                    <a href="/chefs">Chefs</a>
+                </nav>
+
+                {% block create %}{% endblock %}
+
+            </div>
+
         </header>
 
         <section class="recipe_content">
-
-            <div class="admin_header">
-
-                {% block header %}{% endblock %}
-
-            </div>
 
             {% block content %} {% endblock %}
 

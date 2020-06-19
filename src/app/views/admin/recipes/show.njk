@@ -2,15 +2,16 @@
 
 {% block title %} <title>Especificações receita</title> {% endblock title %}
 
-{% block header %} 
-
-    <h1>Receita: {{ recipe.title }}</h1>
-
-    <a href="/recipes/{{ recipeId }}/edit" class="edit_create">Editar receita</a>
-
-{% endblock header %}
 
 {% block content %}
+
+    <div class="admin_header">
+    
+        <h1 class="show_title">Receita: Nome da Receita</h1>
+    
+        <a href="/recipes/:id/edit" class="edit_create">Editar receita</a>
+    
+    </div>
 
     <article class="details_header">
     

@@ -1,5 +1,5 @@
-const { date } = require('../../lib/utils')
 const Recipe = require('../models/Recipe')
+const { date } = require('../../lib/utils')
 
 module.exports = {
 
@@ -25,7 +25,6 @@ module.exports = {
                 return res.send('Por favor preencha todos os campos')
             }
         }
-
 
         Recipe.create(req.body, function (recipe) {
 
