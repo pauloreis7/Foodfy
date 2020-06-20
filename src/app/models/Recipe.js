@@ -34,4 +34,13 @@ module.exports = {
             callback(results.rows[0])
         })
     },
+
+    find(id, callback) {
+
+        db.query(`SELECT * FROM recipes WHERE id = ${ id }`, function (err, results) {
+            if (err) throw `Erro ao encontrar receita! ${ err }`
+            
+            callback(results.rows[0])
+        })
+    }
 }

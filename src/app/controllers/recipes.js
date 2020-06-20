@@ -35,7 +35,12 @@ module.exports = {
     //details
     show(req, res) {
 
-        return res.render("admin/recipes/show")
+        Recipe.find(req.params.id, function (recipe) {
+            
+            
+            return res.render("admin/recipes/show", { recipe })
+        })
+
     },
 
     //editPage

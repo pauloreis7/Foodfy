@@ -7,7 +7,7 @@
 
     <div class="admin_header">
     
-        <h1 class="show_title">Receita: Nome da Receita</h1>
+        <h1 class="show_title">Receita: {{ recipe.title }}</h1>
     
         <a href="/recipes/:id/edit" class="edit_create">Editar receita</a>
     
@@ -15,7 +15,7 @@
 
     <article class="details_header">
     
-        <div class="details_img" style="background: url({{ recipe.recipe_url }}/940x280) no-repeat center center / cover"></div>
+        <div class="details_img" style="background: url({{ recipe.image }}/940x280) no-repeat center center / cover"></div>
 
         <div class="details_chef">
         
@@ -41,7 +41,7 @@
             
                 <ul>
 
-                    {% for ingredient in recipe.recipe_ingredents %}
+                    {% for ingredient in recipe.ingredients %}
                         <li>{{ ingredient }}</li>
                     {% endfor %}
 
@@ -63,8 +63,8 @@
             
                 <ul>
 
-                    {% for make in recipe.recipe_making %}
-                        <li>{{ make }}</li>
+                    {% for step in recipe.preparation %}
+                        <li>{{ step }}</li>
                     {% endfor %}
 
                 </ul>
@@ -83,7 +83,7 @@
 
             <div class="make">
             
-                <p>{{ recipe.recipe_specs }}</p>
+                <p>{{ recipe.information }}</p>
             
             </div>
         
