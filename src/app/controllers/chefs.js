@@ -26,16 +26,23 @@ module.exports = {
             }
         }
         
-        Chef.create(req.body, function name(chef) {
+        Chef.create(req.body, function (chef) {
             
-            return res.redirect("/chefs")
+            return res.redirect(`/chefs/${ chef.id }`)
         }) 
     },
 
     //details
     show(req, res) {
+        
+        Chef.find(req.params.id, function (chef) {
+            if (!chef) return res.send("Chef não encontrado")
 
-        return res.render("admin/chefs/show")
+            Chef.chefRecipes(req.params.id, function (recipes) {
+
+                return res.render("admin/chefs/show", { chef, recipes })
+            })
+        })
     },
 
     //editPage

@@ -1,11 +1,18 @@
+const Recipe = require('../models/Recipe.js')
 
 module.exports = {
 
     //loob
     index(req, res) {
 
-        return res.render("users/index")
-
+        Recipe.all(function (recipes) {
+            
+            let recipesPop = recipes.filter(function (recipe) {
+                return recipes.indexOf(recipe) < 6
+            })
+            
+            return res.render("users/index", { recipesPop })
+        })
     },
 
     //aboutFoodfy
@@ -22,9 +29,15 @@ module.exports = {
     },
 
     //details
-    detail(req, res) {
+    details(req, res) {
 
-        return res.render("users/details")
+        Recipe.find(req.params.id, function (recipe) {
+
+            recipe.ingredients = recipe.ingredients[0].split(",")
+            recipe.preparation = recipe.preparation[0].split(",")
+
+            return res.render("users/details", { recipe })
+        })
     },
 
 }

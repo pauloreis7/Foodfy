@@ -6,13 +6,20 @@ module.exports = {
     //recipesLoob
     index(req, res) {
 
-        return res.render("admin/recipes/recipe_manager")
+        Recipe.all(function (recipes) {
+            
+            return res.render("admin/recipes/recipe_manager", { recipes })
+        })
+
     },
 
     //createPage
     create(req, res) {
 
-        return res.render("admin/recipes/create")
+        Recipe.chefsSelectOption(function (options) {
+            
+            return res.render("admin/recipes/create", { options })
+        })
     },
 
     //createRecipe
@@ -28,16 +35,30 @@ module.exports = {
 
         Recipe.create(req.body, function (recipe) {
 
-            return res.redirect(`/recipes/recipe_manager`)
+            return res.redirect(`/recipes/${ recipe.id }`)
         })
     },
 
     //details
     show(req, res) {
-
+        
         Recipe.find(req.params.id, function (recipe) {
+          if (!recipe) return res.send("Receita não encontrada")
+          
+            recipe.ingredients = recipe.ingredients[0].split(",")
+            recipe.preparation = recipe.preparation[0].split(",")
             
-            
+            // const indexPreparation = recipe.preparation.indexOf("")
+            // const indexIngredients = recipe.ingredients.indexOf("")
+
+            // if (indexPreparation != -1) {
+            //     recipe.preparation.splice(indexPreparation, 1)
+            // }
+
+            // if (indexIngredients != -1) {
+            //     recipe.ingredients.splice(indexIngredients, 1)
+            // }
+
             return res.render("admin/recipes/show", { recipe })
         })
 
@@ -46,7 +67,14 @@ module.exports = {
     //editPage
     edit(req, res) {
 
-        return res.render("admin/recipes/edit")
+        Recipe.find(req.params.id, function (recipe) {
+          if (!recipe) return res.send("Receita não encontrada")      
+            
+            Recipe.chefsSelectOption(function (options) {
+
+                return res.render("admin/recipes/edit", { recipe, options })
+            })
+        })
     },
 
     //editRecipe
@@ -60,14 +88,19 @@ module.exports = {
             }
         }
 
-        if(!recipe) return res.send("Recipe not found")
+        Recipe.update(req.body, function () {
+            
+            return res.redirect(`recipes/${req.body.id}`)
+        })
         
-        return res.redirect(`admin/recipes/${recipe.index}`)
     },
 
     //deleteRecipe
     delete(req, res) {
-
-        return res.redirect("/recipes/recipe_manager")
+        
+        Recipe.delete(req.body.id, function () {
+            
+            return res.redirect("/recipes")
+        })
     },
 }

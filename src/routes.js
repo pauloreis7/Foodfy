@@ -14,12 +14,12 @@ routes.get("/loob", users.index)
  
 routes.get("/food_about", users.about)
  
-routes.get("/recipes", users.recipes)
+routes.get("/recipes/allRecipes", users.recipes)
 
-routes.get("/details/:index", users.detail)
+routes.get("/details/:id", users.details)
 
 //Recipes
-routes.get("/recipes/recipe_manager", recipes.index)
+routes.get("/recipes", recipes.index)
 
 routes.get("/recipes/create", recipes.create)
 

@@ -30,15 +30,15 @@
 
             {% for recipe in recipesPop %}
 
-                <article class="recipe">
+                <article class="recipe" id="{{ recipe.id }}">
 
-                    <div class="recipe_img" style="background: url({{ recipe.recipe_url }}172x80) no-repeat center center / cover"></div>
+                    <div class="recipe_img" style="background: url({{ recipe.image }}172x80) no-repeat center center / cover"></div>
 
                     <div class="recipe_desc">
 
                         <h3>{{recipe.title}}</h3>
 
-                        <p>por {{recipe.author}}</p>
+                        <p>por {{recipe.chef_name}}</p>
 
                     </div>
 

@@ -1,32 +1,28 @@
 {% extends 'admin/layout_admin.njk' %}
 
-{% block title %} <title>Receitas</title> {% endblock %}
-
-{% block header %}
-
-    <h1>Gerenciar receitas</h1>
+{% block title %} <title>Receitas - Foodfy</title> {% endblock %}
     
-{% endblock %}
-
 {% block create %} <a href="/recipes/create" class="edit_create">Criar Receita</a> {% endblock %}
 
 {% block content %}
 
+    <h1>Gerenciar receitas</h1>
+    
     <article class="recipe_list">
 
         {% for recipe in recipes %}
     
             <div class="list_item">
             
-                <div class="item_img" style="background: url({{ recipe.recipe_url }}172x80) no-repeat center center / cover"></div>
+                <div class="item_img" style="background: url({{ recipe.image }}172x80) no-repeat center center / cover"></div>
 
                 <div class="item_info">
                 
                     <h3>{{ recipe.title }}</h3>
 
-                    <p>por {{ recipe.author }}</p>
+                    <p>por {{ recipe.chef_name }}</p>
 
-                    <button class="buttons" id="view">Visualizar</button>
+                    <a href="/recipes/{{ recipe.id }}" class="buttons">Visualizar</a>
                 
                 </div>
             

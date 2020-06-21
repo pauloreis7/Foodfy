@@ -294,7 +294,7 @@ header img {
 }
 
 .detail_desc {
-    max-width: 318px;
+    max-width: 340px;
     max-height: 70px;
 
     margin: 50px auto;
@@ -305,6 +305,8 @@ header img {
     color: #111111;
     font-size: 36px;
     line-height: 42px;
+
+    margin-bottom: 8px;
 }
 
 .detail_desc p {
@@ -544,9 +546,9 @@ button[type="submit"]:hover, .edit_create:hover {
 
 .field_item input, textarea, select {
     width: 100%;
-    height: 49px;
+    height: 50px;
 
-    padding: 15px 20px;
+    padding: 14px 20px 15px;
     margin: 10px 0 15px;
     box-sizing: border-box;
 
@@ -580,6 +582,7 @@ button[type="submit"]:hover, .edit_create:hover {
     font-size: 16px;
     line-height: 19px;
     outline: none;
+    text-decoration: none;
 }
 
 .buttons:hover, .buttons_ingredient, .buttons_make {
@@ -626,6 +629,7 @@ button[type="submit"]:hover, .edit_create:hover {
 
 .item_info .buttons {
     font-size: 14px;
+    line-height: 16px;
 }
 
 /* SHOW */

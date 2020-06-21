@@ -5,13 +5,13 @@
 {% block content %}
     <section class="details">
 
-        <article class="detail_image" style="background: url({{ recipe.recipe_url }}/940x280) no-repeat center center / cover"></article>
+        <article class="detail_image" style="background: url({{ recipe.image }}/940x280) no-repeat center center / cover"></article>
 
         <article class="detail_desc">
 
             <h1>{{recipe.title}}</h1>
 
-            <p>{{recipe.author}}</p>
+            <p>{{recipe.chef_name}}</p>
 
         </article>
 
@@ -27,7 +27,7 @@
             
                 <ul>
 
-                    {% for ingredient in recipe.recipe_ingredents %}
+                    {% for ingredient in recipe.ingredients %}
                 
                         <li> {{ingredient}} </li>
 
@@ -51,9 +51,9 @@
             
                 <ul>
 
-                    {% for method in recipe.recipe_making %}
+                    {% for step in recipe.preparation %}
                 
-                        <li> {{method}} </li>
+                        <li> {{step}} </li>
 
                     {% endfor %}
 
@@ -73,7 +73,7 @@
 
             <div class="make" id="hide3">
             
-                <p>{{recipe.recipe_specs}}</p>
+                <p>{{recipe.information}}</p>
             
             </div>
         

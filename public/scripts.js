@@ -1,14 +1,17 @@
-const recipes = document.querySelectorAll('.recipe');
+//UserDetails
+const recipes = document.querySelectorAll(".recipe")
 
+for ( recipe of recipes) {
+  const recipeId = recipe.getAttribute('id')
+
+  recipe.addEventListener("click", function () {
+      window.location.href = `details/${ recipeId }`
+  })
+}
+
+//showAndhide
 const hidden = document.querySelectorAll('.hide')
 const details = document.querySelectorAll('.make')
-
-//View by user
-for (let i = 0; i < recipes.length; i++) {
-  recipes[i].addEventListener('click', function () {
-    window.location.href = `/details/${i}`;
-  });
-}
 
 for (let i = 0; i < hidden.length; i++) {
   hidden[i].addEventListener("click", function() {
@@ -34,13 +37,4 @@ for ( item of menuItens) {
   if (link == currentPage || link =="" && currentPage=="loob") {
     item.classList.add("home")
   }
-}
-
-//View by admin
-const views = document.querySelectorAll("#view")
-
-for (let i = 0; i < views.length; i++) {
-    views[i].addEventListener('click', function () {
-      window.location.href = `/admin/${i}`;
-    });
 }

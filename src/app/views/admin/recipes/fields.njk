@@ -14,7 +14,12 @@
 
         <select name="chef_id">
         
-        <option value="1">Manuel</option>
+        {% for chef in options %}
+
+            <option value="{{ chef.id }}" {% if  chef.id == recipe.chef_id %} selected {% endif %}>
+            {{ chef.name }}</option>
+
+        {% endfor %}
         
         </select>
 
@@ -37,7 +42,9 @@
         <h2>Ingredientes</h2>
 
         <div class="ingredient">
-            <input name="ingredients[]" value="{{ recipe.ingredents }}"  placeholder="Ingrediente" />
+
+            <input name="ingredients[]" value="{{ recipe.ingredients }}"  placeholder="Ingrediente" />
+
         </div>
     
     </div>

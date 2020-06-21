@@ -1,6 +1,6 @@
 {% extends 'admin/layout_admin.njk' %}
 
-{% block title %} <title>Especificações receita</title> {% endblock title %}
+{% block title %} <title>{{ recipe.title }} - Foodfy</title> {% endblock title %}
 
 
 {% block content %}
@@ -9,7 +9,7 @@
     
         <h1 class="show_title">Receita: {{ recipe.title }}</h1>
     
-        <a href="/recipes/:id/edit" class="edit_create">Editar receita</a>
+        <a href="/recipes/{{ recipe.id }}/edit" class="edit_create">Editar receita</a>
     
     </div>
 
@@ -21,7 +21,7 @@
         
             <h1>{{ recipe.title }}</h1>
 
-            <p>por {{ recipe.author }}</p>
+            <p>por {{ recipe.chef_name }}</p>
         
         </div>
     

@@ -1,6 +1,6 @@
 {% extends 'admin/layout_admin.njk' %}
 
-{% block title %} <title>Editar receita</title> {% endblock %}
+{% block title %} <title>Editar {{ recipe.title }}</title> {% endblock %}
 
 {% block content %}
 
@@ -8,7 +8,7 @@
 
     <form action="/recipes?_method=delete" id="delete" method="post">
     
-        <input type="hidden" name="index" value="{{ recipeIndex }}">
+        <input type="hidden" name="id" value="{{ recipe.id }}">
 
         <button type="submit" id="delete_button">Deletar</button>
     
@@ -16,7 +16,7 @@
 
     <form action="/recipes?_method=put" method="post">
 
-        <input type="hidden" name="index" value="{{ recipeIndex }}">
+        <input type="hidden" name="id" value="{{ recipe.id }}">
 
         <button type="submit">Salvar receita</button>
 

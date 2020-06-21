@@ -4,7 +4,7 @@
 
 {% block header %}
 
-    <h1>Chef: Nome do chef</h1>
+    <h1>Chef: {{ chef.name }}</h1>
 
     <a href="/chefs/{{ chef.id }}/edit" class="edit_create">Editar Chef</a>
 
@@ -16,19 +16,22 @@
     
     <div class="chef_img"></div>
 
-    <h1>Manuel Quejadilha</h1>
+    <h1>{{ chef.name }}</h1>
 
-    <p>4 receitas</p>
+    <p>{{ chef.chef_Totalrecipes }} receitas</p>
     
     </section>
 
     <h2 class="chef_title">Receitas</h2>
 
     <article class="chef_recipes recipe_list">
+
+        {# {% for recipe in iterator %}
+        {% endfor %} #}
     
         <div class="list_item">
         
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/465338/172x80) no-repeat center center / cover"></div>
+            <div class="item_img" style="background: url({{ chef.image }}172x80) no-repeat center center / cover"></div>
 
             <div class="item_info">
             
@@ -41,54 +44,7 @@
             </div>
         
         </div>
-
-        <div class="list_item">
         
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/465338/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
-            
-                <h3>Empada</h3>
-
-                <p>por Manuel Quejadilha</p>
-
-                <button class="buttons" id="view">Visualizar</button>
-            
-            </div>
-        
-        </div>
-
-           <div class="list_item">
-        
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/465338/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
-            
-                <h3>Empada</h3>
-
-                <p>por Manuel Quejadilha</p>
-
-                <button class="buttons" id="view">Visualizar</button>
-            
-            </div>
-        
-        </div>
-
-        <div class="list_item">
-        
-            <div class="item_img" style="background: url(https://source.unsplash.com/collection/465338/172x80) no-repeat center center / cover"></div>
-
-            <div class="item_info">
-            
-                <h3>Empada</h3>
-
-                <p>por Manuel Quejadilha</p>
-
-                <button class="buttons" id="view">Visualizar</button>
-            
-            </div>
-        
-        </div>
     </article>
 
 {% endblock %}
