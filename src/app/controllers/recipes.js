@@ -8,7 +8,7 @@ module.exports = {
 
         Recipe.all(function (recipes) {
             
-            return res.render("admin/recipes/recipe_manager", { recipes })
+            return res.render("admin/recipes/recipes_list", { recipes })
         })
 
     },
@@ -90,7 +90,7 @@ module.exports = {
 
         Recipe.update(req.body, function () {
             
-            return res.redirect(`recipes/${req.body.id}`)
+            return res.redirect(`/recipes/${req.body.id}`)
         })
         
     },

@@ -1,50 +1,52 @@
 {% extends 'admin/layout_admin.njk' %}
 
-{% block title %}<title>Foodfy - Nome do chef</title>{% endblock %}
-
-{% block header %}
-
-    <h1>Chef: {{ chef.name }}</h1>
-
-    <a href="/chefs/{{ chef.id }}/edit" class="edit_create">Editar Chef</a>
-
-{% endblock %}
+{% block title %}<title>Foodfy - {{ chef.name }}</title>{% endblock %}
 
 {% block content %}
 
+    <div class="admin_header">
+
+        <h1>Chef: {{ chef.name }}</h1>
+
+        <a href="/chefs/{{ chef.id }}/edit" class="edit_create">Editar Chef</a>
+
+    </div>
+
     <section class="chef_data">
     
-    <div class="chef_img"></div>
+    <div class="chef_img" style="background: url({{ chef.avatar_url }}172x80) no-repeat center center / cover"></div>
 
     <h1>{{ chef.name }}</h1>
 
-    <p>{{ chef.chef_Totalrecipes }} receitas</p>
+    <p>{{ chef.total_recipes }} receitas</p>
     
     </section>
 
     <h2 class="chef_title">Receitas</h2>
 
-    <article class="chef_recipes recipe_list">
+    <article class="chef_recipes items_list">
 
-        {# {% for recipe in iterator %}
-        {% endfor %} #}
+        {% for recipe in recipes %}
     
         <div class="list_item">
         
-            <div class="item_img" style="background: url({{ chef.image }}172x80) no-repeat center center / cover"></div>
+            <div class="item_img" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
 
             <div class="item_info">
             
-                <h3>Empada</h3>
+                <h3>{{ recipe.title }}</h3>
 
-                <p>por Manuel Quejadilha</p>
+                <p>por {{ recipe.title }}</p>
 
-                <button class="buttons" id="view">Visualizar</button>
+                <a href="/recipes/{{ recipe.id }}" class="buttons" id="view">Visualizar</a>
             
             </div>
         
         </div>
-        
+
+        {% endfor %}
+
+        {# 200 #}
     </article>
 
 {% endblock %}

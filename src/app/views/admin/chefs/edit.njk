@@ -1,0 +1,42 @@
+{% extends 'admin/layout_admin.njk' %}
+
+{% block title %} <title>{{ chef.name }} - Edição</title> {% endblock %}
+
+{% block content %}
+
+    <h1>Editar: {{ chef.name }}</h1>
+
+    <form action="/chefs?_method=delete" id="delete" method="post">
+    
+        <input type="hidden" name="id" value={{ chef.id }}>
+
+        <button type="submit" id="delete_button">Deletar</button>
+    
+    </form>
+
+    <form action="/chefs?_method=put" method="post">
+    
+        <input type="hidden" name="id" value={{ chef.id }}>
+
+        <button type="submit">Salvar chef</button>
+
+        {% include 'admin/chefs/fields.njk' %}
+    
+    </form>
+
+    <script>
+    
+        //Delete verify
+        const formDelete = document.querySelector("#delete")
+
+        formDelete.addEventListener("submit", function (event) {
+            const comfirm = confirm("Deseja mesmo apagar essa receita?")
+
+            if (!comfirm) {
+                event.preventDefault()
+            }
+        })
+    
+    </script>
+
+{% endblock %}

@@ -6,7 +6,10 @@ module.exports = {
     //chefsLoob
     index(req, res) {
 
-        return res.render("admin/chefs/chefs_list")
+        Chef.all(function (chefs) {
+            
+            return res.render("admin/chefs/chefs_list", { chefs })
+        })
     },
 
     //createPage
@@ -34,11 +37,13 @@ module.exports = {
 
     //details
     show(req, res) {
-        
-        Chef.find(req.params.id, function (chef) {
+
+        const id =  Number(req.params.id)
+
+        Chef.find(id, function (chef) {
             if (!chef) return res.send("Chef não encontrado")
 
-            Chef.chefRecipes(req.params.id, function (recipes) {
+            Chef.chefRecipes(id, function (recipes) {
 
                 return res.render("admin/chefs/show", { chef, recipes })
             })
@@ -47,8 +52,11 @@ module.exports = {
 
     //editPage
     edit(req, res) {
+        
+        Chef.find(req.params.id, function (chef) {
 
-        return res.render("admin/chefs/edit")
+            return res.render("admin/chefs/edit", { chef })
+        })
     },
 
     //editChef
@@ -62,14 +70,18 @@ module.exports = {
             }
         }
 
-        if(!chef) return res.send("Chef not found")
-        
-        return res.redirect(`/chefs/${chef.id}`)
+        Chef.update(req.body, function () {
+
+            return res.redirect(`/chefs/${req.body.id}`)
+        })  
     },
 
     //deleteChef
     delete(req, res) {
-
-        return res.redirect("/chefs")
+        
+        Chef.delete(req.body.id, function () {
+            
+            return res.redirect("/chefs")
+        })
     },
 }

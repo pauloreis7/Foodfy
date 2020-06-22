@@ -1,0 +1,35 @@
+{% extends 'admin/layout_admin.njk' %}
+
+{% block title %} <title>Chefs - Foodfy</title> {% endblock %}
+
+{% block create %} <a href="/chefs/create" class="edit_create">Criar Chef</a> {% endblock %}
+
+
+{% block content %}
+
+    <h1>Gerenciar chefs</h1>
+
+    <article class="items_list chefs_list">
+
+        {% for chef in chefs %}
+
+            <div class="list_item">
+
+                <div class="item_img chef-list_img" style="background: url({{ chef.avatar_url }}64x64) no-repeat center center / cover "></div>
+
+                <div class="item_content">
+
+                    <p>{{ chef.name }}</p>
+
+                    <a href="/chefs/{{ chef.id }}" class="buttons">Visualizar</a>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </article>
+
+
+{% endblock %}
