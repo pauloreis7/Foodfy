@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 :root {
-    --prymary-color: rgb(255, 85, 59)
+    --prymary-color: rgb(255, 85, 59);
+    --button-color: #6558C3
 }
 
 
@@ -25,28 +26,31 @@ header {
 
     margin: 0 auto;
     padding: 36px 1px;
+
+    display: grid;
+    grid-template-columns: 90.6px 1fr 1.5fr;
+    gap: 122.4px;
+    align-items: center;
 }
 
-header img {
-    margin-bottom: -6px;
+header .links a:last-child {
+    margin: 0;
 }
-
 
 .links {
-    display: inline-block;
-    position: relative;
-
-    margin-left: 122.4px;
+    display: flex;
+    align-items: center;
 }
 
 .links a {
-    margin: 0 30px;
-
     font-size: 16px;
     line-height: 19px;
     color: #111111;
     text-decoration: none;
-    padding: 5px;
+}
+
+.links a {
+    margin-right: 30px;
 }
 
 .links .home {
@@ -62,6 +66,33 @@ header img {
 .links a:hover {
     filter: brightness(95%);
     font-weight: bold;
+
+    transition: 250ms;
+}
+
+header form {
+    display: flex;
+    align-items: center;
+}
+
+header form input {
+    flex: 1;
+    height: 100%;
+    
+    padding: 8px 8px;
+    margin-right: 8px;
+
+    border:  1px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 16px;
+    outline-width: 1px;
+    outline-color: var(--button-color);
+}
+
+header form input:hover {
+    border: 1px solid var(--button-color);
+    opacity: .8;
 
     transition: 250ms;
 }
@@ -192,7 +223,7 @@ header img {
     font-size: 14px;
 
     line-height: 16px;
-    margin-left: 15px;
+    margin-left: 8px;
 }
 
 .rights {
@@ -394,7 +425,7 @@ header img {
     margin-bottom: 76px;
 }
 
-/* LAYOUT_CHEFS */
+/* LAYOUT_ADMIN */
 
 .header_admin {
     width: 100%;
@@ -469,18 +500,19 @@ header img {
 
 /* CREATE */
 
-.recipe_content {
+.page_content {
     max-width: 940px;
     margin: 0 auto;
     position: relative;
 }
 
-.recipe_content h1 {
+.page_content h1 {
     margin-bottom: 30px;
     line-height: 28px;
+    color: #111111;
 }
 
-.recipe_content button[type="submit"] {
+.page_content button[type="submit"] {
     position: absolute;
     right: 0;
     top: 0;
@@ -511,14 +543,14 @@ header img {
     margin-bottom: 0;
 }
 
-button[type="submit"], .edit_create {
+button[type="submit"], .edit_create, .modal .modal_buttons a:last-child {
     max-width: 230px;
 
     font-weight: bold;
     color: #FFFFFF;
     font-size: 16px;
     outline: none;
-    background-color: #6558C3;
+    background-color: var(--button-color);
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
@@ -527,7 +559,7 @@ button[type="submit"], .edit_create {
     padding: 9px 20px;
 }
 
-button[type="submit"]:hover, .edit_create:hover {
+button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-child:hover {
     filter: brightness(90%);
     transition: 250ms;
 }
@@ -562,7 +594,7 @@ button[type="submit"]:hover, .edit_create:hover {
     font-weight: normal;
 }
 
-.recipe_content .field_item:first-child input, textarea {
+.page_content .field_item:first-child input, textarea {
     margin-bottom: 0;
 }
 
@@ -575,7 +607,7 @@ button[type="submit"]:hover, .edit_create:hover {
 }
 
 .buttons, .buttons_ingredient, .buttons_make {
-    color: #6558C3;
+    color: var(--button-color);
     font-weight: bold;
     background-color: white;
     cursor: pointer;
@@ -768,4 +800,76 @@ button[type="submit"]:hover, .edit_create:hover {
     font-size: 18px;
     line-height: 21px;
     color: #111111;
+}
+
+/* MODAL */
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    text-align: center;
+    align-items: center;
+
+    background-color: #1e1c22ef;
+    transition: 400ms;
+}
+
+.modal .content {
+    max-width: 400px;
+    min-height: 164px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+
+    margin: 0 auto;
+    padding: 56px;
+
+    background-color: #ffffff;
+    border-radius: 16px;
+}
+
+.modal .content  h1 {
+    font-size: 36px;
+    color: #111111;
+
+    margin-bottom: 20px;
+}
+
+.modal .content  p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #777777b0;
+
+    margin-bottom: 20px;
+}
+
+.modal_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    width: 90%;
+
+    margin: 0 auto;
+}
+
+.modal .modal_buttons a:first-child {
+    font-size: 18px;
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--prymary-color);
+}
+
+.modal .modal_buttons a:first-child:hover {
+    filter: brightness(134%);
+
+    transition: 250ms;
 }

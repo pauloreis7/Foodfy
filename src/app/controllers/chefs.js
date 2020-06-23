@@ -41,7 +41,7 @@ module.exports = {
         const id =  Number(req.params.id)
 
         Chef.find(id, function (chef) {
-            if (!chef) return res.send("Chef não encontrado")
+            if (!chef) return res.render("admin/chefs/show", { err: true })
 
             Chef.chefRecipes(id, function (recipes) {
 
@@ -54,6 +54,7 @@ module.exports = {
     edit(req, res) {
         
         Chef.find(req.params.id, function (chef) {
+            if (!chef) return res.render("admin/chefs/edit", { err: true })
 
             return res.render("admin/chefs/edit", { chef })
         })
@@ -78,6 +79,10 @@ module.exports = {
 
     //deleteChef
     delete(req, res) {
+
+        const chefRecipes = Number(req.body.total_recipes)
+
+        if (chefRecipes >= 1) return res.render("admin/chefs/edit", { err: true, text: true })
         
         Chef.delete(req.body.id, function () {
             

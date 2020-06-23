@@ -5,7 +5,7 @@ module.exports = {
     //loob
     index(req, res) {
 
-        Recipe.all(function (recipes) {
+        Recipe.all(search = false, function ( recipes) {
             
             let recipesPop = recipes.filter(function (recipe) {
                 return recipes.indexOf(recipe) < 6
@@ -23,9 +23,13 @@ module.exports = {
 
     //recipesList
     recipes(req, res) {
+        
+        let { search } = req.query
 
-        return res.render("users/recipes")
-
+        Recipe.all(search, function (recipes) {
+            
+            return res.render("users/recipes", { recipes, search })
+        })
     },
 
     //details
@@ -39,5 +43,4 @@ module.exports = {
             return res.render("users/details", { recipe })
         })
     },
-
 }

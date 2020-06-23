@@ -54,7 +54,6 @@ module.exports = {
 
         db.query(`SELECT * FROM recipes WHERE chef_id = ${ id }`, function (err, results) {
             if (err) throw `Erro ao encontrar receitas do chef! ${ err }`
-             
 
             callback(results.rows)
         })

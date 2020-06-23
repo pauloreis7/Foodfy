@@ -6,7 +6,7 @@ module.exports = {
     //recipesLoob
     index(req, res) {
 
-        Recipe.all(function (recipes) {
+        Recipe.all(search = false, function (recipes) {
             
             return res.render("admin/recipes/recipes_list", { recipes })
         })
@@ -43,7 +43,7 @@ module.exports = {
     show(req, res) {
         
         Recipe.find(req.params.id, function (recipe) {
-          if (!recipe) return res.send("Receita não encontrada")
+          if (!recipe) return res.render("admin/recipes/show", { err: true})
           
             recipe.ingredients = recipe.ingredients[0].split(",")
             recipe.preparation = recipe.preparation[0].split(",")
@@ -68,7 +68,7 @@ module.exports = {
     edit(req, res) {
 
         Recipe.find(req.params.id, function (recipe) {
-          if (!recipe) return res.send("Receita não encontrada")      
+          if (!recipe) return res.render("admin/recipes/show", { err: true})      
             
             Recipe.chefsSelectOption(function (options) {
 

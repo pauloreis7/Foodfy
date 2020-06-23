@@ -3,12 +3,25 @@ const { date } = require('../../lib/utils')
 
 module.exports = {
     
-    all(callback) {
-        
-        db.query(`SELECT recipes.*, chefs.name AS chef_name
+    all(search, callback) {
+
+        let query = ""
+            querySearch = ""
+
+        if (search) {
+
+            querySearch = `
+            WHERE recipes.title ILIKE '%${ search }%'
+            `
+        }
+
+        query = `SELECT recipes.*, chefs.name AS chef_name
         FROM recipes
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
-        `, function (err, results) {
+        ${ querySearch }
+        ORDER by id DESC
+        `
+        db.query(query, function (err, results) {
             if (err) throw `Erro ao encontrar receitas! ${ err }`
             
             callback(results.rows)

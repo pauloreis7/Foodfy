@@ -2,13 +2,23 @@
 
 {% block title %} <title>{{ chef.name }} - Edição</title> {% endblock %}
 
+{% set page_redirect = "chefs" %}
+{% set modal_text = "Esse chef não existe!" %}
+
+{% if text %}
+
+    {% set modal_text = "Chefs que possuem receitas não podem ser deletados!" %}
+
+{% endif %}
+
 {% block content %}
 
     <h1>Editar: {{ chef.name }}</h1>
 
     <form action="/chefs?_method=delete" id="delete" method="post">
     
-        <input type="hidden" name="id" value={{ chef.id }}>
+        <input type="hidden" name="id" value={{ chef.id }} />
+        <input type="hidden" name="total_recipes" value={{ chef.total_recipes }} />
 
         <button type="submit" id="delete_button">Deletar</button>
     
@@ -16,7 +26,7 @@
 
     <form action="/chefs?_method=put" method="post">
     
-        <input type="hidden" name="id" value={{ chef.id }}>
+        <input type="hidden" name="id" value={{ chef.id }} />
 
         <button type="submit">Salvar chef</button>
 
@@ -38,5 +48,15 @@
         })
     
     </script>
+
+{% endblock %}
+
+{% block modal %}
+    
+    {% if err %}
+
+        {% include 'admin/modal.njk' %}
+
+    {% endif %}
 
 {% endblock %}

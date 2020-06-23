@@ -4,27 +4,39 @@
 
 {% block content %}
 
-        <section class="recipes_just">
+    {% if search %}
 
-            {% for recipe in recipes %}
-            
+        <h1>Buscando por “{{ search }}”</h1>
 
-                <article class="recipe" id="{{recipe.title}}">
+    {% endif %}
 
-                    <div class="recipe_img" style="background: url({{ recipe.recipe_url }}172x80) no-repeat center center / cover"></div>
+    {% if search == "" or search == undefined %}
 
-                    <div class="recipe_desc">
+        <h1>Todas as receitas</h1>
 
-                        <h3>{{recipe.title}}</h3>
+    {% endif %}
 
-                        <p>por {{recipe.author}}</p>
 
-                    </div>
+    <section class="recipes_just">
 
-                </article>
+        {% for recipe in recipes %}
 
-            {% endfor %}
-            
-        </section>
+            <article class="recipe" id="{{recipe.id}}">
+
+                <div class="recipe_img" style="background: url({{ recipe.image }}) no-repeat center center / cover"></div>
+
+                <div class="recipe_desc">
+
+                    <h3>{{recipe.title}}</h3>
+
+                    <p>por {{recipe.chef_name}}</p>
+
+                </div>
+
+            </article>
+
+        {% endfor %}
+        
+    </section>
 
 {% endblock %}

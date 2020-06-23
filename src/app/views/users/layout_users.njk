@@ -32,12 +32,27 @@
                     <a href="/recipes">Chefs</a>
                 {% endblock %}
                 
-
             </nav>
+
+            {% block search %} 
+            
+                <form action="/recipes/allRecipes" method="get">
+                
+                    <input name="search" value="{{ search }}" placeholder="Buscar uma receita " />
+
+                    <button type="submit">Buscar</button>
+                
+                </form>
+            
+            {% endblock %}
 
         </header>
 
-        {% block content %} {% endblock %}
+        <section class="page_content">
+
+            {% block content %} {% endblock %}
+
+        </section>
 
 
         <footer class="rights">

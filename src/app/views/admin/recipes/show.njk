@@ -2,6 +2,8 @@
 
 {% block title %} <title>{{ recipe.title }} - Foodfy</title> {% endblock title %}
 
+{% set page_redirect = "recipes" %}
+{% set modal_text = "Essa receita não existe!" %}
 
 {% block content %}
 
@@ -88,8 +90,17 @@
             </div>
         
         </article>
-
     
     </article>
+
+{% endblock %}
+
+{% block modal %}
+    
+    {% if err %}
+
+        {% include 'admin/modal.njk' %}
+
+    {% endif %}
 
 {% endblock %}

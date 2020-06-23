@@ -5,7 +5,7 @@ for ( recipe of recipes) {
   const recipeId = recipe.getAttribute('id')
 
   recipe.addEventListener("click", function () {
-      window.location.href = `details/${ recipeId }`
+      window.location.href = `/details/${ recipeId }`
   })
 }
 
