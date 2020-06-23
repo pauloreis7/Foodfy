@@ -39,7 +39,7 @@
             
                 <h3>{{ recipe.title }}</h3>
 
-                <p>por {{ recipe.title }}</p>
+                <p>por {{ chef.name }}</p>
 
                 <a href="/recipes/{{ recipe.id }}" class="buttons" id="view">Visualizar</a>
             
@@ -50,6 +50,12 @@
         {% endfor %}
 
     </article>
+
+    <footer class="created_at">
+
+        <p>Chef {{ chef.name }} desde {{ chef.created_at }}</p>
+
+    </footer>
 
 {% endblock %}
 

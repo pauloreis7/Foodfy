@@ -651,11 +651,11 @@ button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-ch
     margin-bottom: 5px;
 }
 
-.item_info p {
+.item_info p, .item_content span {
     color: #777777;
     font-size: 14px;
 
-    margin-bottom: 10px;
+    margin-left: 10px;
     line-height: 16px;
 }
 
@@ -770,10 +770,29 @@ button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-ch
     color: #111111;
 }
 
+.created_at {
+    text-align: center;
+
+    margin-top: 80px;
+
+    width: 100%;
+}
+
+.created_at p {
+    font-size: 14px;
+    color: #818181e1;
+
+    line-height: 16px;
+    cursor: default;
+
+    display: inline-block;
+}
+
 /* Chef_list */
 
 .chefs_list {
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 32px;
 }
 
 .chefs_list .chef-list_img {
@@ -800,6 +819,10 @@ button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-ch
     font-size: 18px;
     line-height: 21px;
     color: #111111;
+}
+
+.item_content span {
+    margin:  0 0 4px 8px;
 }
 
 /* MODAL */

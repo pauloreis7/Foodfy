@@ -7,7 +7,7 @@ module.exports = {
     index(req, res) {
 
         Chef.all(function (chefs) {
-            
+
             return res.render("admin/chefs/chefs_list", { chefs })
         })
     },
@@ -42,6 +42,8 @@ module.exports = {
 
         Chef.find(id, function (chef) {
             if (!chef) return res.render("admin/chefs/show", { err: true })
+
+            chef.created_at = date(chef.created_at).format
 
             Chef.chefRecipes(id, function (recipes) {
 

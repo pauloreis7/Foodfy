@@ -5,7 +5,11 @@ module.exports = {
 
     all(callback) {
 
-        db.query(`SELECT * FROM chefs ORDER BY id ASC`, function (err, results) {
+        db.query(`SELECT chefs.*, count(recipes) AS total_recipes
+        FROM chefs 
+        LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
+        GROUP BY chefs.id
+        ORDER BY id ASC`, function (err, results) {
             if (err) throw `Erro ao encontrar chefs! ${ err }`
             
             callback(results.rows)
