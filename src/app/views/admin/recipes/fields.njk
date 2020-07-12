@@ -2,7 +2,7 @@
     
     <h2>Imagem da receita</h2>
 
-    <input name="image" value="{{ recipe.image }}" placeholder="http://" />
+    {# <input name="image" value="{{ recipe.image }}" placeholder="http://" /> #}
 
 </article>
 
@@ -13,6 +13,8 @@
         <h2>Chef</h2>
 
         <select name="chef_id">
+
+            <option value="">Selecione o Chef</option>
         
         {% for chef in options %}
 

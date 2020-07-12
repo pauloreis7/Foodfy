@@ -43,10 +43,9 @@ module.exports = {
     show(req, res) {
         
         Recipe.find(req.params.id, function (recipe) {
-          if (!recipe) return res.render("admin/recipes/show", { err: true})
-          
-            recipe.ingredients = recipe.ingredients[0].split(",")
-            recipe.preparation = recipe.preparation[0].split(",")
+          if (!recipe) return res.render("admin/recipes/show", { err: true })
+
+        //   recipe.ingredients = recipe.ingredients.split(",")
             
             // const indexPreparation = recipe.preparation.indexOf("")
             // const indexIngredients = recipe.ingredients.indexOf("")
@@ -58,7 +57,6 @@ module.exports = {
             // if (indexIngredients != -1) {
             //     recipe.ingredients.splice(indexIngredients, 1)
             // }
-
             return res.render("admin/recipes/show", { recipe })
         })
 
@@ -68,8 +66,8 @@ module.exports = {
     edit(req, res) {
 
         Recipe.find(req.params.id, function (recipe) {
-          if (!recipe) return res.render("admin/recipes/show", { err: true})      
-            
+          if (!recipe) return res.render("admin/recipes/show", { err: true})    
+                      
             Recipe.chefsSelectOption(function (options) {
 
                 return res.render("admin/recipes/edit", { recipe, options })
