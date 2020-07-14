@@ -37,9 +37,6 @@ module.exports = {
 
         Recipe.find(req.params.id, function (recipe) {
 
-            recipe.ingredients = recipe.ingredients[0].split(",")
-            recipe.preparation = recipe.preparation[0].split(",")
-
             return res.render("users/details", { recipe })
         })
     },

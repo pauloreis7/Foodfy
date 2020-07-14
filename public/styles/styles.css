@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
 :root {
-    --prymary-color: rgb(255, 85, 59);
+    --prymary-color: #ff553b;
     --button-color: #6558C3
 }
 
@@ -12,25 +12,30 @@
     border: 0;
 }
 
+html, body {
+    min-height: 100vh;
+}
+
+
 body {
     font-family: 'Roboto', sans-serif;
     background-color: rgb(255, 255, 255);
     -webkit-font-smoothing: antialiased;
 
     box-sizing: border-box;
-    padding-bottom: 40px;
+
+    width: 100%;
 }
 
 header {
-    width: 940px;
+    max-width: 940px;
 
     margin: 0 auto;
     padding: 36px 1px;
 
-    display: grid;
-    grid-template-columns: 90.6px 1fr 1.5fr;
-    gap: 122.4px;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 header .links a:last-child {
@@ -99,21 +104,32 @@ header form input:hover {
 
 #container {
     display: flex;
+
+
     height: 366px;
     max-width: 940px;
+
     margin: 0 auto 50px;
+    padding: 60px;
+    box-sizing: border-box;
 
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.349);
     background-color: #FBDFDB;
-
     border-radius: 30px;
+
+    background-image: url(/assets/chef.png);
+    background-repeat: no-repeat;
+    background-position: right 50px bottom 0;
 }
 
 #container_content {
-    width: 316px;
-    height: 132px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
-    margin: 117px 248px 117px 60px;
+    width: 38%;
 }
 
 #container_content h1 {
@@ -124,6 +140,9 @@ header form input:hover {
 
     line-height: 38px;
     margin-bottom: 10px;
+
+    text-align: start;
+    width: 100%;
 }
 
 #container_content p {
@@ -134,15 +153,6 @@ header form input:hover {
     line-height: 28px;
 }
 
-#container_img {
-   margin-top: 66px;
-}
-
-#popular {
-    margin: 0 auto 20px;
-    width: 929px;
-}
-
 #popular h2 {
     font-size: 24px;
     color: #111111;
@@ -150,6 +160,8 @@ header form input:hover {
     text-shadow: 1px 0 1px rgba(0, 0, 0, 0.2);
 
     line-height: 28px;
+
+    margin: 0 0 20px 8px;
 }
 
 .recipes {
@@ -165,7 +177,7 @@ header form input:hover {
 
 .recipes_just {
     max-width: 940px;
-    max-height: 100%;
+    height: 100%;
 
     margin: 20px auto 50px;
     
@@ -228,14 +240,13 @@ header form input:hover {
 
 .rights {
     text-align: center;
+
     padding: 23px 0;
+    margin-top: auto;
     
     width: 100%;
 
     background-color: #EEEEEE;
-
-    position: absolute;
-
 }
 
 .rights p {
@@ -249,14 +260,15 @@ header form input:hover {
 
 .about_begin {
     max-width: 940px;
-    max-height: 328px;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
 
     margin: 0 auto;
 }
 
 #wrapper_main h1 {
-    margin-top: 26px;
-    padding-bottom: 20px;
     line-height: 28px;
 
     color: #111111;
@@ -264,40 +276,34 @@ header form input:hover {
 }
 
 .main_text {
-    max-width: 940px;
-    max-height: 280px;
+    margin-bottom: 32px;
 }
 
 .main_text p{
-    margin-bottom: 30px;
     line-height: 28px;
 
     color: #444444;
     font-size: 18px;
 }
 
+#wrapper_sec {
+    margin-bottom: 16px;
+}
+
 #wrapper_sec h2 {
     font-size: 20px;
 
-    margin-top: 26px;
-    margin-bottom: 20px;
-    padding-bottom: 1px;
     line-height: 24px;
 }
 
-#right_abo {
-    max-width: 940px;
-    max-height: 156px;
-
-    margin: 0 auto 50px;
+#wrapper_thi {
+    margin-bottom: 16px;
 }
 
 #wrapper_thi h2 {
     font-size: 20px;
     color: #111111;
     
-    margin-top: 26px;
-    padding-bottom: 1px;
     line-height: 24px;
 }
 
@@ -330,11 +336,19 @@ header form input:hover {
     text-align: center;
 }
 
-.detail_desc h1 {
+.full_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+.page_content .detail_desc h1 {
     color: #111111;
     font-size: 36px;
     line-height: 42px;
-
     margin-bottom: 8px;
 }
 
@@ -427,18 +441,14 @@ header form input:hover {
 
 /* LAYOUT_ADMIN */
 
-.header_admin {
+header.header_admin {
     width: 100%;
+    max-width: 100vw;
     height: 80px;
 
     padding: 26px 20px;
     margin-bottom: 55px;
     box-sizing: border-box;
-    position: relative;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 
     background-color: #111111;
 }
@@ -454,13 +464,17 @@ header form input:hover {
     margin: 0 auto;
 }
 
-.header_admin img {
-    width: 100px;
-    margin-right: 50px;
-}
-
 .header_admin .edit_create {
     padding: 9px 15px;
+}
+
+.header_admin nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 66%;
+    max-width: 390px;
 }
 
 .header_admin nav a {
@@ -475,8 +489,13 @@ header form input:hover {
     font-weight: bold;
 }
 
-.header_admin nav a + a {
-    margin-left: 24px;
+
+.header_content_links {
+    flex: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .header_admin nav a::after {
@@ -492,7 +511,7 @@ header form input:hover {
     background-color: white;
 }
 
-.header_admin nav a:hover::after {
+.header_admin nav a + a:hover::after {
     width: 100%;
 
     transition: width 250ms ease-in-out;
@@ -501,8 +520,8 @@ header form input:hover {
 /* CREATE */
 
 .page_content {
+    width: 90%;
     max-width: 940px;
-    margin: 0 auto;
     position: relative;
 }
 
@@ -517,7 +536,6 @@ header form input:hover {
     right: 0;
     top: 0;
 }
-
 
 .form_header {
     margin-bottom: 30px;
@@ -541,6 +559,35 @@ header form input:hover {
     color: #111111;
     line-height: 28px;
     margin-bottom: 0;
+}
+
+/* PHOTOS UPLOAD */
+
+form .field_item #recipe_upload_input {
+    display: block;
+
+    position: relative;
+
+    width: 180px;
+    height: 180px;
+
+    background-color: red;
+}
+
+form .field_item #recipe_upload_input #recipe_photos_upload {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    display: block;
+
+    opacity: 0;
+
+    cursor: pointer;
 }
 
 button[type="submit"], .edit_create, .modal .modal_buttons a:last-child {
@@ -594,6 +641,19 @@ button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-ch
     font-weight: normal;
 }
 
+form .field_item select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236558C3%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom,#ffffff 0%, #f7f7f7 100%);
+    background-repeat: no-repeat;
+    background-position: right 1.1em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+
+}
+
 .page_content .field_item:first-child input, textarea {
     margin-bottom: 0;
 }
@@ -633,7 +693,7 @@ button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-ch
 
 .list_item {
     display: flex;
-}
+} 
 
 .item_img {
     width: 172px;
@@ -773,7 +833,7 @@ button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-ch
 .created_at {
     text-align: center;
 
-    margin-top: 80px;
+    margin: 80px 0 20px;
 
     width: 100%;
 }

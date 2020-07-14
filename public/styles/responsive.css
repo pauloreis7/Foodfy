@@ -1,0 +1,89 @@
+@media (max-width: 900px) {
+
+    nav.links a:first-child {
+        display: none;
+    }
+}
+
+@media (max-width: 700px) {
+
+    header form {
+        position: relative;
+    }
+
+    header form input {
+        max-width: 146px;
+    }
+
+    header form button[type="submit"] {
+        font-size: .01px;
+
+        width: 32px;
+        height: 34px;
+
+        background-color: var(--button-color);
+        border-radius: 0;
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        background-image: url(/assets/search_24px.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 24px 24px;
+
+    }
+}
+
+@media (max-width: 680px) {
+    #container_content {
+        width: 54%;
+    }
+}
+
+@media (max-width: 666px) {
+    .list_item {
+            display: initial;
+        }
+}
+
+@media (max-width: 641px) {
+
+    #container {
+        padding: 32px;
+    }
+    
+    #container_content {
+        width: 42%;
+    }
+    
+    #container_content h1 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    #container_content p {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .list_item {
+        display: initial;
+    }
+}
+
+@media (max-width: 622px) {
+    .recipes, .recipes_just {
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+@media (max-width: 600px) {
+    .links a {
+        margin-right: 24px;
+    }
+}
