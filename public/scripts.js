@@ -1,40 +1,315 @@
-//UserDetails
-const recipes = document.querySelectorAll(".recipe")
+const IndexRedirectRecipeDetailsByClick = {
 
-for ( recipe of recipes) {
-  const recipeId = recipe.getAttribute('id')
+  redirectToDetails(recipeId) {
 
-  recipe.addEventListener("click", function () {
-      window.location.href = `/details/${ recipeId }`
-  })
-}
-
-//showAndhide
-const hidden = document.querySelectorAll('.hide')
-const details = document.querySelectorAll('.make')
-
-for (let i = 0; i < hidden.length; i++) {
-  hidden[i].addEventListener("click", function() {
-    if (hidden[i].textContent == "ESCONDER") {
-      hidden[i].textContent = "Mostrar";
-      details[i].classList.add("none");
-    }
-    else {
-      hidden[i].textContent = "ESCONDER";
-      details[i].classList.remove("none");
-    }
-  })
-}
-
-//MenuUser
-const page = location.pathname
-
-const menuItens = document.querySelectorAll("header a")
-for ( item of menuItens) {
-  let link = item.getAttribute("href").slice(1)
-  let currentPage = page.slice(1)
-
-  if (link == currentPage || link =="" && currentPage=="loob") {
-    item.classList.add("home")
+    window.location.href = `/details/${ recipeId }`
   }
 }
+
+const showAndHideDetails = {
+  cathDetailsList (button) {
+        
+    const detailsBlock = button.parentNode.parentNode
+
+    const detailsBlockChildrens = detailsBlock.children
+
+    const detailsLiList =  Array.from(detailsBlockChildrens).find( children => { 
+      return children.classList.contains("make")
+    })
+
+    detailsLiList.classList.toggle("none")
+
+    showAndHideDetails.changeButtonContent(button)
+
+  },
+
+  changeButtonContent(button) {
+
+    if (button.textContent == "ESCONDER") {
+      
+      button.textContent = "MOSTRAR" 
+    } else {
+      
+      button.textContent = "ESCONDER"
+    }
+  }
+}
+
+const buttons = document.querySelectorAll('.hide')
+
+buttons.forEach(button => 
+  button.addEventListener("click", event => showAndHideDetails.cathDetailsList(event.target))
+)
+
+const activedMenuItem = {
+
+  localPage: location.pathname.slice(1),
+  menuItens:document.querySelectorAll("header a"),
+
+  catchMenuItemToActive() {
+    
+    const localPage = activedMenuItem.localPage
+    for (item of activedMenuItem.menuItens) {
+      
+      let itemLink = item.pathname.slice(1)
+      
+      if (itemLink == localPage) item.classList.add("home")
+    }
+  }
+}
+
+
+const photosUpload = {
+  input: "",
+  preview: document.querySelector('#recipe_photos_preview'),
+
+  uploadLimit(target) {
+
+    const inputId = target.id
+
+    if (inputId == "recipe_upload_input") return 5
+
+    return 1
+  },
+
+  files: [],
+
+  handleFileInput (event) {
+
+    const { files: filesList } = event.target
+
+    photosUpload.input = event.target
+
+    if (photosUpload.limitUploadValidation(event)) {
+
+      photosUpload.updateInputFiles()
+      return
+    } 
+
+    Array.from(filesList).forEach(file => {
+
+      photosUpload.files.push(file)
+
+      const reader = new FileReader()
+
+      reader.onload = () => {
+        
+        const image = new Image()
+        image.src = reader.result
+        
+        const container = photosUpload.createPhotoContainer(image)
+
+        photosUpload.preview.appendChild(container)
+
+      }
+
+      reader.readAsDataURL(file)
+    })
+
+    photosUpload.updateInputFiles()
+
+  },
+
+  limitUploadValidation(event) {
+
+    const { target } = event
+    const uploadLimit = photosUpload.uploadLimit(target)
+
+    if (target.files.length > uploadLimit || photosUpload.files.length + target.files.length > uploadLimit) {
+      alert(`Selecione no máximo ${ uploadLimit } fotos!!`)
+
+      event.preventDefault()
+      return true
+    }
+
+    return false
+  },
+
+  createPhotoContainer(image) {
+
+    const container = document.createElement("div")
+    container.classList.add("photos")
+
+    container.appendChild(image)
+
+    const removePhotoButton = photosUpload.createRemoveButton()
+
+    container.appendChild(removePhotoButton)
+
+
+    return container
+
+  },
+
+  createRemoveButton() {
+
+    const removeButton = document.createElement("i")
+    removeButton.classList.add("material-icons")
+    removeButton.innerHTML = "close"
+
+    removeButton.onclick = photosUpload.removePhotoByClick
+
+    return removeButton
+  },
+
+  getAllFiles() {
+    
+    const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
+
+    photosUpload.files.forEach(file => { dataTransfer.items.add(file) })
+
+    photosUpload.photosCounter()
+
+    return dataTransfer.files
+  },
+
+  removePhotoByClick(event) {
+
+    const photoContainer = event.target.parentNode
+    const photosArray = Array.from(photosUpload.preview)
+    const photoContainerIndex = photosArray.indexOf(photoContainer)
+
+    photosUpload.files.splice(photoContainerIndex, 1)
+
+    photosUpload.updateInputFiles()
+    
+    photoContainer.remove()
+  },
+
+  updateInputFiles () {
+    photosUpload.input.files = photosUpload.getAllFiles()
+  },
+
+  photosCounter () {
+    const totalPhotos = photosUpload.files.length
+    const fieldImagesTitle = document.querySelector('.field_item #photos_counter')
+
+    fieldImagesTitle.textContent = `Imagens da receita (${ totalPhotos })`
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// const photosUpload = {
+//   input: "",
+//   uploadLimit: 5,
+//   preview: document.querySelector("#recipe_photos_preview"),
+//   files: [],
+
+//   handleFileInput(event) {
+    
+//     const {files: filesList } = event.target
+//     photosUpload.input = event.target
+
+//     if (photosUpload.limitUploadValidation(event)) return
+
+//     Array.from(filesList).forEach(file => {
+      
+//       photosUpload.files.push(file)
+
+//       const reader = new FileReader()
+
+//       reader.onload = () => {
+        
+//         const image = new Image()
+//         image.src = String(reader.result)
+
+//         const container = photosUpload.createPreviewPhotoContainer(image)
+
+//         photosUpload.preview.appendChild(container)
+
+//       }
+
+//       reader.readAsDataURL(file)
+
+//     })
+
+//     photosUpload.input = photosUpload.getAllFiles()
+    
+//   },
+
+//   limitUploadValidation(event) {
+
+//     const {files: filesList } = event.target
+
+//     if (filesList.length > photosUpload.uploadLimit) {
+//       alert(`Selecione no máximo ${ photosUpload.uploadLimit } fotos!`)
+
+//       event.preventDefault()
+//       return true
+//     }
+
+//     return false
+//   },
+
+//   createPreviewPhotoContainer(image) {
+    
+//     const container = document.createElement('div')
+//     container.classList.add("photos")
+
+//     container.appendChild(image)
+
+//     container.appendChild(photosUpload.removePhotoButton())
+
+//     return container
+//   },
+
+//   removePhotoButton () {
+//     const button = document.createElement('i')
+//     button.classList.add("material-icons")
+//     button.textContent = "close"
+
+//     button.onclick = photosUpload.removePhoto
+
+//     return button
+//   },
+
+//   removePhoto (event) {
+//     const photoContainer = event.target.parentNode
+//     const photosArray = Array.from(photosUpload.preview.children)
+//     const targetIndex = photosArray.indexOf(photoContainer)
+
+//     photosUpload.files.splice(targetIndex, 1)
+
+//     photosUpload.input = photosUpload.getAllFiles()
+
+//     photoContainer.remove()
+
+//   },
+
+//   getAllFiles() {
+    
+//     const dataTransfer = new ClipboardEvent("").clipboardData || new DataTransfer()
+
+//     photosUpload.files.forEach(file => dataTransfer.items.add(file))
+
+//     return dataTransfer.files
+//   }
+// }

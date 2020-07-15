@@ -6,12 +6,8 @@ const recipes = require('./app/controllers/recipes')
 const chefs = require('./app/controllers/chefs')
 
 //Users
-routes.get("/", function (req, res) { 
-    return res.redirect("/loob")
-})
+routes.get("/", users.index)
 
-routes.get("/loob", users.index)
- 
 routes.get("/food_about", users.about)
  
 routes.get("/recipes/allRecipes", users.recipes)

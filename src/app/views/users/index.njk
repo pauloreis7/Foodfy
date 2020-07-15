@@ -24,7 +24,9 @@
 
             {% for recipe in recipesPop %}
 
-                <article class="recipe" id="{{ recipe.id }}">
+                <article class="recipe" 
+                    onclick="IndexRedirectRecipeDetailsByClick.redirectToDetails({{ recipe.id }})"
+                >
 
                     <div class="recipe_img" style="background: url({{ recipe.image }}172x80) no-repeat center center / cover"></div>
 

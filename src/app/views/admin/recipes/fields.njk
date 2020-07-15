@@ -1,16 +1,18 @@
 <section class="field_item">
     
-    <h2>Imagem da receita</h2>
+    <h2 id="photos_counter">Imagens da receita</h2>
 
     <article class="recipe_upload">
 
-        <div id="recipe_upload_input">
+        <div id="recipe_photos_upload">
 
-            <input type="file" id="recipe_photos_upload" name="photos" accept="image/*" multiple />
+            <input type="file" id="recipe_upload_input" name="photos" accept="image/*" multiple
+            
+                onchange="photosUpload.handleFileInput(event)"
+            
+            />
 
             <i class="material-icons">add</i>
-
-            <p>Selecione até 5 fotos</p>
 
         </div>
 

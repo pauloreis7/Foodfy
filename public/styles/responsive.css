@@ -18,8 +18,10 @@
     header form button[type="submit"] {
         font-size: .01px;
 
-        width: 32px;
-        height: 34px;
+        width: 34px;
+        height: 100%;
+
+        padding: 0;
 
         background-color: var(--button-color);
         border-radius: 0;
@@ -33,7 +35,7 @@
         background-image: url(/assets/search_24px.svg);
         background-repeat: no-repeat;
         background-position: 50% 50%;
-        background-size: 24px 24px;
+        background-size: 20px 20px;
 
     }
 }
