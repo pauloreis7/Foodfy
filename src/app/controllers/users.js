@@ -3,16 +3,17 @@ const Recipe = require('../models/Recipe.js')
 module.exports = {
 
     //loob
-    index(req, res) {
+    async index(req, res) {
 
-        Recipe.all(search = false, function ( recipes) {
-            
-            let recipesPop = recipes.filter(function (recipe) {
-                return recipes.indexOf(recipe) < 6
-            })
-            
-            return res.render("users/index", { recipesPop })
+        const results = await Recipe.all(search = false)
+        const recipes = results.rows
+
+        let recipesPop = recipes.filter(function (recipe) {
+            return recipes.indexOf(recipe) < 6
         })
+            
+        return res.render("users/index", { recipesPop })
+
     },
 
     //aboutFoodfy
@@ -22,22 +23,22 @@ module.exports = {
     },
 
     //recipesList
-    recipes(req, res) {
+    async recipes(req, res) {
         
         let { search } = req.query
 
-        Recipe.all(search, function (recipes) {
-            
-            return res.render("users/recipes", { recipes, search })
-        })
+        const results = await Recipe.all(search)
+        const recipes = results.rows
+
+        return res.render("users/recipes", { recipes, search })
     },
 
     //details
-    details(req, res) {
+    async details(req, res) {
 
-        Recipe.find(req.params.id, function (recipe) {
+        const results = await Recipe.find(req.params.id)
+        const recipe = results.rows[0]
 
-            return res.render("users/details", { recipe })
-        })
+        return res.render("users/details", { recipe })
     },
 }

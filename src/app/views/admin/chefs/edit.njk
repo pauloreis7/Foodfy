@@ -24,8 +24,8 @@
     
     </form>
 
-    <form action="/chefs?_method=put" method="post">
-    
+    <form action="/chefs?_method=put" method="post" enctype="multipart/form-data">
+
         <input type="hidden" name="id" value={{ chef.id }} />
 
         <button type="submit">Salvar chef</button>

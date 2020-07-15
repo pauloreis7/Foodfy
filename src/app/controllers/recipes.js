@@ -1,29 +1,29 @@
 const Recipe = require('../models/Recipe')
+const File = require('../models/File')
 const { date } = require('../../lib/utils')
 
 module.exports = {
 
     //recipesLoob
-    index(req, res) {
+    async index(req, res) {
 
-        Recipe.all(search = false, function (recipes) {
-            
-            return res.render("admin/recipes/recipes_list", { recipes })
-        })
-
+        const results = await Recipe.all(search = false)
+        const recipes = results.rows
+        
+        return res.render("admin/recipes/recipes_list", { recipes })
     },
 
     //createPage
-    create(req, res) {
+    async create(req, res) {
 
-        Recipe.chefsSelectOption(function (options) {
-            
-            return res.render("admin/recipes/create", { options })
-        })
+        const results = await Recipe.chefsSelectOption()
+        const options = results.rows
+
+        return res.render("admin/recipes/create", { options })
     },
 
     //createRecipe
-    post(req, res) {
+    async post(req, res) {
 
         const keys = Object.keys(req.body)
 
@@ -33,50 +33,43 @@ module.exports = {
             }
         }
 
-        Recipe.create(req.body, function (recipe) {
+        if (req.files.length == 0) return res.send("Por favor coloque pelo menos uma foto!!")
 
-            return res.redirect(`/recipes/${ recipe.id }`)
-        })
+        let results = await Recipe.create(req.body)
+        const recipeId = results.rows[0].id
+
+        // Implementar inserção de imagens no banco
+        return 
+    
     },
 
     //details
-    show(req, res) {
+    async show(req, res) {
         
-        Recipe.find(req.params.id, function (recipe) {
-          if (!recipe) return res.render("admin/recipes/show", { err: true })
+        const results = await Recipe.find(req.params.id)
+        const recipe = results.rows[0]
 
-        //   recipe.ingredients = recipe.ingredients.split(",")
-            
-            // const indexPreparation = recipe.preparation.indexOf("")
-            // const indexIngredients = recipe.ingredients.indexOf("")
+        if (!recipe) return res.render("admin/recipes/show", { err: true })
 
-            // if (indexPreparation != -1) {
-            //     recipe.preparation.splice(indexPreparation, 1)
-            // }
-
-            // if (indexIngredients != -1) {
-            //     recipe.ingredients.splice(indexIngredients, 1)
-            // }
-            return res.render("admin/recipes/show", { recipe })
-        })
-
+        return res.render("admin/recipes/show", { recipe })
     },
 
     //editPage
-    edit(req, res) {
+    async edit(req, res) {
 
-        Recipe.find(req.params.id, function (recipe) {
-          if (!recipe) return res.render("admin/recipes/show", { err: true})    
-                      
-            Recipe.chefsSelectOption(function (options) {
+        let results = await Recipe.find(req.params.id)
+        const recipe = results.rows[0]
 
-                return res.render("admin/recipes/edit", { recipe, options })
-            })
-        })
+        if (!recipe) return res.render("admin/recipes/show", { err: true})    
+
+        results = await Recipe.chefsSelectOption()
+        const options = results.rows
+
+        return res.render("admin/recipes/edit", { recipe, options })
     },
 
     //editRecipe
-    put(req, res) {
+    async put(req, res) {
 
         const keys = Object.keys(req.body)
 
@@ -94,11 +87,10 @@ module.exports = {
     },
 
     //deleteRecipe
-    delete(req, res) {
+    async delete(req, res) {
         
-        Recipe.delete(req.body.id, function () {
-            
-            return res.redirect("/recipes")
-        })
-    },
+        await Recipe.delete(req.body.id)
+
+        return res.redirect("/recipes")
+    }
 }

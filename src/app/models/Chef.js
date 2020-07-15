@@ -3,18 +3,18 @@ const { date } = require('../../lib/utils')
 
 module.exports = {
 
-    all(callback) {
+    all() {
 
-        db.query(`SELECT chefs.*, count(recipes) AS total_recipes
-        FROM chefs 
-        LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
-        GROUP BY chefs.id
-        ORDER BY id ASC`, function (err, results) {
-            if (err) throw `Erro ao encontrar chefs! ${ err }`
-            
-            callback(results.rows)
-        })
+        const query = 
+        `
+            SELECT chefs.*, count(recipes) AS total_recipes
+            FROM chefs 
+            LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
+            GROUP BY chefs.id
+            ORDER BY id ASC 
+        `
 
+        return db.query(query)
     },
 
     create(data, callback) {
@@ -39,26 +39,23 @@ module.exports = {
         })
     },
 
-    find(id, callback) {
+    find(id) {
 
-        db.query(`SELECT chefs.*, count(recipes) AS total_recipes
-        FROM chefs
-        LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
-        WHERE chefs.id = ${ id }
-        GROUP BY chefs.id`, function (err, results) {
-            if (err) throw `Erro ao encontrar chef! ${ err }`
+        const query = 
+        `
+            SELECT chefs.*, count(recipes) AS total_recipes
+            FROM chefs
+            LEFT JOIN recipes ON (recipes.chef_id = chefs.id)
+            WHERE chefs.id = ${ id }
+            GROUP BY chefs.id
+        `
 
-            callback(results.rows[0])
-        })
+        return db.query(query)
     },
 
-    chefRecipes(id, callback) {
+    chefRecipes(id) {
 
-        db.query(`SELECT * FROM recipes WHERE chef_id = ${ id }`, function (err, results) {
-            if (err) throw `Erro ao encontrar receitas do chef! ${ err }`
-
-            callback(results.rows)
-        })
+        return db.query(`SELECT * FROM recipes WHERE chef_id = ${ id }`)
 
     },
 
@@ -81,12 +78,8 @@ module.exports = {
         })
     },
 
-    delete(id, callback) {
+    delete(id) {
 
-        db.query(`DELETE FROM chefs WHERE id = ${ id }`, function (err, results) {
-            if (err) throw `Erro ao deletar chef! ${ err }`
-            
-            callback()
-        })
+        return db.query(`DELETE FROM chefs WHERE id = ${ id }`)
     },
 }

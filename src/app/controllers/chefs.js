@@ -4,22 +4,22 @@ const { date } = require('../../lib/utils')
 module.exports = {
 
     //chefsLoob
-    index(req, res) {
+    async index(req, res) {
 
-        Chef.all(function (chefs) {
+        const results = await Chef.all()
+        const chefs = results.rows
 
-            return res.render("admin/chefs/chefs_list", { chefs })
-        })
+        return res.render("admin/chefs/chefs_list", { chefs })
     },
 
     //createPage
-    create(req, res) {
+    async create(req, res) {
 
         return res.render("admin/chefs/create")
     },
 
     //createChef
-    post(req, res) {
+    async post(req, res) {
         
         const keys = Object.keys(req.body)
         
@@ -36,34 +36,36 @@ module.exports = {
     },
 
     //details
-    show(req, res) {
+    async show(req, res) {
 
         const id =  Number(req.params.id)
 
-        Chef.find(id, function (chef) {
-            if (!chef) return res.render("admin/chefs/show", { err: true })
+        let results = await Chef.find(id)
+        const chef = results.rows[0]
 
-            chef.created_at = date(chef.created_at).format
+        if (!chef) return res.render("admin/chefs/show", { err: true })
+        
+        chef.created_at = date(chef.created_at).format
 
-            Chef.chefRecipes(id, function (recipes) {
+        results = await Chef.chefRecipes(id)
+        const recipes = results.rows
 
-                return res.render("admin/chefs/show", { chef, recipes })
-            })
-        })
+        return res.render("admin/chefs/show", { chef, recipes })
     },
 
     //editPage
-    edit(req, res) {
+    async edit(req, res) {
         
-        Chef.find(req.params.id, function (chef) {
-            if (!chef) return res.render("admin/chefs/edit", { err: true })
+        const results = await Chef.find(req.params.id)
+        const chef = results.rows[0]
 
-            return res.render("admin/chefs/edit", { chef })
-        })
+        if (!chef) return res.render("admin/chefs/edit", { err: true })
+
+        return res.render("admin/chefs/edit", { chef })
     },
 
     //editChef
-    put(req, res) {
+    async put(req, res) {
 
         const keys = Object.keys(req.body)
 
@@ -80,15 +82,14 @@ module.exports = {
     },
 
     //deleteChef
-    delete(req, res) {
+    async delete(req, res) {
 
         const chefRecipes = Number(req.body.total_recipes)
 
         if (chefRecipes >= 1) return res.render("admin/chefs/edit", { err: true, text: true })
         
-        Chef.delete(req.body.id, function () {
-            
-            return res.redirect("/chefs")
-        })
+        await Chef.delete(req.body.id)
+
+        return res.redirect("/chefs")
     },
 }
