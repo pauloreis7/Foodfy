@@ -64,6 +64,11 @@ module.exports = {
         return db.query(query)
     },
 
+    file (fileId) {
+
+        return db.query(`SELECT * FROM files WHERE id = ${ fileId }`)
+    },
+
     chefsSelectOption() {
 
         return db.query(`SELECT name, id FROM chefs`)

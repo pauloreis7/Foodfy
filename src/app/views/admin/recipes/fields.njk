@@ -18,11 +18,26 @@
 
         <div id="recipe_photos_preview">
 
+            {% if files %}
 
-            
+                {% for image in files %}
+
+                    <div class="photos" id="{{ image.id }}">
+                        
+                        <img src="{{ image.src }}" alt="{{ image.name }}" />
+
+                        <i class="material-icons" onclick="photosUpload.removeOldPhoto(event)">close</i>
+
+                    </div>
+
+                {% endfor %}
+
+                <input type="hidden" name="removed_files" /> 
+
+            {% endif %}
 
         </div>
-
+  
     </article>
 
 </section>

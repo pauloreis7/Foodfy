@@ -48,8 +48,8 @@
 
 @media (max-width: 666px) {
     .list_item {
-            display: initial;
-        }
+        display: initial;
+    }
 }
 
 @media (max-width: 641px) {
@@ -80,12 +80,19 @@
 @media (max-width: 622px) {
     .recipes, .recipes_just {
         grid-template-columns: 1fr 1fr;
+    }
 
+    header.header_admin .header_content_links a:first-child {
+        display: none;
     }
 }
 
 @media (max-width: 600px) {
     .links a {
-        margin-right: 24px;
+        margin-right: 16px;
+    }
+
+    .links .home {
+        padding: 5px 10px;
     }
 }

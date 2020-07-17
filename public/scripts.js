@@ -185,6 +185,20 @@ const photosUpload = {
     const fieldImagesTitle = document.querySelector('.field_item #photos_counter')
 
     fieldImagesTitle.textContent = `Imagens da receita (${ totalPhotos })`
-  }
+  },
 
+  removeOldPhoto(event) {
+    const photoContainer = event.target.parentNode
+    
+    if (photoContainer.id) {
+      const removedFilesInput = document.querySelector("#recipe_photos_preview input[name='removed_files']")
+
+      if (removedFilesInput) {
+        
+        removedFilesInput.value += `${ photoContainer.id },`
+      }
+    }
+
+    photoContainer.remove()
+  }
 }
