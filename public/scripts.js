@@ -202,3 +202,7 @@ const photosUpload = {
     photoContainer.remove()
   }
 }
+
+const imageGallery = {
+  
+}

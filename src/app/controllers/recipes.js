@@ -54,12 +54,24 @@ module.exports = {
     //details
     async show(req, res) {
         
-        const results = await Recipe.find(req.params.id)
+        let results = await Recipe.find(req.params.id)
         const recipe = results.rows[0]
 
         if (!recipe) return res.render("admin/recipes/show", { err: true })
 
-        return res.render("admin/recipes/show", { recipe })
+        results = await File.findFileByRecipeId(req.params.id)
+        const filesId = results.rows
+
+        results = filesId.map(id => Recipe.file(id.file_id))
+        let filesPromise = await Promise.all(results)
+        filesPromise = filesPromise.map(file => file.rows)
+        
+        const files = filesPromise.map(file => ({
+            ...file[0],
+            src: `${ req.protocol }://${ req.headers.host }${ file[0].path.replace("public", "") }`
+        }))
+
+        return res.render("admin/recipes/show", { recipe, files })
     },
 
     //editPage
@@ -75,11 +87,11 @@ module.exports = {
         results = await File.findFileByRecipeId(id)
         const filesId = results.rows
         
-        const filesPromise = filesId.map(fileId => Recipe.file(fileId.file_id))
-        let filesPromiseResults = await Promise.all(filesPromise)
-        filesPromiseResults = filesPromiseResults.map(file => file.rows)
+        results = filesId.map(fileId => Recipe.file(fileId.file_id))
+        let filesPromise = await Promise.all(results)
+        filesPromise = filesPromise.map(file => file.rows)
 
-        const files = filesPromiseResults.map(file => ({
+        const files = filesPromise.map(file => ({
             ...file[0],
             src: `${ req.protocol }://${ req.headers.host }${ file[0].path.replace("public", "") }`
         }))
