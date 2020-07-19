@@ -23,14 +23,28 @@
 
                 {% if not files[0] %}
 
-                    <img src="http://placehold.it/500x500?text=Receita sem foto" />
+                    <img src="http://placehold.it/950x950?text=Receita sem foto" onclick="LightBox.open()" />
 
                 {% else %}
 
-                    <img src="{{ files[0].src }}" alt="{{ files[0].name }}" />
+                    <img src="{{ files[0].src }}" alt="{{ files[0].name }}" onclick="LightBox.open()" />
 
                 {% endif %}
 
+                <article class="lightbox-target">
+
+                    <img src="{{ files[0].src }}" alt="{{ files[0].name }}" />
+
+                    <a href="#"
+                    
+                        class="lightbox-close"
+                        onclick="LightBox.close()"
+                    
+                        >
+                        <i class="material-icons">close</i>
+                    </a>
+
+                </article>
 
             </div>
 
@@ -47,6 +61,8 @@
                             class="active"
 
                         {% endif %}
+
+                        onclick="imageGallery.setImage(event)"
 
                     />
 

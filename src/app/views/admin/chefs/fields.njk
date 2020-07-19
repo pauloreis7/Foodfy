@@ -8,8 +8,20 @@
 
 <article class="field_item">
     
-    <h2>Imagem da receita</h2>
+    <h2>Avatar</h2>
 
-    {# <input name="avatar_url" value="{{ chef.avatar_url }}" placeholder="http://" /> #}
+    {% if avatar %}
+
+        <input placeholder="{{ avatar.name }}" readonly/>
+
+    {% endif %}
+    
+    <div id="chefs_photos_upload">
+       
+        <input type="file" id="chefs_photos_input" name="photo" accept="image/*" />
+
+        <p>Enviar Avatar</p>
+
+    </div>
 
 </article>

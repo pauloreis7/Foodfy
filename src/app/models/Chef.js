@@ -17,26 +17,24 @@ module.exports = {
         return db.query(query)
     },
 
-    create(data, callback) {
+    create({ name }, fileId) {
 
         const query = `
             INSERT INTO chefs (
                 name,
-                created_at
-            ) VALUES ($1, $2)
+                created_at,
+                file_id
+            ) VALUES ($1, $2, $3)
             RETURNING id
         `
 
         const values = [
-            data.name,
-            date(Date.now()).iso
+            name,
+            date(Date.now()).iso,
+            fileId
         ]
 
-        db.query(query, values, function (err, results) {
-            if (err) throw `Erro ao cadastrar chef! ${ err }`
-            
-            callback(results.rows[0])
-        })
+        return db.query(query, values)
     },
 
     find(id) {
@@ -51,6 +49,10 @@ module.exports = {
         `
 
         return db.query(query)
+    },
+
+    file(id) {
+        return db.query(`SELECT * FROM files WHERE id = ${ id }`)
     },
 
     chefRecipes(id) {

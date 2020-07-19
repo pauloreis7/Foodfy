@@ -1,4 +1,5 @@
 const Chef = require('../models/Chef')
+const File = require('../models/File')
 const { date } = require('../../lib/utils')
 
 module.exports = {
@@ -28,11 +29,16 @@ module.exports = {
                 return res.send('Por favor preencha todos os campos')
             }
         }
+
+        if (req.files.length == 0 ) return res.send("Por favor envie pelo menos uma foto!!")
         
-        Chef.create(req.body, function (chef) {
-            
-            return res.redirect(`/chefs/${ chef.id }`)
-        }) 
+        let results = await File.create(req.files[0])
+        const fileId = results.rows[0]
+        
+        results = await Chef.create(req.body, fileId.id)
+        const chefId = results.rows[0].id
+        
+        return res.redirect(`/chefs/${ chefId }`)
     },
 
     //details
@@ -50,18 +56,26 @@ module.exports = {
         results = await Chef.chefRecipes(id)
         const recipes = results.rows
 
-        return res.render("admin/chefs/show", { chef, recipes })
+        results = await Chef.file(chef.file_id)
+        const avatar = results.rows[0]
+
+        avatar.src = `${ req.protocol }://${ req.headers.host }${ avatar.path.replace("public", "") }`
+
+        return res.render("admin/chefs/show", { chef, recipes, avatar })
     },
 
     //editPage
     async edit(req, res) {
         
-        const results = await Chef.find(req.params.id)
+        let results = await Chef.find(req.params.id)
         const chef = results.rows[0]
+
+        results = await Chef.file(chef.file_id)
+        const avatar = results.rows[0]
 
         if (!chef) return res.render("admin/chefs/edit", { err: true })
 
-        return res.render("admin/chefs/edit", { chef })
+        return res.render("admin/chefs/edit", { chef, avatar })
     },
 
     //editChef

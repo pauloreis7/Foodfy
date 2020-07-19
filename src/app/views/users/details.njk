@@ -1,11 +1,70 @@
 {% extends "users/layout_users.njk" %}
 
-{% block title %}<title>Detalhes receita</title>{% endblock %}
+{% block title %}<title>{{ recipe.title }} - Foodfy</title>{% endblock %}
 
 {% block content %}
     <section class="details">
 
-        <article class="detail_image" style="background: url({{ recipe.image }}/940x280) no-repeat center center / cover"></article>
+        <article class="details_header">
+
+            <div class="gallery">
+
+                <div class="highlight">
+
+                    {% if not files[0] %}
+
+                        <img src="http://placehold.it/950x950?text=Receita sem foto" onclick="LightBox.open()" />
+
+                    {% else %}
+
+                        <img src="{{ files[0].src }}" alt="{{ files[0].name }}" onclick="LightBox.open()" />
+
+                    {% endif %}
+
+                    <article class="lightbox-target">
+
+                        <img src="{{ files[0].src }}" alt="files[0].name" />
+
+                        <a href="#"
+                        
+                            class="lightbox-close"
+                            onclick="LightBox.close()"
+                        
+                            >
+                            <i class="material-icons">close</i>
+                        </a>
+
+                    </article>
+
+                </div>
+
+                <div class="gallery-preview">
+
+                    {% for image in files %}
+
+
+                        <img
+
+                         src="{{ image.src }}"
+                         alt="{{ image.name }}"
+
+                            {% if loop.index0 == 0 %}
+
+                                class="active"
+
+                            {% endif %}
+
+                            onclick="imageGallery.setImage(event)"
+
+                        />
+
+                    {% endfor %}
+
+                </div>
+
+            </div>
+
+        </article>
 
         <article class="detail_desc">
 

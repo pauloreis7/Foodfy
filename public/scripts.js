@@ -58,19 +58,11 @@ const activedMenuItem = {
   }
 }
 
-
 const photosUpload = {
   input: "",
   preview: document.querySelector('#recipe_photos_preview'),
 
-  uploadLimit(target) {
-
-    const inputId = target.id
-
-    if (inputId == "recipe_upload_input") return 5
-
-    return 1
-  },
+  uploadLimit: 5,
 
   files: [],
 
@@ -113,7 +105,7 @@ const photosUpload = {
   limitUploadValidation(event) {
 
     const { target } = event
-    const uploadLimit = photosUpload.uploadLimit(target)
+    const uploadLimit = photosUpload.uploadLimit
 
     if (target.files.length > uploadLimit || photosUpload.files.length + target.files.length > uploadLimit) {
       alert(`Selecione no máximo ${ uploadLimit } fotos!!`)
@@ -204,5 +196,33 @@ const photosUpload = {
 }
 
 const imageGallery = {
+  highlight: document.querySelector('.details_header .gallery .highlight > img'),
+  previews: document.querySelectorAll('.gallery-preview img'),
   
+  setImage(event) {
+  
+    const { target } = event
+
+    imageGallery.previews.forEach( preview => preview.classList.remove('active') )
+
+    target.classList.add('active')
+  
+    imageGallery.highlight.src = target.src
+    LightBox.image.src = target.src
+  }
+}
+
+const LightBox = {
+  target: document.querySelector('.gallery .highlight .lightbox-target'),
+  image: document.querySelector('.gallery .highlight .lightbox-target img'),
+  
+  open() {
+    LightBox.target.style.opacity = 1
+    LightBox.target.style.top = 0
+  },
+
+  close() {
+    LightBox.target.style.opacity = 0
+    LightBox.target.style.top = "-100%"
+  }
 }

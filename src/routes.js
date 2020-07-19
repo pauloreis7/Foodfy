@@ -35,14 +35,14 @@ routes.get("/chefs", chefs.index)
 
 routes.get("/chefs/create", chefs.create)
 
-routes.post('/chefs', chefs.post)
+routes.post('/chefs', multer.array("photo", 1), chefs.post)
 
 routes.get("/chefs/:id", chefs.show)
 
 routes.get("/chefs/:id/edit", chefs.edit)
 
-routes.put("/chefs", chefs.put)
+routes.put("/chefs", multer.array("photo", 1), chefs.put)
 
 routes.delete("/chefs", chefs.delete)
-
+ 
 module.exports = routes

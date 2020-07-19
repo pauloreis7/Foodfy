@@ -64,11 +64,11 @@ module.exports = {
 
         results = filesId.map(id => Recipe.file(id.file_id))
         let filesPromise = await Promise.all(results)
-        filesPromise = filesPromise.map(file => file.rows)
+        filesPromise = filesPromise.map(file => file.rows[0])
         
         const files = filesPromise.map(file => ({
-            ...file[0],
-            src: `${ req.protocol }://${ req.headers.host }${ file[0].path.replace("public", "") }`
+            ...file,
+            src: `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`
         }))
 
         return res.render("admin/recipes/show", { recipe, files })
@@ -89,11 +89,11 @@ module.exports = {
         
         results = filesId.map(fileId => Recipe.file(fileId.file_id))
         let filesPromise = await Promise.all(results)
-        filesPromise = filesPromise.map(file => file.rows)
+        filesPromise = filesPromise.map(file => file.rows[0])
 
         const files = filesPromise.map(file => ({
-            ...file[0],
-            src: `${ req.protocol }://${ req.headers.host }${ file[0].path.replace("public", "") }`
+            ...file,
+            src: `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`
         }))
 
         results = await Recipe.chefsSelectOption()
@@ -130,7 +130,7 @@ module.exports = {
             const latsIndex = removedFiles.length - 1
             removedFiles.splice(latsIndex, 1)
 
-            let promiseFiles = removedFiles.map(id => File.delete(id))
+            const promiseFiles = removedFiles.map(id => File.delete(id))
             await Promise.all(promiseFiles)
         }
 
@@ -141,6 +141,12 @@ module.exports = {
 
     //deleteRecipe
     async delete(req, res) {
+
+        let results = await File.findFileByRecipeId(req.body.id)
+        const filesId = results.rows
+
+        const promiseFiles = filesId.map(id => File.delete(id.file_id))
+        await Promise.all(promiseFiles)
         
         await Recipe.delete(req.body.id)
 

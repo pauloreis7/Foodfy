@@ -537,8 +537,9 @@ header.header_admin {
 }
 
 .admin_header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 136px;
+    gap: 20px;
     align-items: center;
 }
 
@@ -556,7 +557,7 @@ header.header_admin {
     margin-bottom: 0;
 }
 
-/* PHOTOS UPLOAD */
+/* RECIPES PHOTOS UPLOAD */
 
 form .field_item .recipe_upload {
     width: 100%;
@@ -621,7 +622,6 @@ form .field_item #recipe_photos_preview {
 
     flex: 1;
     height: 151px;
-
 }
 
 .recipe_upload #recipe_photos_preview .photos {
@@ -630,7 +630,7 @@ form .field_item #recipe_photos_preview {
 
 .recipe_upload #recipe_photos_preview .photos img {
     width: 100%;
-    height: 100%;
+    height: 151px;
     
     object-fit: cover;
 
@@ -649,7 +649,7 @@ form .field_item #recipe_photos_preview {
     justify-content: center;
 
     width: 100%;
-    height: 100%;
+    height: 151px;
 
     color: #FF0000;
     font-size: 32px;
@@ -669,7 +669,7 @@ form .field_item #recipe_photos_preview {
 
 }
 
-button[type="submit"], .edit_create, .modal .modal_buttons a:last-child {
+button[type="submit"], .edit_create, .modal .modal_buttons a:last-child, form .field_item #chefs_photos_upload p {
     max-width: 230px;
 
     font-weight: bold;
@@ -680,6 +680,8 @@ button[type="submit"], .edit_create, .modal .modal_buttons a:last-child {
     border-radius: 4px;
     cursor: pointer;
     text-decoration: none;
+
+    text-align: center;
 
     line-height: 19px;
     padding: 9px 20px;
@@ -816,13 +818,12 @@ form .field_item select {
     margin-bottom: 31px;
 }
 
-/* GALLERY */
+/* IMAGES GALLERY */
 
 .details_header .gallery {
     max-width: 100%;
-    height: 280px;
 
-    margin: 30px 0 50px;
+    margin: 30px 0 20px;
 }
 
 .details_header .gallery .highlight img {
@@ -861,6 +862,72 @@ form .field_item select {
 .details_header .gallery .gallery-preview img.active,
 .details_header .gallery .gallery-preview img:hover {
     opacity: 1;
+}
+
+/* LIGHTBOX IMAGE GALLERY */
+
+.gallery .highlight .lightbox-target{
+    position: fixed;
+    top: -100%;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 100;
+    overflow: hidden;
+    opacity: 0;
+    
+    background-color: rgba(0, 0, 0, 0.7);
+
+    transition: opacity 400ms;
+}
+
+.gallery .highlight .lightbox-target img {
+    width: 85%;
+    height: 85%;
+
+    margin: auto;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    object-fit: cover;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
+.gallery .highlight .lightbox-target a.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 32px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 400ms;    
+}
+
+.gallery .highlight .lightbox-target a.lightbox-close:hover {
+    color: var(--prymary-color);
+    background-color: rgba(138, 138, 138, 0.2);
+
+    transition: 250ms;
+}
+
+.gallery .highlight .lightbox-target a.lightbox-close i {
+    font-size: 28px;
 }
 
 .details_chef {
@@ -931,6 +998,8 @@ form .field_item select {
     width: 200px;
     height: 200px;
 
+    object-fit: cover;
+
     margin-bottom: 30px;
 }
 
@@ -972,6 +1041,46 @@ form .field_item select {
     cursor: default;
 
     display: inline-block;
+}
+
+/* CHEFS PHOTOS UPLOAD */
+
+form .field_item #chefs_photos_upload {
+    width: 156px;
+
+    position: relative;
+    
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+form .field_item #chefs_photos_upload p {
+    box-shadow: 0 2px 6px -3px #333;
+    letter-spacing: .7px;
+
+    padding: 8px 8px;
+}
+
+form .field_item #chefs_photos_upload #chefs_photos_input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    overflow: hidden;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+form .field_item #chefs_photos_upload:hover {
+    filter: brightness(90%);
+    transition: 250ms;
 }
 
 /* Chef_list */
