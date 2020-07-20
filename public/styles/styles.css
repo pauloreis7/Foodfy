@@ -167,7 +167,7 @@ header form input:hover {
     max-width: 940px;
     max-height: 100%;
 
-    margin: 0 auto 50px;
+    margin: 0 0 50px;
     
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -312,7 +312,7 @@ header form input:hover {
     max-width: 940px;
     max-height: 100%;
 
-    margin: 14px auto 50px;
+    margin: 14px 0 50px;
     padding: 0 20px;
 }
 
@@ -516,7 +516,12 @@ header.header_admin {
 
 .page_content {
     width: 90%;
+    min-height: 100vh;
     max-width: 940px;
+
+    display: flex;
+    flex-direction: column;
+    
     position: relative;
 }
 
@@ -771,6 +776,8 @@ form .field_item select {
 .items_list {
     width: 100%;
 
+    margin-bottom: 24px;
+
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
@@ -837,15 +844,15 @@ form .field_item select {
 }
 
 .details_header .gallery .gallery-preview {
-    display: grid;
-    grid-template-columns: repeat(5, 50px);
-    justify-content: right;
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
-    gap: 10px;
 }
 
 .details_header .gallery .gallery-preview img {
-    width: 100%;
+    width: 50px;
     height: 49.7px;
 
     object-fit: cover;
@@ -857,6 +864,10 @@ form .field_item select {
     cursor: pointer;
 
     transition: 200ms;
+}
+
+.details_header .gallery .gallery-preview img + img {
+    margin-left: 10px;
 }
 
 .details_header .gallery .gallery-preview img.active,
@@ -1028,7 +1039,7 @@ form .field_item select {
 .created_at {
     text-align: center;
 
-    margin: 80px 0 20px;
+    margin: auto 0 24px;
 
     width: 100%;
 }

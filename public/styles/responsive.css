@@ -81,7 +81,7 @@
     .recipes, .recipes_just {
         grid-template-columns: 1fr 1fr;
     }
-
+    
     header.header_admin .header_content_links a:first-child {
         display: none;
     }
@@ -96,4 +96,20 @@
         padding: 5px 10px;
         font-size: 14px;
     }
+}
+
+@media (max-width: 850px) {
+
+    .chefs_list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+}
+
+@media (max-width: 675px) {
+
+    .chefs_list {
+        grid-template-columns: 1fr 1fr;
+    }
+
 }

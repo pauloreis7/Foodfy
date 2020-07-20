@@ -33,9 +33,9 @@ module.exports = {
         if (req.files.length == 0 ) return res.send("Por favor envie pelo menos uma foto!!")
         
         let results = await File.create(req.files[0])
-        const fileId = results.rows[0]
+        const fileId = results.rows[0].id
         
-        results = await Chef.create(req.body, fileId.id)
+        results = await Chef.create(req.body, fileId)
         const chefId = results.rows[0].id
         
         return res.redirect(`/chefs/${ chefId }`)
@@ -70,10 +70,10 @@ module.exports = {
         let results = await Chef.find(req.params.id)
         const chef = results.rows[0]
 
+        if (!chef) return res.render("admin/chefs/edit", { err: true })
+
         results = await Chef.file(chef.file_id)
         const avatar = results.rows[0]
-
-        if (!chef) return res.render("admin/chefs/edit", { err: true })
 
         return res.render("admin/chefs/edit", { chef, avatar })
     },
@@ -89,10 +89,22 @@ module.exports = {
             }
         }
 
-        Chef.update(req.body, function () {
+        let fileId = req.body.old_file_id
 
-            return res.redirect(`/chefs/${req.body.id}`)
-        })  
+        if(req.files.length != 0) {
+            let results = await File.create(req.files[0])
+            fileId = results.rows[0].id
+
+            await Chef.update(req.body, fileId)
+
+            await File.delete(req.body.old_file_id)
+
+        } else {
+
+            await Chef.update(req.body, fileId)
+        }
+
+        return res.redirect(`/chefs/${req.body.id}`)
     },
 
     //deleteChef
@@ -101,8 +113,13 @@ module.exports = {
         const chefRecipes = Number(req.body.total_recipes)
 
         if (chefRecipes >= 1) return res.render("admin/chefs/edit", { err: true, text: true })
+
+        const chef = await Chef.find(req.body.id)
+        const fileId = chef.rows[0].file_id
         
         await Chef.delete(req.body.id)
+
+        await File.delete(fileId)
 
         return res.redirect("/chefs")
     },

@@ -61,23 +61,21 @@ module.exports = {
 
     },
 
-    update(data, callback) {
+    update({ name, id }, fileId) {
 
         const query = `
         UPDATE chefs SET
-        name = ($1)
-        WHERE id = ${ data.id }
+        name = ($1),
+        file_id = ($2)
+        WHERE id = ${ id }
         `
 
         const values = [
-            data.name,
+            name,
+            fileId
         ]
         
-        db.query(query, values, function (err, results) {
-            if (err) throw `Erro ao atualizar chef! ${ err }`
-            
-            callback()
-        })
+        return db.query(query, values)
     },
 
     delete(id) {
