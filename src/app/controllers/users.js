@@ -7,15 +7,35 @@ module.exports = {
     //loob
     async index(req, res) {
 
-        const results = await Recipe.all(search = false)
-        const recipes = results.rows
+        try {
 
-        let recipesPop = recipes.filter(function (recipe) {
-            return recipes.indexOf(recipe) < 6
-        })
-            
-        return res.render("users/index", { recipesPop })
+            let results = await Recipe.search(search = false)
 
+            if(!results.rows) return res.send("Não encontramos nenhuma receita!!")
+
+            async function getImages(recipeId) {
+                const fileId = await File.findFileByRecipeId(recipeId)
+
+                results = await Recipe.file(fileId.rows[0].file_id)
+                
+                const file = results.rows.map( file => `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }` )
+
+                return file
+            }
+
+            const recipesPromise = results.rows.map( async recipe => {
+                recipe.img = await getImages(recipe.id)
+
+                return recipe
+            } ).filter( ( recipe, index ) => index > 5 ? false : true )
+
+            const recipes = await Promise.all(recipesPromise)
+
+            return res.render("users/index", { recipes })
+
+        } catch (err) {
+            console.error(err)
+        }
     },
 
     //aboutFoodfy
@@ -26,13 +46,38 @@ module.exports = {
 
     //recipesList
     async recipes(req, res) {
-        
-        let { search } = req.query
 
-        const results = await Recipe.all(search)
-        const recipes = results.rows
+        try {
 
-        return res.render("users/recipes", { recipes, search })
+            let { search } = req.query
+
+            let results = await Recipe.search(search)
+
+            if(!results.rows) return res.send("Não encontramos nenhuma receita!!")
+            
+            async function getImages(recipeId) {
+                const fileId = await File.findFileByRecipeId(recipeId)
+
+                results = await Recipe.file(fileId.rows[0].file_id)
+
+                const file = results.rows.map( file => `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }` )
+
+                return file[0]
+            }
+
+            const recipesPromise = results.rows.map( async recipe => {
+                recipe.img = await getImages(recipe.id)
+
+                return recipe
+            } )
+
+            const recipes = await Promise.all(recipesPromise)
+
+            return res.render("users/recipes", { recipes, search })
+
+        } catch (err) {
+            console.error(err)
+        }
     },
 
     //details

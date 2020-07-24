@@ -20,36 +20,35 @@
 
     <body onload="activedMenuItem.catchMenuItemToActive()">
 
-        <header class="header_admin">
-
-            <div class="header_content">
-
-                <nav>
-
-                    <a href="/">
-
-                        <img src="/assets/logo_white.png" alt="Foodfy Logo">
-
-                    </a>
-
-                    <div class="header_content_links">
-
-                        <a href="/">Início</a>
-                        <a href="/recipes">Receitas</a>
-                        <a href="/chefs">Chefs</a>
-
-                    </div>
-
-                </nav>
-
-                {% block create %}{% endblock %}
-
-            </div>
-
-        </header>
-
         <div class="full_page">
 
+            <header class="header_admin">
+
+                <div class="header_content">
+
+                    <nav>
+
+                        <a href="/">
+
+                            <img src="/assets/logo_white.png" alt="Foodfy Logo">
+
+                        </a>
+
+                        <div class="header_content_links">
+
+                            <a href="/">Início</a>
+                            <a href="/recipes">Receitas</a>
+                            <a href="/chefs">Chefs</a>
+
+                        </div>
+
+                    </nav>
+
+                    {% block create %}{% endblock %}
+
+                </div>
+
+            </header>
 
             <section class="page_content">
 

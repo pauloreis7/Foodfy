@@ -22,13 +22,13 @@
 
         <section class="recipes">
 
-            {% for recipe in recipesPop %}
+            {% for recipe in recipes %}
 
                 <article class="recipe" 
                     onclick="IndexRedirectRecipeDetailsByClick.redirectToDetails({{ recipe.id }})"
                 >
 
-                    <div class="recipe_img" style="background: url({{ recipe.image }}172x80) no-repeat center center / cover"></div>
+                    <div class="recipe_img" style="background-image: url('{{recipe.img}}')"></div>
 
                     <div class="recipe_desc">
 

@@ -7,10 +7,35 @@ module.exports = {
     //recipesLoob
     async index(req, res) {
 
-        const results = await Recipe.all(search = false)
-        const recipes = results.rows
-        
-        return res.render("admin/recipes/recipes_list", { recipes })
+        try {
+
+            let results = await Recipe.all()
+
+            if (!results.rows) return res.send("Não encontramos nenhuma receita!!")
+
+            async function getImages(recipeId) {
+                const fileId = await File.findFileByRecipeId(recipeId)
+
+                results = await Recipe.file(fileId.rows[0].file_id)
+
+                const file = results.rows.map( file => `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`)
+
+                return file
+            }
+
+            const recipesPromise = results.rows.map( async recipe => {
+                recipe.img = await getImages(recipe.id)
+
+                return recipe
+            } )
+
+            const recipes = await Promise.all(recipesPromise)
+
+            return res.render('admin/recipes/recipes_list', { recipes })
+            
+        } catch (err) {
+            console.error(err)
+        }
     },
 
     //createPage

@@ -5,13 +5,15 @@ CREATE TABLE "recipes" (
   "ingredients" text[] NOT NULL,
   "preparation" text[] NOT NULL,
   "information" text,
-  "created_at" timestamp DEFAULT (now())
+  "created_at" timestamp DEFAULT (now()),
+  "updated_at" timestamp DEFAULT (now())
 );
 
 CREATE TABLE "chefs" (
   "id" serial PRIMARY KEY,
   "name" text NOT NULL,
   "created_at" timestamp DEFAULT (now())
+  "file_id" integer NOT NULL UNIQUE
 );
 
 CREATE TABLE "files" (

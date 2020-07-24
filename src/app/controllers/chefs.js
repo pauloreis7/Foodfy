@@ -7,14 +7,37 @@ module.exports = {
     //chefsLoob
     async index(req, res) {
 
-        const results = await Chef.all()
-        const chefs = results.rows
+        try {
 
-        return res.render("admin/chefs/chefs_list", { chefs })
+            let results = await Chef.all()
+
+            if(!results.rows) return res.send("Não encontramos nenhum chef!!")
+
+            async function getAvatar(fileId) {
+                results = await Chef.file(fileId)
+                const file = results.rows[0]
+
+                const avatar = `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`
+
+                return avatar
+            }
+            
+            const chefsPromise = results.rows.map( async chef => {
+                chef.avatar = await getAvatar(chef.file_id)
+
+                return chef
+            } )
+
+            const chefs = await Promise.all(chefsPromise)
+
+            return res.render("admin/chefs/chefs_list", { chefs })
+        } catch (err) {
+            console.error(err)
+        }
     },
 
     //createPage
-    async create(req, res) {
+    create(req, res) {
 
         return res.render("admin/chefs/create")
     },
@@ -30,9 +53,9 @@ module.exports = {
             }
         }
 
-        if (req.files.length == 0 ) return res.send("Por favor envie pelo menos uma foto!!")
+        if (req.file.length == 0 ) return res.send("Por favor envie pelo menos uma foto!!")
         
-        let results = await File.create(req.files[0])
+        let results = await File.create(req.file)
         const fileId = results.rows[0].id
         
         results = await Chef.create(req.body, fileId)
@@ -91,8 +114,8 @@ module.exports = {
 
         let fileId = req.body.old_file_id
 
-        if(req.files.length != 0) {
-            let results = await File.create(req.files[0])
+        if(req.file.length != 0) {
+            let results = await File.create(req.file)
             fileId = results.rows[0].id
 
             await Chef.update(req.body, fileId)

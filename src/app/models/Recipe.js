@@ -2,8 +2,15 @@ const db = require('../../config/db')
 const { date } = require('../../lib/utils')
 
 module.exports = {
+
+    all() {
+        return db.query(`SELECT recipes.*, chefs.name AS chef_name
+        FROM recipes
+        LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
+        ORDER BY recipes.created_at DESC`)
+    },
     
-    all(search) {
+    search(search) {
 
         let query = ""
             querySearch = ""
@@ -19,7 +26,7 @@ module.exports = {
         FROM recipes
         LEFT JOIN chefs ON (recipes.chef_id = chefs.id)
         ${ querySearch }
-        ORDER by id DESC
+        ORDER by updated_at DESC
         `
 
         return db.query(query)
