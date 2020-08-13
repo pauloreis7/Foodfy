@@ -1,0 +1,142 @@
+
+.details_header .gallery {
+    max-width: 100%;
+
+    margin: 30px 0 20px;
+}
+
+.details_header .gallery .highlight img {
+    width: 100%;
+    height: 280px;
+
+    object-fit: cover;
+
+    border-radius: 15px;
+    cursor: zoom-in;
+}
+
+.details_header .gallery .gallery-preview {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.details_header .gallery .gallery-preview img {
+    width: 50px;
+    height: 49.7px;
+
+    object-fit: cover;
+
+    opacity: .5;
+    border-radius: 3.5px;
+    border: 1px solid #DDDDDD;
+
+    cursor: pointer;
+
+    transition: 200ms;
+}
+
+.details_header .gallery .gallery-preview img + img {
+    margin-left: 10px;
+}
+
+.details_header .gallery .gallery-preview img.active,
+.details_header .gallery .gallery-preview img:hover {
+    opacity: 1;
+}
+
+/* LIGHTBOX IMAGE GALLERY */
+
+.gallery .highlight .lightbox-target{
+    position: fixed;
+    top: -100%;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 100;
+    overflow: hidden;
+    opacity: 0;
+    
+    background-color: rgba(0, 0, 0, 0.7);
+
+    transition: opacity 400ms;
+}
+
+.gallery .highlight .lightbox-target img {
+    width: 85%;
+    height: 85%;
+
+    margin: auto;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    object-fit: cover;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.5);
+    cursor: default;
+}
+
+.gallery .highlight .lightbox-target a.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 32px;
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: opacity 400ms;    
+}
+
+.gallery .highlight .lightbox-target a.lightbox-close:hover {
+    color: var(--prymary-color);
+    background-color: rgba(138, 138, 138, 0.2);
+
+    transition: 250ms;
+}
+
+.gallery .highlight .lightbox-target a.lightbox-close i {
+    font-size: 28px;
+}
+
+.details_chef {
+    text-align: center;
+}
+
+.details_chef h1 {
+    color: #111111;
+    font-size: 36px;
+    line-height: 42px;
+
+    margin-bottom: 4px;
+}
+
+.details_chef p {
+    font-size: 20px;
+    color: #777777;
+    line-height: 24px;
+}
+
+.details_content ul {
+    padding-left: 10px;
+
+    list-style-type: "- ";
+}
+
+.details_content .detail_make {
+    margin-bottom: 41px;
+}

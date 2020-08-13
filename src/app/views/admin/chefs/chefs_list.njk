@@ -2,8 +2,12 @@
 
 {% block title %} <title>Chefs - Foodfy</title> {% endblock %}
 
-{% block create %} <a href="/chefs/create" class="edit_create">Criar Chef</a> {% endblock %}
-
+{% block create %}
+    <a href="/chefs/create" id="create_button" class="edit_create">
+    Criar Chef
+     <i class="material-icons">add</i>
+    </a>
+{% endblock %}
 
 {% block content %}
 

@@ -1,0 +1,107 @@
+:root {
+    --prymary-color: #ff553b;
+    --button-color: #6558C3;
+    --title-color: #111111;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+
+    box-sizing: border-box;
+}
+
+html, body {
+    min-height: 100vh;
+}
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: rgb(255, 255, 255);
+    -webkit-font-smoothing: antialiased;
+
+    box-sizing: border-box;
+
+    width: 100%;
+}
+
+header {
+    width: 96%;
+    max-width: 940px;
+
+    margin: 0 auto;
+    padding: 36px 1px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.full_page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100vh;
+}
+
+.page_content {
+    width: 90%;
+    min-height: 100%;
+    max-width: 940px;
+
+    display: flex;
+    flex-direction: column;
+    
+    position: relative;
+}
+
+.page_content h1 {
+    margin-bottom: 30px;
+    line-height: 28px;
+    color: var(--title-color);
+}
+
+input,
+select,
+textarea {
+    outline-color: var(--button-color);
+    font-family: 'Roboto', sans-serif;
+}
+
+/* BUTTONS */
+
+button {
+    outline: 0;
+}
+
+.page_content button[type="submit"] {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+button[type="submit"], .edit_create, .modal .modal_buttons a:last-child, form .field_item #chefs_photos_upload p {
+    max-width: 230px;
+
+    font-weight: bold;
+    color: #FFFFFF;
+    font-size: 16px;
+    background-color: var(--button-color);
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+
+    text-align: center;
+
+    line-height: 19px;
+    padding: 9px 20px;
+}
+
+button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-child:hover {
+    filter: brightness(90%);
+    transition: 250ms;
+}

@@ -1,8 +1,13 @@
 {% extends 'admin/layout_admin.njk' %}
 
 {% block title %} <title>Receitas - Foodfy</title> {% endblock %}
-    
-{% block create %} <a href="/recipes/create" class="edit_create">Criar Receita</a> {% endblock %}
+
+{% block create %}
+    <a href="/recipes/create" id="create_button" class="edit_create">
+     Criar Receita
+     <i class="material-icons">add</i>
+    </a>
+{% endblock %}
 
 {% block content %}
 

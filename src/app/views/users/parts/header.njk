@@ -1,0 +1,32 @@
+<header>
+
+    <a href="/">
+
+        <img src="/assets/logo.png" alt="Foodfy Logo">
+
+    </a>
+
+    <nav class="links">
+
+        {% block init %}
+            <a href="/">Início</a>
+            <a href="/food_about">Sobre</a>
+            <a href="/allRecipes">Receitas</a>
+            <a href="/recipes">Admin</a>
+        {% endblock %}
+        
+    </nav>
+
+    {% block search %} 
+    
+        <form action="/allRecipes" method="get">
+        
+            <input name="search" value="{{ search }}" placeholder="Buscar receita " />
+
+            <button type="submit">Buscar</button>
+        
+        </form>
+    
+    {% endblock %}
+
+</header>

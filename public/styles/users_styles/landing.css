@@ -1,0 +1,72 @@
+#container {
+    display: flex;
+
+
+    height: 366px;
+    width: 100%;
+    max-width: 940px;
+
+    margin: 0 auto 50px;
+    padding: 60px;
+
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.349);
+    background-color: #FBDFDB;
+    border-radius: 30px;
+
+    background-image: url(/assets/chef.png);
+    background-repeat: no-repeat;
+    background-position: right 50px bottom 0;
+}
+
+#container_content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 38%;
+}
+
+#container_content h1 {
+    font-size: 32px;
+    color: #111111;
+    text-shadow: 1px 0 1px black;
+    font-weight: bold;
+
+    line-height: 38px;
+    margin-bottom: 10px;
+
+    text-align: start;
+    width: 100%;
+}
+
+#container_content p {
+    font-size: 18px;
+    color: #000000;
+    opacity: .7;
+
+    line-height: 28px;
+}
+
+#popular h2 {
+    font-size: 24px;
+    color: #111111;
+    font-weight: bold;
+    text-shadow: 1px 0 1px rgba(0, 0, 0, 0.2);
+
+    line-height: 28px;
+
+    margin: 0 0 20px 8px;
+}
+
+.recipes {
+    max-width: 940px;
+    max-height: 100%;
+
+    margin: 10px 0 50px;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 22px;
+}

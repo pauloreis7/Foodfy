@@ -1,0 +1,85 @@
+.items_list {
+    width: 100%;
+
+    margin-bottom: 24px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.list_item {
+    display: flex;
+} 
+
+.item_img {
+    width: 172px;
+    height: 80px;
+    margin-right: 20px;
+
+    border-radius: 8.57px;
+
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.item_info {
+    flex: 1;
+}
+
+.item_info h3 {
+    color: var(--title-color);
+    font-weight: normal;
+    font-size: 18px;
+
+    margin-bottom: 5px;
+}
+
+.item_info p, .item_content span {
+    color: #777777;
+    font-size: 14px;
+
+    margin-left: 4px;
+    line-height: 16px;
+}
+
+/* CHEFS LIST */
+
+.chefs_list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    row-gap: 40px;
+}
+
+.chefs_list .chef-list_img {
+    min-width: 64px;
+    max-width: 64px;
+    height: 64px;
+
+    border-radius: 50%;
+}
+
+.chefs_list .list_chef_item {
+    align-items: center;
+}
+
+.list_chef_item {
+    display: flex;
+}
+
+.item_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    flex: 1;
+}
+
+.item_content p {
+    font-size: 18px;
+    line-height: 21px;
+    color: var(--title-color);
+}
+
+.item_content span {
+    margin:  0 0 4px 8px;
+}

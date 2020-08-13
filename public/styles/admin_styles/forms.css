@@ -1,0 +1,217 @@
+.form_header {
+    margin-bottom: 30px;
+}
+
+form .field_item .recipe_upload {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+form .field_item #recipe_photos_upload {
+    display: block;
+
+    position: relative;
+
+    width: 149px;
+    height: 149px;
+
+    margin-right: 10px;
+
+    background-color: #ffffff;
+    border: 1px solid #DDDDDD;
+    border-radius: 3.5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form .field_item #recipe_photos_upload:hover {
+    background-color: #f8f8f8;
+    border: 1px solid #dbdbdb;
+    
+    transition: 250ms;
+}
+
+form .field_item #recipe_photos_upload #recipe_upload_input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+    display: block;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+form .field_item #recipe_photos_upload i {
+    font-size: 40px;
+
+    color: #777777;
+}
+
+form .field_item #recipe_photos_preview {
+    display: grid;
+    grid-template-columns: repeat(5, 150px);
+    gap: 10px;
+
+    flex: 1;
+    height: 151px;
+}
+
+.recipe_upload #recipe_photos_preview .photos {
+    position: relative;
+}
+
+.recipe_upload #recipe_photos_preview .photos img {
+    width: 100%;
+    height: 151px;
+    
+    object-fit: cover;
+
+    border-radius: 3.5px;
+    border: 1px solid #DDDDDD;
+}
+
+
+.recipe_upload #recipe_photos_preview .photos i {
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 151px;
+
+    color: #FF0000;
+    font-size: 32px;
+    border: 1px solid #DDDDDD;
+    border-radius: 3.5px;
+
+    cursor: pointer;
+
+    opacity: 0;
+}
+
+.recipe_upload #recipe_photos_preview .photos:hover i {
+    background-color: #ffffffa4;
+    opacity: 1;
+
+    transition: 250ms;
+
+}
+
+.create_header {
+    width: 100%;
+    
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.field_item {
+    width: 100%;
+
+    margin-bottom: 30px;
+}
+
+.field_item h2{
+    color: var(--title-color);
+    font-size: 16px;
+
+    margin-bottom: 10px;
+}
+
+.field_item input, textarea, select {
+    width: 100%;
+    height: 50px;
+
+    padding: 14px 20px 15px;
+    margin: 0 0 15px;
+
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
+
+    color: var(--title-color);
+    font-size: 16px;
+    line-height: 19px;
+    font-weight: normal;
+}
+
+form .field_item select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    cursor: pointer;
+
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%236558C3%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E'),
+    linear-gradient(to bottom,#ffffff 0%, #f8f8f8 100%);
+    background-repeat: no-repeat;
+    background-position: right 1.1em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+
+}
+
+.page_content .field_item:first-child input, textarea {
+    margin-bottom: 0;
+}
+
+.field_item textarea {
+    height: 257px;
+
+    padding: 18px 43px 18px 20px;
+
+    font-family: 'Roboto', sans-serif;
+}
+
+/* CHEFS PHOTOS UPLOAD */
+
+form .field_item #chefs_photos_upload {
+    width: 156px;
+
+    position: relative;
+    
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+form .field_item #chefs_photos_upload p {
+    box-shadow: 0 2px 6px -3px #333;
+    letter-spacing: .7px;
+
+    padding: 8px 8px;
+}
+
+form .field_item #chefs_photos_upload #chefs_photos_input {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    display: block;
+    overflow: hidden;
+
+    opacity: 0;
+
+    cursor: pointer;
+}
+
+form .field_item #chefs_photos_upload:hover {
+    filter: brightness(90%);
+    transition: 250ms;
+}

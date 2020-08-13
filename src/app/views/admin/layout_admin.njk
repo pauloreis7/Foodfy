@@ -7,56 +7,32 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+        {% block title %}<title>Foodfy</title>{% endblock %}
 
-         {% block title %}<title>Foodfy</title>{% endblock %}
-
-        <link rel="stylesheet" href="/styles/styles.css">
-        <link rel="stylesheet" href="/styles/responsive.css">
-
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        {% include 'admin/parts/styles.njk' %}
+        {% include 'partinals/global_styles.njk' %}
 
     </head>
 
     <body onload="activedMenuItem.catchMenuItemToActive()">
 
+        <header class="header_admin">
+
+            {% include "admin/parts/header.njk" %} 
+
+            {% block create %}{% endblock %}
+
+        </header>
+
         <div class="full_page">
-
-            <header class="header_admin">
-
-                <div class="header_content">
-
-                    <nav>
-
-                        <a href="/">
-
-                            <img src="/assets/logo_white.png" alt="Foodfy Logo">
-
-                        </a>
-
-                        <div class="header_content_links">
-
-                            <a href="/">Início</a>
-                            <a href="/recipes">Receitas</a>
-                            <a href="/chefs">Chefs</a>
-
-                        </div>
-
-                    </nav>
-
-                    {% block create %}{% endblock %}
-
-                </div>
-
-            </header>
 
             <section class="page_content">
 
-                {% block content %} {% endblock %}
+                {% block content %}{% endblock %}
 
             </section>
 
-            {% block modal %}{% endblock %}
+            {% include 'admin/parts/modal.njk' %}
 
         </div>
 

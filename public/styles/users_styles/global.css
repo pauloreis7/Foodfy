@@ -1,0 +1,80 @@
+/* HEADER */
+header .links a:last-child {
+    margin: 0;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+}
+
+.links a {
+    font-size: 16px;
+    line-height: 19px;
+    color: #111111;
+    text-decoration: none;
+}
+
+.links a {
+    margin-right: 30px;
+}
+
+.links .home {
+    background-color: rgb(255, 85, 59);
+    font-weight: bold;
+    color: white;
+    border-radius: 30px;
+
+    padding: 10px 25px;
+}
+
+.links a:hover {
+    filter: brightness(95%);
+    font-weight: bold;
+
+    transition: 250ms;
+}
+
+header form {
+    display: flex;
+    align-items: center;
+}
+
+header form input {
+    flex: 1;
+    height: 100%;
+    
+    padding: 8px 8px;
+    margin-right: 8px;
+
+    border:  1px solid #DDDDDD;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+header form input:hover {
+    border: 1px solid var(--button-color);
+    opacity: .8;
+
+    transition: 250ms;
+}
+
+/* FOOTER */
+.rights {
+    text-align: center;
+
+    padding: 23px 0;
+    margin-top: auto;
+    
+    width: 100%;
+
+    background-color: #EEEEEE;
+}
+
+.rights p {
+    font-size: 14px;
+    color: #999999;
+
+    line-height: 16px;
+}

@@ -7,54 +7,18 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+        {% block title %}<title>Foodfy</title>{% endblock %}
 
-         {% block title %}<title>Foodfy</title>{% endblock %}
-
-        <link rel="stylesheet" href="/styles/styles.css">
-        <link rel="stylesheet" href="/styles/responsive.css">
-
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        {% include 'users/parts/styles.njk' %}
+        {% include 'partinals/global_styles.njk' %}
 
     </head>
 
     <body onload="activedMenuItem.catchMenuItemToActive()">
 
         <div class="full_page">
-
-            <header>
-
-                <a href="/">
-
-                    <img src="/assets/logo.png" alt="Foodfy Logo">
-
-                </a>
-
-                <nav class="links">
-
-                    {% block init %}
-                        <a href="/">Início</a>
-                        <a href="/food_about">Sobre</a>
-                        <a href="/recipes/allRecipes">Receitas</a>
-                        <a href="/recipes">Chefs</a>
-                    {% endblock %}
-                    
-                </nav>
-
-                {% block search %} 
-                
-                    <form action="/recipes/allRecipes" method="get">
-                    
-                        <input name="search" value="{{ search }}" placeholder="Buscar uma receita " />
-
-                        <button type="submit">Buscar</button>
-                    
-                    </form>
-                
-                {% endblock %}
-
-            </header>
-
+            
+            {% include 'users/parts/header.njk' %}
 
             <section class="page_content">
 
@@ -63,11 +27,7 @@
             </section>
 
 
-            <footer class="rights">
-
-                <p>Todos direitos reservados, receitas Foodfy.</p>
-
-            </footer>
+            {% include 'users/parts/footer.njk' %}
 
         </div>
         
