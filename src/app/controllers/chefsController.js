@@ -1,5 +1,7 @@
 const Chef = require('../models/Chef')
 const File = require('../models/File')
+const Recipe = require('../models/Recipe')
+
 const { date } = require('../../lib/utils')
 
 module.exports = {
@@ -77,12 +79,30 @@ module.exports = {
         chef.created_at = date(chef.created_at).format
 
         results = await Chef.chefRecipes(id)
-        const recipes = results.rows
+        const chefRecipes = results.rows
 
         results = await Chef.file(chef.file_id)
         const avatar = results.rows[0]
 
         avatar.src = `${ req.protocol }://${ req.headers.host }${ avatar.path.replace("public", "") }`
+
+        async function getImages(recipeId) {
+            const fileId = await File.findFileByRecipeId(recipeId)
+
+            results = await Recipe.file(fileId.rows[0].file_id)
+
+            const file = results.rows.map( file => `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`)
+
+            return file
+        }
+
+        const recipesPromise = chefRecipes.map( async chefRecipe => {
+            chefRecipe.img = await getImages(chefRecipe.id)
+
+            return chefRecipe
+        } )
+
+        const recipes = await Promise.all(recipesPromise)
 
         return res.render("admin/chefs/show", { chef, recipes, avatar })
     },

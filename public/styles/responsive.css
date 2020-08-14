@@ -80,10 +80,6 @@
     .recipes, .recipes_just {
         grid-template-columns: 1fr 1fr;
     }
-    
-    header.header_admin .header_content_links a:first-child {
-        display: none;
-    }
 }
 
 @media (max-width: 600px) {

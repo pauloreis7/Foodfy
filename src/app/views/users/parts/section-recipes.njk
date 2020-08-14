@@ -1,0 +1,44 @@
+{% macro recipes(search, class, recipes, page) %}
+
+
+    {% if page == "recipes_list" and search %}
+
+        <h1 class="recipes_just_title">Buscando por “{{ search }}”</h1>
+
+    {% elseif page=="recipes_list" %}
+
+        <h1 class="recipes_just_title">Todas as receitas</h1>
+
+    {% else %}
+
+        <div>
+            <h2>Mais acessadas</h2>
+        </div>
+
+    {% endif %}
+
+        <section class="{{ class }}">
+
+        {% for recipe in recipes %}
+
+            <article class="recipe" 
+                onclick="IndexRedirectRecipeDetailsByClick.redirectToDetails({{ recipe.id }})"
+            >
+
+                <div class="recipe_img" style="background-image: url('{{recipe.img}}')"></div>
+
+                <div class="recipe_desc">
+
+                    <h3>{{recipe.title}}</h3>
+
+                    <p>por {{recipe.chef_name}}</p>
+
+                </div>
+
+            </article>
+
+        {% endfor %}
+
+    </section>
+
+{% endmacro %}

@@ -1,4 +1,5 @@
 {% extends "users/layout_users.njk" %}
+{% import "users/parts/section-recipes.njk" as recipes_list %}
 
     {% block title %}<title>Home Foodfy</title>{% endblock %}
 
@@ -16,32 +17,7 @@
             
         </section>
 
-        <div>
-            <h2>Mais acessadas</h2>
-        </div>
-
-        <section class="recipes">
-
-            {% for recipe in recipes %}
-
-                <article class="recipe" 
-                    onclick="IndexRedirectRecipeDetailsByClick.redirectToDetails({{ recipe.id }})"
-                >
-
-                    <div class="recipe_img" style="background-image: url('{{recipe.img}}')"></div>
-
-                    <div class="recipe_desc">
-
-                        <h3>{{recipe.title}}</h3>
-
-                        <p>por {{recipe.chef_name}}</p>
-
-                    </div>
-
-                </article>
-
-            {% endfor %}
-
-        </section>
+       
+       {{ recipes_list.recipes("", "recipes", recipes, "index") }}
 
     {% endblock %}

@@ -25,6 +25,9 @@
 
     transition: 500ms;
 }
+.page_content .recipes_just_title {
+    margin-bottom: 16px;
+}
 
 .recipe .recipe_img {
     max-width: 292px;

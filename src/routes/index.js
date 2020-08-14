@@ -7,7 +7,7 @@ const chefs = require('./chefs')
 
 const home = require('../app/controllers/home')
 
-routes.use('/admin', users)
+routes.use('/', users)
 routes.use('/recipes', recipes)
 routes.use('/chefs', chefs)
 

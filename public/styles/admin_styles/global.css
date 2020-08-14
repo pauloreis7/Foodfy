@@ -40,20 +40,25 @@ header.header_admin {
     max-width: 390px;
 }
 
-.header_admin nav a {
+.header_admin .header_content nav > a {
+    margin-right: 50px;
+}
+
+.header_admin nav .header_content_links a {
     color: white;
     text-decoration: none;
     font-size: 18px;
     position: relative;
+}
 
-    margin-right: 20px;
+.header_admin nav .header_content_links a + a {
+    margin-left: 30px;
 }
 
 .header_admin .home { 
     font-size: 20px;
     font-weight: bold;
 }
-
 
 .header_content_links {
     flex: 1;
@@ -63,7 +68,7 @@ header.header_admin {
     justify-content: space-evenly;
 }
 
-.header_admin nav a::after {
+.header_admin nav .header_content_links a::after {
     content: "";
 
     position: absolute;
@@ -76,7 +81,7 @@ header.header_admin {
     background-color: white;
 }
 
-.header_admin nav a + a:hover::after {
+.header_admin nav .header_content_links a:hover::after {
     width: 100%;
 
     transition: width 250ms ease-in-out;

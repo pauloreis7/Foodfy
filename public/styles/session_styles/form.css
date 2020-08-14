@@ -1,0 +1,56 @@
+.session-container {
+    width: 90%;
+    max-width: 500px;
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.session-container .session-logo {
+    margin-bottom: 100px;
+}
+
+.session-container form {
+    width: 100%;
+}
+
+.session-container .session_title {
+    text-align: center;
+}
+
+.session-container .session_title h1 {
+    font-size: 24px;
+    color: #111111;
+
+    margin-bottom: 35px;
+}
+
+.session-container .session_fields .field_item {
+    margin-bottom: 35px;
+}
+
+.session-container .session_form_footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.session-container .session_form_footer a {
+    font-size: 16px;
+    color: #969696;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.page_content .session_form_footer button[type="submit"] {
+    position: relative;
+
+    width: 134px;
+}
+
+.page_content .forgot_password {
+    justify-content: flex-end;
+}

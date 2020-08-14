@@ -1,44 +1,10 @@
 {% extends "users/layout_users.njk" %}
+{% import  "users/parts/section-recipes.njk" as recipes_list %}
 
     {% block title %}<title>Receitas Foodfy</title>{% endblock %}
 
 {% block content %}
-
-    {% if search %}
-
-        <h1>Buscando por “{{ search }}”</h1>
-
-    {% endif %}
-
-    {% if search == "" or search == undefined %}
-
-        <h1>Todas as receitas</h1>
-
-    {% endif %}
-
-
-    <section class="recipes_just">
-
-        {% for recipe in recipes %}
-
-            <article class="recipe" 
-                onclick="IndexRedirectRecipeDetailsByClick.redirectToDetails({{ recipe.id }})"
-            >
-
-                <div class="recipe_img" style="background-image: url('{{ recipe.img }}')"></div>
-
-                <div class="recipe_desc">
-
-                    <h3>{{recipe.title}}</h3>
-
-                    <p>por {{recipe.chef_name}}</p>
-
-                </div>
-
-            </article>
-
-        {% endfor %}
-        
-    </section>
+   
+    {{ recipes_list.recipes(search, "recipes_just", recipes, "recipes_list") }}
 
 {% endblock %}

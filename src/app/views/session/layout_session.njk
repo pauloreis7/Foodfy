@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        {% block title %}<title>Foodfy</title>{% endblock %}
+
+        {% include 'admin/parts/styles.njk' %}
+        {% include 'session/styles.njk' %}
+        {% include 'partinals/global_styles.njk' %}
+
+    </head>
+
+    <body onload="activedMenuItem.catchMenuItemToActive()">
+
+        <header class="header_admin">
+
+            {% include "admin/parts/header.njk" %} 
+
+            {% block create %}{% endblock %}
+
+        </header>
+
+        <div class="full_page">
+
+            <section class="page_content">
+
+                <section class="session-container">
+
+                    <div class="session-logo">
+                        
+                        <img src="/assets/logo.png" alt="Logo Foodfy">
+
+                    </div>
+
+                    {% block content %}{% endblock %}
+
+                </section>
+
+            </section>
+
+        </div>
+
+    </body>
+
+    <script src="/scripts.js"></script>
+
+</html>
