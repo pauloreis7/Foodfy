@@ -94,13 +94,17 @@
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 10%;
     row-gap: 52px;
+
+    margin-bottom: 80px;
+}
+
+.page_content .users_list_item {
+    display: flex;
+    flex-direction: column;
 }
 
 .page_content .users_list_item .item_info {
-    width: 100%;
- 
-    display: flex;
-    flex-direction: column;
+    align-self: center;
 }
 
 .page_content .item_info .users_list_actions_buttons {
@@ -110,7 +114,7 @@
 
     margin-top: 16px;
 
-    width: 50%;
+    width: 120px
 }
 
 .item_info .users_list_actions_buttons button[type="submit"] {

@@ -1,6 +1,6 @@
 {% extends 'admin/layout_admin.njk' %}
 
-{% block title %} <title>{{ user.name }}</title> {% endblock %}
+{% block title %} <title>{{ user.name }} - Foodfy</title> {% endblock %}
 
 {% block content %}
 
@@ -26,19 +26,15 @@
                 
                         <h2>Senha</h2>
 
-                        <input name="password" placeholder="Digite a senha" />
+                        <input type="password" name="password" placeholder="Digite a senha" />
 
                     </div>
-                                
-                    <input type="hidden" name="id" value={{ user.id }}>
 
                 </div>
                 
-
             </fieldset>
                 
         </form>
-
 
     </section>
 

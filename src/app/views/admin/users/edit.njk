@@ -31,7 +31,7 @@
 
         </form>
 
-        <form action="/admin/profile?_method=put" method="POST" id="users_form">
+        <form action="/admin/users?_method=put" method="POST" id="users_form">
         
             <fieldset class="fields">
 
@@ -41,8 +41,14 @@
 
                     <div class="field_item admin_field">
                 
-                        <input type="checkbox" name="is_admin" id="admin_edit" />
+                        <input 
+                            type="checkbox" 
+                            name="is_admin" 
+                            id="admin_edit" 
 
+                            {% if user.is_admin %} checked {% endif %}
+                            
+                        />
                         <label for="admin_edit">Administrador</label>
 
                     </div>

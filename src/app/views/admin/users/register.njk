@@ -1,6 +1,6 @@
 {% extends 'admin/layout_admin.njk' %}
 
-{% block title %} <title>{{ user.name }}</title> {% endblock %}
+{% block title %} <title>Criar Usuário Foodfy</title> {% endblock %}
 
 {% block content %}
 
@@ -20,7 +20,7 @@
 
     <section class="users_form_container">
 
-        <form action="/admin/profile" method="POST" id="users_form">
+        <form action="/admin/users" method="POST" id="users_form">
         
             <fieldset class="fields">
 
@@ -35,8 +35,6 @@
                         <label for="admin_create">Administrador</label>
 
                     </div>
-                                
-                    <input type="hidden" name="id" value={{ user.id }}>
 
                 </div>
                 

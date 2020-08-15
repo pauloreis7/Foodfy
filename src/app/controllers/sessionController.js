@@ -3,12 +3,15 @@
 module.exports = {
     loginForm(req, res) {
 
-        return res.render('session/login')
+        const user = req.query
+
+        return res.render('session/login', { user })
     },
 
     login(req, res) {
+        req.session.userId = req.user.id
 
-        return res.send(req.body)
+        return res.redirect('/admin/profile')
     },
 
     logout(req, res) {
