@@ -226,3 +226,13 @@ const LightBox = {
     LightBox.target.style.top = "-100%"
   }
 }
+
+const deleteComfirm = (event, formId, message) => {
+  const formDelete = document.querySelector(`#${ formId }`)
+
+  const comfirm = confirm(`Deseja mesmo apagar ${ message }?`)
+
+  if (!comfirm) {
+    event.preventDefault()
+  }
+}

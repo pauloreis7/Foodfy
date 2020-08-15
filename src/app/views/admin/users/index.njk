@@ -1,0 +1,45 @@
+{% extends 'admin/layout_admin.njk' %}
+
+{% block title %} <title>{{ user.name }}</title> {% endblock %}
+
+{% block content %}
+
+    <div class="users_header form_header">
+
+        <h1>Bem vindo Usuário</h1>
+
+        <button type="submit" form="users_form" class="submit_button">Salvar</button>
+
+    </div>
+
+    <section class="users_form_container">
+
+        <form action="/admin/profile?_method=put" method="POST" id="users_form">
+        
+            <fieldset class="fields">
+
+                <div class="create_header">
+
+                    {% include 'admin/users/fields.njk' %}
+
+                    <div class="field_item">
+                
+                        <h2>Senha</h2>
+
+                        <input name="password" placeholder="Digite a senha" />
+
+                    </div>
+                                
+                    <input type="hidden" name="id" value={{ user.id }}>
+
+                </div>
+                
+
+            </fieldset>
+                
+        </form>
+
+
+    </section>
+
+{% endblock %}

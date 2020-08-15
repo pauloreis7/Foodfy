@@ -83,3 +83,36 @@
 .item_content span {
     margin:  0 0 4px 8px;
 }
+
+/* USERS LIST */
+
+.users_list_header .submit_button {
+    width: 140px;
+}
+
+.page_content .users_list {
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 10%;
+    row-gap: 52px;
+}
+
+.page_content .users_list_item .item_info {
+    width: 100%;
+ 
+    display: flex;
+    flex-direction: column;
+}
+
+.page_content .item_info .users_list_actions_buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-top: 16px;
+
+    width: 50%;
+}
+
+.item_info .users_list_actions_buttons button[type="submit"] {
+    color: #F55A5A
+}

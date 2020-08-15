@@ -108,12 +108,6 @@ header.header_admin {
     line-height: 16px;
 }
 
-#delete  {
-    position: absolute;
-    top: 0;
-    right: 156px;
-}
-
 #delete_button {
-    background-color: #DC4747;
+    background-color: var(--delete-color);
 }

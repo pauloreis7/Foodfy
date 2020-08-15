@@ -4,11 +4,15 @@
 
 {% block content %}
 
-    <h1>Criando chef</h1>
+    <div class="form_header">
 
-    <form action="/chefs" method="post" enctype="multipart/form-data">
+        <h1>Criando chef</h1>
 
-        <button type="submit">Salvar chef</button>
+        <button type="submit" form="crete_chef_form" class="submit_button">Salvar chef</button>
+
+    </div>
+
+    <form action="/chefs" method="post" enctype="multipart/form-data" id="crete_chef_form">
 
         {% include 'admin/chefs/fields.njk' %}
 

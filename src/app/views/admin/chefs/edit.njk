@@ -13,41 +13,39 @@
 
 {% block content %}
 
-    <h1>Editar: {{ chef.name }}</h1>
+    <div class="form_header">
 
-    <form action="/chefs?_method=delete" id="delete" method="post">
+        <h1>Editar: {{ chef.name }}</h1>
+
+        <div class="form_action_buttons">
+
+            <button type="submit" id="delete_button" form="delete_chef_form" class="submit_button">Deletar</button>
+
+            <button type="submit" form="edit_chef_form" class="submit_button">Salvar chef</button>
+
+        </div>
+
+    </div>
+
+    <form 
+        action="/chefs?_method=delete" 
+        id="delete_chef_form" 
+        method="post"
+        onsubmit="deleteComfirm(event, 'delete_chef_form', 'esse Chef')"
+    >
     
         <input type="hidden" name="id" value={{ chef.id }} />
         <input type="hidden" name="total_recipes" value={{ chef.total_recipes }} />
-
-        <button type="submit" id="delete_button">Deletar</button>
     
     </form>
 
-    <form action="/chefs?_method=put" method="post" enctype="multipart/form-data">
+    <form action="/chefs?_method=put" method="post" enctype="multipart/form-data" id="edit_chef_form">
 
         <input type="hidden" name="id" value={{ chef.id }} />
-
-        <button type="submit">Salvar chef</button>
 
         {% include 'admin/chefs/fields.njk' %}
     
     </form>
-
-    <script>
-    
-        //Delete verify
-        const formDelete = document.querySelector("#delete")
-
-        formDelete.addEventListener("submit", function (event) {
-            const comfirm = confirm("Deseja mesmo apagar essa receita?")
-
-            if (!comfirm) {
-                event.preventDefault()
-            }
-        })
-    
-    </script>
 
 {% endblock %}
     

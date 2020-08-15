@@ -1,0 +1,120 @@
+{% extends 'admin/layout_admin.njk' %}
+
+{% block title %} <title>Usuários - Foodfy</title> {% endblock %}
+
+{% block content %}
+
+    <div class="form_header users_list_header">
+
+        <h1>Usuários</h1>
+
+        <a href="/admin/users" class="submit_button">Novo</a>
+
+    </div>
+
+    <article class="items_list users_list">
+
+        {# {% for chef in chefs %} #}
+
+            <div class="users_list_item">
+        
+                <div class="item_info">
+                
+                    <h3>Paulo Reis</h3>
+
+                    <p>Paulosilvadosreis2057@gmail.com</p>
+
+                    <div class="users_list_actions_buttons">
+
+                        <a href="/admin/{{ user.id }}/update" class="buttons">Editar</a>
+
+                        <form action="/admin/users?_method=delete" method="post" >
+
+                            <button type="submit" class="buttons">Remover</button>
+
+                        </form>
+
+                    </div>
+                
+                </div>
+            
+            </div>
+
+            <div class="users_list_item">
+        
+                <div class="item_info">
+                
+                    <h3>Paulo Reis</h3>
+
+                    <p>Paulosilvadosreis2057@gmail.com</p>
+
+                    <div class="users_list_actions_buttons">
+
+                        <a href="/admin/{{ user.id }}/update" class="buttons">Editar</a>
+
+                        <form action="/admin/users?_method=delete" method="post" >
+
+                            <button type="submit" class="buttons">Remover</button>
+
+                        </form>
+
+                    </div>
+                
+                </div>
+            
+            </div>
+
+            <div class="users_list_item">
+        
+                <div class="item_info">
+                
+                    <h3>Paulo Reis</h3>
+
+                    <p>Paulosilvadosreis2057@gmail.com</p>
+
+                    <div class="users_list_actions_buttons">
+
+                        <a href="/admin/{{ user.id }}/update" class="buttons">Editar</a>
+
+                        <form action="/admin/users?_method=delete" method="post" >
+
+                            <button type="submit" class="buttons">Remover</button>
+
+                        </form>
+
+                    </div>
+                
+                </div>
+            
+            </div>
+
+            <div class="users_list_item">
+        
+                <div class="item_info">
+                
+                    <h3>Paulo Reis</h3>
+
+                    <p>Paulosilvadosreis2057@gmail.com</p>
+
+                    <div class="users_list_actions_buttons">
+
+                        <a href="/admin/{{ user.id }}/update" class="buttons">Editar</a>
+
+                        <form action="/admin/users?_method=delete" method="post" >
+
+                            <button type="submit" class="buttons">Remover</button>
+
+                        </form>
+
+                    </div>
+                
+                </div>
+            
+            </div>
+
+            
+        {# {% endfor %} #}
+
+    </article>
+
+{% endblock %}

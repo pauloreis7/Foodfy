@@ -24,17 +24,21 @@ routes.post('/reset-password', sessionController.reset)
 
 
 //users
-// routes.get('admin/profile', profileController.index)
+routes.get('/admin/profile', profileController.index)
 
-// routes.put('admin/profile', profileController.put)
+// routes.put('/admin/profile', profileController.put)
 
 //admin user
-// routes.get('admin/users', userController.list)
+routes.get('/admin/users', userController.list)
 
-// routes.post('admin/users', userController.post) 
+routes.get('/admin/users/register', userController.create)
 
-// routes.put('admin/users', userController.put)
+// routes.post('/admin/users', userController.post)
 
-// routes.delete('admin/users', userController.delete)
+routes.get('/admin/:id/update', userController.update)
+
+// routes.put('/admin/users', userController.put)
+
+// routes.delete('/admin/users', userController.delete)
 
 module.exports = routes

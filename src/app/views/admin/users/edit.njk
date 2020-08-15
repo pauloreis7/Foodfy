@@ -1,0 +1,62 @@
+{% extends 'admin/layout_admin.njk' %}
+
+{% block title %} <title>{{ user.name }} -Atualizar</title> {% endblock %}
+
+{% block content %}
+
+    <div class="form_header users_header">
+
+        <h1>Atualizar Usuário</h1>
+
+        <div class="form_action_buttons">
+
+            <button type="submit" id="delete_button" form="delete_user_form" class="submit_button">Deletar</button>
+
+            <button type="submit" form="users_form" class="submit_button">Salvar</button>
+
+        </div>
+
+    </div>
+
+    <section class="users_form_container">
+
+        <form 
+            action="/admin/users?_method=delete" 
+            method="post" 
+            id="delete_user_form" 
+            onsubmit="deleteComfirm(event, 'delete_user_form', 'esse Usuário')"
+        >
+
+            <input type="hidden" name="id" value={{ user.id }} />
+
+        </form>
+
+        <form action="/admin/profile?_method=put" method="POST" id="users_form">
+        
+            <fieldset class="fields">
+
+                <div class="create_header">
+
+                    {% include 'admin/users/fields.njk' %}
+
+                    <div class="field_item admin_field">
+                
+                        <input type="checkbox" name="is_admin" id="admin_edit" />
+
+                        <label for="admin_edit">Administrador</label>
+
+                    </div>
+                                
+                    <input type="hidden" name="id" value={{ user.id }}>
+
+                </div>
+                
+
+            </fieldset>
+                
+        </form>
+
+
+    </section>
+
+{% endblock %}

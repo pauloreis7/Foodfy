@@ -4,6 +4,7 @@ const maxFilesUpload = 5
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
+
         cb(null, './public/images')
     },
 

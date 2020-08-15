@@ -1,5 +1,21 @@
 .form_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     margin-bottom: 30px;
+}
+
+.form_header .form_action_buttons {
+    width: 300px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+}
+
+.page_content .form_header h1 {
+    margin: 0;
 }
 
 form .field_item .recipe_upload {
@@ -59,16 +75,25 @@ form .field_item #recipe_photos_upload i {
 }
 
 form .field_item #recipe_photos_preview {
-    display: grid;
-    grid-template-columns: repeat(5, 150px);
-    gap: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 
     flex: 1;
-    height: 151px;
+    min-height: 151px;
 }
 
 .recipe_upload #recipe_photos_preview .photos {
+    max-height: 151px;
+    max-width: 148px;
     position: relative;
+
+    margin-left: 10px;
+}
+
+.recipe_upload #recipe_photos_preview .photos:first-child {
+    margin-left: 0;
+
 }
 
 .recipe_upload #recipe_photos_preview .photos img {
@@ -216,4 +241,59 @@ form .field_item #chefs_photos_upload:hover {
     transition: 250ms;
 }
 
-/*  */
+/* USERS FORM */
+
+.page_content .users_header, .page_content .users_list_header {
+    margin-bottom: 64px;
+}
+
+.page_content .users_header button[type="submit"] {
+    width: 140px;
+}
+
+.full_page .page_content .users_header a {
+    background-color: #8A8A8A;
+}
+
+.page_content .users_header a:hover {
+    background-color: var(--delete-color);
+    filter: brightness(100%);
+
+    transition: 250ms;
+}
+
+.page_content .users_header h1 {
+    margin: 0;
+}
+
+.users_form_container #users_form .create_header {
+    gap: 40px;
+}
+
+.users_form_container #users_form .field_item {
+    margin: 0;
+}
+
+.users_form_container #users_form .field_item input {
+    margin: 0
+}
+
+.users_form_container #users_form .admin_field {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.users_form_container #users_form .admin_field input[type="checkbox"] {
+    width: 15px;
+    height: 15px;
+
+    margin-right: 8px;
+
+    cursor: pointer;
+}
+
+.users_form_container #users_form .admin_field label {
+    color: var(--title-color);
+    font-weight: bold;
+}

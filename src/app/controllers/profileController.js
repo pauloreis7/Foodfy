@@ -1,4 +1,10 @@
 module.exports = {
 
-   // profile controller - 2 routes
+   index(req, res) {
+      return res.render('admin/users/index.njk')
+   },
+
+   update(req, res) {
+      return res.render('admin/users/')
+   }
 }

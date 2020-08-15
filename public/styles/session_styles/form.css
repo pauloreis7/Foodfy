@@ -45,6 +45,12 @@
     font-weight: bold;
 }
 
+.session-container .session_form_footer a:hover {
+    filter: brightness(85%);
+
+    transition: 200ms;
+}
+
 .page_content .session_form_footer button[type="submit"] {
     position: relative;
 

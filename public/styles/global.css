@@ -2,6 +2,7 @@
     --prymary-color: #ff553b;
     --button-color: #6558C3;
     --title-color: #111111;
+    --delete-color: #DC4747;
 }
 
 * {
@@ -78,13 +79,7 @@ button {
     outline: 0;
 }
 
-.page_content button[type="submit"] {
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-button[type="submit"], .edit_create, .modal .modal_buttons a:last-child, form .field_item #chefs_photos_upload p {
+.submit_button {
     max-width: 230px;
 
     font-weight: bold;
@@ -101,7 +96,7 @@ button[type="submit"], .edit_create, .modal .modal_buttons a:last-child, form .f
     padding: 9px 20px;
 }
 
-button[type="submit"]:hover, .edit_create:hover, .modal .modal_buttons a:last-child:hover {
+.submit_button:hover {
     filter: brightness(90%);
     transition: 250ms;
 }

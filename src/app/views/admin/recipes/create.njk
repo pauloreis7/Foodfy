@@ -4,11 +4,15 @@
 
 {% block content %}
 
-    <h1 class="form_header">Criando receita</h1>
+    <div class="form_header">
 
-    <form action="/recipes" method="post" enctype="multipart/form-data">
+        <h1>Criando receita</h1>
 
-        <button type="submit">Salvar receita</button>
+        <button type="submit" form="crete_recipe_form" class="submit_button">Salvar receita</button>
+    </div>
+
+    <form action="/recipes" method="post" enctype="multipart/form-data" id="crete_recipe_form">
+
 
         {% include 'admin/recipes/fields.njk' %}
 

@@ -55,7 +55,7 @@ module.exports = {
             }
         }
 
-        if (req.file.length == 0 ) return res.send("Por favor envie pelo menos uma foto!!")
+        if (!req.file) return res.send("Por favor envie pelo menos uma foto!!")
         
         let results = await File.create(req.file)
         const fileId = results.rows[0].id
@@ -134,7 +134,7 @@ module.exports = {
 
         let fileId = req.body.old_file_id
 
-        if(req.file.length != 0) {
+        if(req.file) {
             let results = await File.create(req.file)
             fileId = results.rows[0].id
 
