@@ -13,7 +13,7 @@ routes.get('/login', sessionController.loginForm)
 
 routes.post('/login', sessionValidator.login, sessionController.login)
 
-// routes.post('/logout', sessionController.logout)
+routes.post('/logout', sessionController.logout)
 
 //Forgot password
 

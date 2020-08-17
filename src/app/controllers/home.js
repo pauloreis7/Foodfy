@@ -6,9 +6,7 @@ module.exports = {
 
     //loob
     async index(req, res) {
-
         try {
-
             let results = await Recipe.search(search = false)
 
             if(!results.rows) return res.send("Não encontramos nenhuma receita!!")
@@ -40,7 +38,6 @@ module.exports = {
 
     //aboutFoodfy
     about(req, res) {
-
         return res.render("users/food_about")
     },
 

@@ -20,7 +20,15 @@
 
             {% include "admin/parts/header.njk" %} 
 
-            {% block create %}{% endblock %}
+            {% block create %}
+            
+                <form action="/logout" method="post" class="logout_form">
+                
+                    <button type="submit">Sair</button>
+
+                </form>
+            
+            {% endblock %}
 
         </header>
 

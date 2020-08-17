@@ -8,7 +8,6 @@ module.exports = {
     async index(req, res) {
 
         try {
-
             let results = await Recipe.all()
 
             if (!results.rows) return res.send("Não encontramos nenhuma receita!!")

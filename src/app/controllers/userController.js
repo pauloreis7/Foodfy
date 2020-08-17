@@ -4,7 +4,6 @@ const mailer = require('../../lib/mail')
 module.exports = {
     
     async list(req, res) {
-
         let results = await User.all()
         const users = results.rows
         

@@ -87,6 +87,21 @@ header.header_admin {
     transition: width 250ms ease-in-out;
 }
 
+.header_admin .logout_form button[type="submit"] {
+    font-size: 15px;
+    letter-spacing: 1.1px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0);
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.header_admin .logout_form button[type="submit"]:hover {
+    opacity: .9;
+
+    transition: opacity 200ms;
+}
+
 /* BUTTONS */
 
 .buttons, .buttons_ingredient, .buttons_make {

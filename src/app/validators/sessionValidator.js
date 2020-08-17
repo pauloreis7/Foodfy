@@ -3,7 +3,7 @@ const checkAllFields = require('../../lib/checkFields')
 const { compare } = require('bcryptjs')
 
 async function login(req, res, next) {
-    
+
     const notFillAllFields = checkAllFields(req.body)
     if(notFillAllFields) return res.render('session/login', notFillAllFields)
 
@@ -29,7 +29,6 @@ async function login(req, res, next) {
 
     next()
 }
-
 
 module.exports = {
     login
