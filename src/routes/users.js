@@ -8,6 +8,8 @@ const sessionController = require('../app/controllers/sessionController')
 const userValidator = require('../app/validators/userValidator')
 const sessionValidator = require('../app/validators/sessionValidator')
 
+const accessCredentials = require('../app/middlewares/session')
+
 //session
 routes.get('/login', sessionController.loginForm)
 
@@ -27,9 +29,9 @@ routes.get('/reset-password', sessionController.resetForm)
 
 
 //users
-routes.get('/admin/profile', userValidator.show, profileController.index)
+routes.get('/admin/profile', accessCredentials.onlyUsers, userValidator.show, profileController.index)
 
-routes.put('/admin/profile', userValidator.updateLoggedUser, profileController.update)
+routes.put('/admin/profile', accessCredentials.onlyUsers, userValidator.updateLoggedUser, profileController.update)
 
 //admin user
 routes.get('/admin/users', userController.list)

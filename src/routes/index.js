@@ -5,11 +5,13 @@ const users = require('./users')
 const recipes = require('./recipes')
 const chefs = require('./chefs')
 
+const accessCredentials = require('../app/middlewares/session')
+
 const home = require('../app/controllers/home')
 
 routes.use('/', users)
-routes.use('/recipes', recipes)
-routes.use('/chefs', chefs)
+routes.use('/recipes', accessCredentials.onlyUsers, recipes)
+routes.use('/chefs', accessCredentials.onlyAdmin, chefs)
 
 routes.get("/", home.index)
 

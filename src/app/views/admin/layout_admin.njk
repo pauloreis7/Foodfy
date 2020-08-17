@@ -21,12 +21,16 @@
             {% include "admin/parts/header.njk" %} 
 
             {% block create %}
-            
-                <form action="/logout" method="post" class="logout_form">
-                
-                    <button type="submit">Sair</button>
 
-                </form>
+                {% if userCredentials.loggedUserId %}
+                
+                    <form action="/logout" method="post" class="logout_form">
+                    
+                        <button type="submit">Sair</button>
+
+                    </form>
+
+                {% endif %}
             
             {% endblock %}
 

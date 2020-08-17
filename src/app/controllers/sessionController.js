@@ -2,13 +2,20 @@
 
 module.exports = {
     loginForm(req, res) {
-
         const user = req.query
+
         return res.render('session/login', { user })
     },
     
     login(req, res) {
-        req.session.userId = req.user.id
+        
+        const { user } = req
+
+        req.session.userId = user.id
+
+        const isAdmin = user.is_admin == true ?  true : false
+
+        req.session.isAdmin = isAdmin
 
         return res.redirect('/admin/profile')
     },

@@ -6,25 +6,16 @@ const session = require('./config/session')
 
 const server = express()
 
-server.locals = {
-    name: "PAULO",
-    house: "RED"
-}
-
+server.use(session)
 server.use((req, res, next) => {
-    let isAdmin = false
 
-    if(req.session && req.session.isAdmin) isAdmin = true
-
-    res.locals.user = {
-        isLogged: req.session,
-        isAdmin: isAdmin
+    res.locals.userCredentials = {
+        loggedUserId: req.session.userId,
+        isAdmin: req.session.isAdmin
     }
 
     next()
 })
-
-server.use(session)
 
 server.use(express.urlencoded({extended: true}))
 server.use(express.static('public'))

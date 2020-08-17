@@ -4,6 +4,8 @@ const routes = express.Router()
 const chefsController = require('../app/controllers/chefsController')
 const multer = require('../app/middlewares/multer')
 
+const accessCredentials = require('../app/middlewares/session')
+
 routes.get("/", chefsController.index)
 
 routes.get("/create", chefsController.create) 

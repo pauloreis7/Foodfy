@@ -4,7 +4,7 @@ const routes = express.Router()
 const recipesController = require('../app/controllers/recipesController')
 const multer = require('../app/middlewares/multer')
 
-routes.get("/", recipesController.index)
+routes.get("/",recipesController.index)
 
 routes.get("/create", recipesController.create)
 

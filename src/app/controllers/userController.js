@@ -51,7 +51,7 @@ module.exports = {
     update(req, res) {
         
         const { user } = req
-
+        
         return res.render('admin/users/edit', { user })
     },
 
@@ -66,7 +66,7 @@ module.exports = {
             email,
             is_admin: isAdmin
         })
-
+        
         return res.render(`admin/users/edit`, {
             success: `Conta de ${ name } atualizada com sucesso!!`,
             user: req.body

@@ -58,7 +58,7 @@ async function updateLoggedUser(req, res, next) {
         error: "Senha incorreta!!",
         user: req.body
     })
-    // 956f8d
+    // 268321
 
     req.user = user
 
@@ -70,7 +70,7 @@ async function adminUpdateUser(req, res, next) {
     const notFillAllFields = checkAllFields(req.body)
     if(notFillAllFields) return res.render('admin/users/edit', notFillAllFields)
 
-    // 956f8d
+    // 268321
     next()
 }
 
