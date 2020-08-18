@@ -11,7 +11,7 @@ const home = require('../app/controllers/home')
 
 routes.use('/', users)
 routes.use('/recipes', accessCredentials.onlyUsers, recipes)
-routes.use('/chefs', accessCredentials.onlyAdmin, chefs)
+routes.use('/chefs', chefs)
 
 routes.get("/", home.index)
 

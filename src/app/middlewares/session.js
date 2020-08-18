@@ -8,16 +8,16 @@ function onlyUsers(req, res, next) {
 }
 
 function onlyAdmin(req, res, next) {
-    
-    if(!req.session.userId || !req.session.isAdmin == true) return res.render('users/index', {
-        error: "Somente administradores podem fazer isso!!"
-    })
+
+    if(!req.session.userId || !req.session.isAdmin == true) return res.redirect('/admin/users?error=Somente administradores podem fazer isso!!')
 
     next()
 }
 
 function redirectUserByCredential(req, res, next) {
-    
+
+    if (req.session.userId) return res.redirect('/admin/users')
+
     next()
 }
 

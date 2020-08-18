@@ -26,7 +26,15 @@
 
                     <div class="users_list_actions_buttons">
 
-                        <a href="/admin/{{ user.id }}/update" class="buttons">Editar</a>
+                        {% if userCredentials.loggedUserId == user.id %}
+
+                            <a href="/admin/profile" class="buttons">Editar</a>
+
+                        {% else %}
+
+                            <a href="/admin/{{ user.id }}/update" class="buttons">Editar</a>
+
+                        {% endif %}
 
                         <form 
                             action="/admin/users?_method=delete" 

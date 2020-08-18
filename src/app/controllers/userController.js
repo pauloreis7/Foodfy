@@ -6,8 +6,10 @@ module.exports = {
     async list(req, res) {
         let results = await User.all()
         const users = results.rows
+
+        const error = req.query
         
-        return res.render('admin/users/users_list', { users })
+        return res.render('admin/users/users_list', { users, error })
     },
 
     create(req, res) {

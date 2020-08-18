@@ -58,7 +58,6 @@ async function updateLoggedUser(req, res, next) {
         error: "Senha incorreta!!",
         user: req.body
     })
-    // 268321
 
     req.user = user
 
@@ -70,7 +69,15 @@ async function adminUpdateUser(req, res, next) {
     const notFillAllFields = checkAllFields(req.body)
     if(notFillAllFields) return res.render('admin/users/edit', notFillAllFields)
 
-    // 268321
+    next()
+}
+
+async function deleteUser(req, res, next) {
+
+    if (req.session.userId == req.body.id) {
+        return res.redirect('/admin/users?error=Você não pode deletar sua própria conta!!')
+    }
+
     next()
 }
 
@@ -78,5 +85,6 @@ module.exports = {
     post,
     show,
     updateLoggedUser,
-    adminUpdateUser
+    adminUpdateUser,
+    deleteUser
 }

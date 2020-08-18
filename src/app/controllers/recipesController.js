@@ -59,6 +59,8 @@ module.exports = {
 
         if (req.files.length == 0) return res.send("Por favor envie pelo menos uma foto!!")
 
+        req.body.userId = req.session.userId
+
         let results = await Recipe.create(req.body)
         const recipeId = results.rows[0].id
 
@@ -95,7 +97,9 @@ module.exports = {
             src: `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`
         }))
 
-        return res.render("admin/recipes/show", { recipe, files })
+        const error = req.query
+
+        return res.render("admin/recipes/show", { recipe, files, error })
     },
 
     //editPage

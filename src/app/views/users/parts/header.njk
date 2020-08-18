@@ -12,7 +12,17 @@
             <a href="/">Início</a>
             <a href="/food_about">Sobre</a>
             <a href="/allRecipes">Receitas</a>
-            <a href="/login">Login</a>
+
+            {% if userCredentials.loggedUserId %}
+
+                <a href="/admin/users">Admin</a>
+
+            {% else %}
+
+                <a href="/login">Login</a>
+
+            {% endif %}
+
         {% endblock %}
         
     </nav>
