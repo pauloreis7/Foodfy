@@ -7,7 +7,7 @@ module.exports = {
         let results = await User.all()
         const users = results.rows
 
-        const error = req.query
+        const error = req.query.error
         
         return res.render('admin/users/users_list', { users, error })
     },

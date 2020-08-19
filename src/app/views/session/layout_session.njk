@@ -27,7 +27,7 @@
 
         <div class="full_page">
 
-            <section class="page_content">
+            <section class="page_content {% if error %}error_input{% endif %}">
 
                 <section class="session-container">
 
@@ -42,6 +42,8 @@
                 </section>
 
             </section>
+
+            {% include 'partinals/messages.njk' %}
 
         </div>
 

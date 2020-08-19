@@ -7,6 +7,14 @@
     .page_content .users_list {
         grid-template-columns: 1fr 1fr;
     }
+
+    .full_page .messages {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 96%;
+        max-width: 700px;
+        height: 100px;
+    }
 }
 
 @media (max-width: 700px) {
@@ -21,7 +29,7 @@
         margin-right: 3px;
     }
 
-    header form button[type="submit"] {
+    header form button.submit_button[type="submit"] {
         font-size: .01px;
 
         width: 36px;

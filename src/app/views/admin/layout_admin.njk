@@ -38,11 +38,13 @@
 
         <div class="full_page">
 
-            <section class="page_content">
+            <section class="page_content {% if error %}error_input{% endif %}">
 
                 {% block content %}{% endblock %}
 
             </section>
+
+            {% include 'partinals/messages.njk' %}
 
             {% include 'admin/parts/modal.njk' %}
 

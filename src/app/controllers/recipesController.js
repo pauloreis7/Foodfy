@@ -97,7 +97,7 @@ module.exports = {
             src: `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`
         }))
 
-        const error = req.query
+        const error = req.query.error
 
         return res.render("admin/recipes/show", { recipe, files, error })
     },
