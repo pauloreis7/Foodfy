@@ -1,0 +1,29 @@
+{% macro chefs(title, linkToShow, chefs) %}
+
+    <h1>{{ title }}</h1>
+
+    <article class="items_list chefs_list">
+
+        {% for chef in chefs %}
+
+            <div class="list_chef_item">
+
+                <div class="item_img chef-list_img" style="background-image: url('{{ chef.avatar }}')"></div>
+
+                <div class="item_content">
+
+                    <p>{{ chef.name }}</p>
+
+                    <span>{{ chef.total_recipes }} Receitas</span>
+
+                    <a href="{{ linkToShow }}/{{ chef.id }}" class="buttons">Visualizar</a>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </article>
+
+{% endmacro %}

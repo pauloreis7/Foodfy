@@ -1,4 +1,4 @@
-{% extends 'admin/layout_admin.njk' %}
+{% extends 'users/layout_users.njk' %}
 {% import 'partinals/chef-details.njk' as chef_details_container %}
 
 {% block title %}<title>Foodfy - {{ chef.name }}</title>{% endblock %}
@@ -8,7 +8,7 @@
 
 {% block content %}
 
-{{ chef_details_container.chef_details(true, avatar, recipes, "recipes", chef) }}
+{{ chef_details_container.chef_details(false, avatar, recipes, "recipeDetails", chef) }}
 
 {% endblock %}
 

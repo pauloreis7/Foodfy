@@ -1,0 +1,10 @@
+{% extends 'users/layout_users.njk' %}
+{% import "partinals/section-chefs.njk" as chefs_list %}
+
+{% block title %} <title>Chefs - Foodfy</title> {% endblock %}
+
+{% block content %}
+
+    {{ chefs_list.chefs("Todos os chefs", "/chefs/chefDetails/", chefs) }}
+
+{% endblock %}

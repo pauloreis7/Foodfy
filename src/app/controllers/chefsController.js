@@ -31,8 +31,11 @@ module.exports = {
             } )
 
             const chefs = await Promise.all(chefsPromise)
+            
+            if (req.url == '/allChefs') return res.render("users/chefs", { chefs })
 
             return res.render("admin/chefs/chefs_list", { chefs })
+
         } catch (err) {
             console.error(err)
         }
@@ -103,6 +106,9 @@ module.exports = {
         } )
 
         const recipes = await Promise.all(recipesPromise)
+
+        if (req.url.replace(/\d/g, "") == "/chefDetails/")
+         return res.render("users/chef_details", { chef, recipes, avatar })
 
         return res.render("admin/chefs/show", { chef, recipes, avatar })
     },

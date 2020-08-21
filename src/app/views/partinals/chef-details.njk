@@ -1,0 +1,59 @@
+{% macro chef_details(edit_chef, chef_avatar, chef_recipes, recipe_redirect, chef) %}
+
+    
+    <div class="admin_header">
+
+        <h1>Chef: {{ chef.name }}</h1>
+
+        {% if edit_chef == true %}
+
+            <a href="/chefs/{{ chef.id }}/edit" class="submit_button">Editar Chef</a>
+
+        {% endif %}
+
+
+    </div>
+
+    <section class="chef_data">
+    
+    <img class="chef_img" src="{{ chef_avatar.src }}" />
+
+    <h1>{{ chef.name }}</h1>
+
+    <p>{{ chef.total_recipes }} receitas</p>
+    
+    </section>
+
+    <h2 class="chef_title">Receitas</h2>
+
+    <article class="chef_recipes items_list">
+
+        {% for recipe in chef_recipes %}
+    
+        <div class="list_item">
+        
+            <div class="item_img" style="background-image: url('{{ recipe.img }}')"></div>
+
+            <div class="item_info">
+            
+                <h3>{{ recipe.title }}</h3>
+
+                <p>por {{ chef.name }}</p>
+
+                <a href="/{{ recipe_redirect }}/{{ recipe.id }}" class="buttons" id="view">Visualizar</a>
+            
+            </div>
+        
+        </div>
+
+        {% endfor %}
+
+    </article>
+
+    <footer class="created_at">
+
+        <p>Chef {{ chef.name }} desde {{ chef.created_at }}</p>
+
+    </footer>
+
+{% endmacro %}

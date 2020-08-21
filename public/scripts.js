@@ -1,10 +1,6 @@
-const IndexRedirectRecipeDetailsByClick = {
+const handleRedirectToDetailsByClick = (recipeOrChef, id) => 
+  window.location.href = `/${ recipeOrChef }Details/${ id }`
 
-  redirectToDetails(recipeId) {
-
-    window.location.href = `/details/${ recipeId }`
-  }
-}
 
 const showAndHideDetails = {
   cathDetailsList (button) {

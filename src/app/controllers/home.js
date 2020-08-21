@@ -1,6 +1,6 @@
 const Recipe = require('../models/Recipe')
 const File = require('../models/File')
-const { file } = require('../models/Recipe')
+
 
 module.exports = {
 
@@ -78,7 +78,7 @@ module.exports = {
     },
 
     //details
-    async details(req, res) {
+    async recipeDetails(req, res) {
 
         let results = await Recipe.find(req.params.id)
         const recipe = results.rows[0]
@@ -96,5 +96,5 @@ module.exports = {
         }))
 
         return res.render("users/details", { recipe, files })
-    },
+    }
 }

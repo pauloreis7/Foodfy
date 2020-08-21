@@ -22,7 +22,7 @@
         {% for recipe in recipes %}
 
             <article class="recipe" 
-                onclick="IndexRedirectRecipeDetailsByClick.redirectToDetails({{ recipe.id }})"
+                onclick="handleRedirectToDetailsByClick('recipe', {{ recipe.id }})"
             >
 
                 <div class="recipe_img" style="background-image: url('{{recipe.img}}')"></div>

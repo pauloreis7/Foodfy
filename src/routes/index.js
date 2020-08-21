@@ -19,6 +19,6 @@ routes.get("/food_about", home.about)
  
 routes.get("/allRecipes", home.recipes)
 
-routes.get("/details/:id", home.details)
+routes.get("/recipeDetails/:id", home.recipeDetails)
 
 module.exports = routes
