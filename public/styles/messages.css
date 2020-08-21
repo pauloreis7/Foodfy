@@ -14,9 +14,12 @@
     width: 344px;
     height: 135px;
 
+    padding: 10px 20px;
+
     display: flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
 
     border-radius: 4px;
     color: #FFFFFF;

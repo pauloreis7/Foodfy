@@ -21,11 +21,11 @@ routes.post('/logout', sessionController.logout)
 
 routes.get('/forgot-password', sessionController.forgotForm)
 
-// routes.post('/forgot-password', sessionController.forgot)
+routes.post('/forgot-password', sessionValidator.forgot,sessionController.forgot)
 
 routes.get('/reset-password', sessionController.resetForm)
 
-// routes.post('/reset-password', sessionController.reset)
+routes.post('/reset-password', sessionValidator.reset,sessionController.reset)
 
 
 //users

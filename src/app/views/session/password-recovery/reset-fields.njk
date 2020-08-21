@@ -2,7 +2,7 @@
         
     <h2>Email</h2>
 
-    <input type="email" name="email" value="{{ user.email }}" placeholder="Digite seu email" />
+    <input type="email" name="email" value="{{ email }}" placeholder="Digite seu email" />
 
 </article>
 
@@ -21,3 +21,5 @@
     <input type="password" name="password_repeat" placeholder="Repita a nova senha" />
 
 </article>
+
+<input type="hidden" name="token" value={{ token }} />

@@ -42,7 +42,9 @@ module.exports = {
                 `
             })
 
-            return res.redirect('/admin/users')
+            return res.render('/admin/users/register', {
+                success: "Usuário registrado com sucesso!!"
+            })
 
         } catch (err) {
             console.error(err)
