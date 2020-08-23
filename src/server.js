@@ -31,4 +31,8 @@ nunjucks.configure("src/app/views", {
     watch: true
 })
 
+server.use(function(req, res) {
+    res.status(404).render("partinals/not-found");
+});
+
 server.listen(5000)

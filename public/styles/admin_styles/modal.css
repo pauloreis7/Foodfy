@@ -15,8 +15,7 @@
 }
 
 .modal .content {
-    max-width: 600px;
-    min-height: 164px;
+    
 
     display: flex;
     flex-direction: column;

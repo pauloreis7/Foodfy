@@ -101,3 +101,14 @@ button {
     filter: brightness(90%);
     transition: 250ms;
 }
+
+/* NOT FOUND PAGE */
+
+.modal.not-found .content {
+    width: 50%;
+    min-height: 340px;
+}
+
+.modal.not-found .content .modal_buttons {
+    justify-content: center;
+}

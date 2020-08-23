@@ -29,16 +29,30 @@ module.exports = {
 
             const recipes = await Promise.all(recipesPromise)
 
-            return res.render("users/index", { recipes })
+            const error = req.query.error || null
+
+            return res.render("users/index", { recipes, error })
 
         } catch (err) {
             console.error(err)
+
+            return res.render('users/index', { 
+                error: "Erro ao exibir listagem, tente novamente!!"
+            })
         }
     },
 
     //aboutFoodfy
     about(req, res) {
-        return res.render("users/food_about")
+        
+        try {
+            return res.render("users/food_about")
+
+        } catch (err) {
+            console.log(err)
+
+            return res.redirect('/?error=Erro ao carregar página, tente novamente!!')
+        }
     },
 
     //recipesList
@@ -74,27 +88,39 @@ module.exports = {
 
         } catch (err) {
             console.error(err)
+
+            return res.render('users/recipes', {
+                error: "Erro ao exibir listagem de receitas, tente novamente!!"
+            })
         }
     },
 
     //details
     async recipeDetails(req, res) {
 
-        let results = await Recipe.find(req.params.id)
-        const recipe = results.rows[0]
+        try {
 
-        results = await File.findFileByRecipeId(req.params.id)
-        const filesId = results.rows
+            let results = await Recipe.find(req.params.id)
+            const recipe = results.rows[0]
 
-        results = filesId.map(id => Recipe.file(id.file_id))
-        let filesPromise = await Promise.all(results)
-        filesPromise = filesPromise.map(file => file.rows[0])
+            results = await File.findFileByRecipeId(req.params.id)
+            const filesId = results.rows
 
-        const files = filesPromise.map(file => ({
-            ...file,
-            src: `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`
-        }))
+            results = filesId.map(id => Recipe.file(id.file_id))
+            let filesPromise = await Promise.all(results)
+            filesPromise = filesPromise.map(file => file.rows[0])
 
-        return res.render("users/details", { recipe, files })
+            const files = filesPromise.map(file => ({
+                ...file,
+                src: `${ req.protocol }://${ req.headers.host }${ file.path.replace("public", "") }`
+            }))
+
+            return res.render("users/details", { recipe, files })
+            
+        } catch (err) {
+            console.error(err)
+
+            return res.redirect('/?error=Erro ao acessar receita, tente novamente!!')
+        }
     }
 }
