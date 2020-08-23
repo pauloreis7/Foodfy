@@ -88,6 +88,14 @@
         font-size: 16px;
         line-height: 26px;
     }
+
+    .header_admin .header_content nav > a {
+        margin-right: 20px;
+    }
+
+    header.header_admin {
+        padding: 26px 10px;
+    }
 }
 
 @media (max-width: 622px) {

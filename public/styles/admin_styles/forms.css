@@ -266,6 +266,10 @@ form .field_item #chefs_photos_upload:hover {
     margin: 0;
 }
 
+.users_form_container {
+    margin-bottom: 48px;
+}
+
 .users_form_container #users_form .create_header {
     gap: 40px;
 }

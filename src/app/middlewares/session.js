@@ -9,7 +9,7 @@ function onlyUsers(req, res, next) {
 
 function onlyAdmin(req, res, next) {
 
-    if(!req.session.userId || !req.session.isAdmin == true) return res.redirect('/admin/users?error=Somente administradores podem fazer isso!!')
+    if(!req.session.userId || !req.session.isAdmin == true) return res.redirect('/admin/profile?error=Somente administradores podem fazer isso!!')
 
     next()
 }

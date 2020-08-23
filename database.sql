@@ -63,3 +63,18 @@ ALTER TABLE "recipe_files" ADD FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("
 ALTER TABLE "recipe_files" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id");
 
 ALTER TABLE "chefs" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id")
+
+-- cascade to delete user
+
+ALTER TABLE "recipes"
+DROP CONSTRAINT recipes_user_id_fkey,
+ADD CONSTRAINT recipes_user_id_fkey
+FOREIGN KEY ("user_id")
+REFERENCES "users" ("id")
+ON DELETE CASCADE;
+
+ALTER TABLE "recipe_files"
+DROP CONSTRAINT recipe_files_recipe_id_fkey,
+ADD CONSTRAINT recipe_files_recipe_id_fkey
+FOREIGN KEY ("recipe_id") REFERENCES "recipes" ("id")
+ON DELETE CASCADE;

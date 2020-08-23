@@ -62,7 +62,30 @@
                 
         </form>
 
-
     </section>
+
+    <h2 class="chef_title">Receitas de {{ user.name }}</h2>
+
+    <article class="chef_recipes items_list">
+
+        {% for recipe in recipes %}
+    
+        <div class="list_item">
+        
+            <div class="item_img" style="background-image: url('{{ recipe.img }}')"></div>
+
+            <div class="item_info">
+            
+                <h3>{{ recipe.title }}</h3>
+
+                <a href="/recipes/{{ recipe.id }}" class="buttons" id="view">Visualizar</a>
+            
+            </div>
+        
+        </div>
+
+        {% endfor %}
+
+    </article>
 
 {% endblock %}

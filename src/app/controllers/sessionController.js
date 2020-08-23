@@ -6,101 +6,172 @@ const crypto = require('crypto')
 
 module.exports = {
     loginForm(req, res) {
-        const user = req.query
 
-        return res.render('session/login', { user })
+        try {
+
+            const user = req.query
+
+            return res.render('session/login', { user })
+
+        } catch (err) {
+            return res.redirect('/?error=Erro ao acessar login de usuário, tente novamente!!')
+        }
     },
     
     login(req, res) {
-        
-        const { user } = req
 
-        req.session.userId = user.id
+        try {
+            
+            const { user } = req
 
-        const isAdmin = user.is_admin == true ?  true : false
+            req.session.userId = user.id
 
-        req.session.isAdmin = isAdmin
+            const isAdmin = user.is_admin == true ?  true : false
 
-        return res.redirect('/admin/profile')
+            req.session.isAdmin = isAdmin
+
+            return res.redirect('/admin/profile')
+
+        } catch (err) {
+            console.error(err)
+
+            const { email } = req.body
+//depajo1107
+            return res.render('session/login', { 
+                user: { email },
+                error: "Erro ao efetuar login, tente novamente!!"
+            })
+        }    
     },
 
     logout(req, res) {
-        req.session.destroy()
+        try {
 
-        return res.redirect('/')
+            req.session.destroy()
+
+            return res.redirect('/')
+            
+        } catch (err) {
+            console.error(err)
+
+            return res.redirect('/admin/profile?error=Error ao sair da sessão, tente novamente!!')
+        }
     },
 
     forgotForm(req, res) {
 
-        return res.render('session/password-recovery/forgot-password')
+        try {
+
+            return res.render('session/password-recovery/forgot-password')
+        } catch (err) {
+            console.error(err)
+
+            return res.render('session/login', { error: "Erro ao acessar a recuperação de senha, tente novamente!!"})
+        }
     },
 
     async forgot(req, res) {
 
-        const { user } = req
+        try {
 
-        const token = crypto.randomBytes(20).toString('hex')
+            const { user } = req
 
-        let expiresTime = new Date()
-        expiresTime = expiresTime.setHours(expiresTime.getHours() + 1)
-        
-        await User.update(user.id, {
-            reset_token: token,
-            reset_token_expires: expiresTime
-        })
+            const token = crypto.randomBytes(20).toString('hex')
 
-        await mailer.sendMail({
-            to: req.body.email,
-            from: 'foodfy@gmail.com',
-            subject: '👨‍🍳 Recuperação de senha Foodfy',
-            html: `
-                <h1>✅ Olá ${ user.name } Perdeu sua senha? <br />
-                    Não se preocupevamos recuperar para você!!!
-                </h1>
+            let expiresTime = new Date()
+            expiresTime = expiresTime.setHours(expiresTime.getHours() + 1)
+            
+            await User.update(user.id, {
+                reset_token: token,
+                reset_token_expires: expiresTime
+            })
 
-                <p>Sua solicitação para uma nova senha foi efetuada com sucesso!!!<br />
-                Agora clique no link abaixo para pegar sua nova senha 😍😍
-                </p>
+            await mailer.sendMail({
+                to: req.body.email,
+                from: 'foodfy@gmail.com',
+                subject: '👨‍🍳 Recuperação de senha Foodfy',
+                html: `
+                    <h1>✅ Olá ${ user.name } Perdeu sua senha? <br />
+                        Não se preocupevamos recuperar para você!!!
+                    </h1>
 
-                <hr />
-                <span>Obs: a solicitação de nova senha só é válida durante 1hr para garantir a segurança de sua conta!</span>
+                    <p>Sua solicitação para uma nova senha foi efetuada com sucesso!!!<br />
+                    Agora clique no link abaixo para pegar sua nova senha 😍😍
+                    </p>
 
-                <h2>Confira suas credenciais de acesso:</h2>
+                    <hr />
+                    <span>Obs: a solicitação de nova senha só é válida durante 1hr para garantir a segurança de sua conta!</span>
 
-                <p><strong>Link para recuperar senha:</strong> <a href='http://localhost:3000/reset-password?email=${ user.email }&&token=${ token }' target='_blank'>Recuperar minha senha</a></p>
+                    <h2>Confira suas credenciais de acesso:</h2>
 
-                <p><strong>Email de cadastro:</strong> ${ user.email }</p>
-                    
-            `
-        })
+                    <p><strong>Link para recuperar senha:</strong> <a href='http://localhost:3000/reset-password?email=${ user.email }&&token=${ token }' target='_blank'>Recuperar minha senha</a></p>
 
-        return res.render('session/password-recovery/forgot-password', { 
-            success: "Sucesso, te enviamos um email para recuperar a senha!!!"
-        })
+                    <p><strong>Email de cadastro:</strong> ${ user.email }</p>
+                        
+                `
+            })
 
+            return res.render('session/password-recovery/forgot-password', { 
+                success: "Sucesso, te enviamos um email para recuperar a senha!!!"
+            })
+            
+        } catch (err) {
+
+            console.error(err)
+
+            return res.render('session/password-recovery/forgot-password', { 
+                error: "Erro ao recuperar senha, tente novamente!!",
+                user: req.body
+            })
+        }
     },
 
     resetForm(req, res) {
-        const { email, token } = req.query
+        
+        try {
+            
+            const { email, token } = req.query
 
-        return res.render('session/password-recovery/reset-password', { email, token })
+            return res.render('session/password-recovery/reset-password', { email, token })
+
+        } catch (err) {
+            console.error(err)
+
+            return res.render('session/password-recovery/forgot-password', { 
+                error: "Erro ao acessar a recuperação de senha, tente novamente!!"
+            })
+        }
     },
 
     async reset(req, res) {
 
-        const { password } = req.body
-        const { user } = req
+        try {
 
-        const newPassword = await hash(password, 8)
+            const { password } = req.body
+            const { user } = req
 
-        await User.update(user.id, {
-            password: newPassword,
-            reset_token: "",
-            reset_token_expires: ""
-        })
+            const newPassword = await hash(password, 8)
 
-        return res.render('session/login', { 
-            success: "Senha atualizada com sucesso!! Faça seu login"
-        })
+            await User.update(user.id, {
+                password: newPassword,
+                reset_token: "",
+                reset_token_expires: ""
+            })
+
+            return res.render('session/login', { 
+                success: "Senha atualizada com sucesso!! Faça seu login"
+            })
+
+        } catch (err) {
+            console.error(err)
+
+            const { email, token } = req.body
+            
+            return res.render('session/password-recovery/reset-password', {
+                error: "Erro ao recuperar senha, tente novamente!!",
+                email,
+                token
+            })
+        }
     },
 }

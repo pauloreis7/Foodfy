@@ -34,7 +34,7 @@ routes.get('/admin/profile', accessCredentials.onlyUsers, userValidator.show, pr
 routes.put('/admin/profile', accessCredentials.onlyUsers, userValidator.updateLoggedUser, profileController.update)
 
 //admin user
-routes.get('/admin/users', accessCredentials.onlyUsers, userController.list)
+routes.get('/admin/users', accessCredentials.onlyAdmin,userController.list)
 
 routes.get('/admin/users/register', accessCredentials.onlyAdmin, userController.create)
 

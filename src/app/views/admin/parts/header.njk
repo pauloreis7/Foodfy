@@ -17,7 +17,15 @@
                 
             {% endif %}
 
-            <a href="/login">Usuários</a>
+            {% if userCredentials.isAdmin == true %}
+
+                <a href="/login">Usuários</a>
+
+            {% else %}
+
+                <a href="/admin/profile">Minha conta</a>
+
+            {% endif %}
 
         </div>
 

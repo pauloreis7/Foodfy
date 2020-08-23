@@ -1,6 +1,10 @@
 const db = require('../../config/db')
 const crypto = require('crypto')
 const { hash } = require('bcryptjs')
+const fs = require('fs')
+
+const Recipe = require('../models/Recipe')
+const File = require('../models/File')
 
 module.exports = {
 
@@ -31,6 +35,12 @@ module.exports = {
         const user = await db.query(query)
 
         return user.rows[0]
+    },
+
+    async findUserRecipes(userId) {
+        const userRecipes = await db.query(`SELECT * from recipes WHERE user_id = ${ userId }`)
+
+        return userRecipes.rows
     },
 
     async create(data) {
@@ -87,6 +97,22 @@ module.exports = {
     },
 
     async delete(id) {
-        return db.query(`DELETE FROM users WHERE id = ${ id }`)
+
+        let results = await db.query(`SELECT * FROM recipes WHERE user_id = ${ id }`)
+        const recipes = results.rows
+
+        const FilesPromise = recipes.map( async recipe => {
+            const fileId = await File.findFileByRecipeId(recipe.id)
+            results = await Recipe.file(fileId.rows[0].file_id)
+            
+            const file = results.rows[0]
+            await File.delete(file.id)
+
+            return
+        })
+
+        const files = await Promise.all(FilesPromise)
+
+        await db.query(`DELETE FROM users WHERE id = ${ id }`)
     }
 }

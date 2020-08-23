@@ -58,7 +58,6 @@ module.exports = {
     chefRecipes(id) {
 
         return db.query(`SELECT * FROM recipes WHERE chef_id = ${ id }`)
-
     },
 
     update({ name, id }, fileId) {

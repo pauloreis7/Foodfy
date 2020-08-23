@@ -36,8 +36,6 @@ header.header_admin {
 .header_admin nav {
     display: flex;
     align-items: center;
-
-    max-width: 390px;
 }
 
 .header_admin .header_content nav > a {
