@@ -4,12 +4,19 @@
 function addIngredient() {
     const ingredients = document.querySelector("#ingredients")
     const fieldContainer = document.querySelectorAll(".ingredient")
+    const totalFields = ingredients.querySelectorAll('input')
 
-    const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true)
+    {# const newField = fieldContainer[fieldContainer.length - 1].cloneNode(true) #}
+    const newFieldArea = document.createElement("div")
+    let newField = document.createElement("input")
+    newFieldArea.appendChild(newField)
 
-    if (newField.children[0].value == "") return false;
+    if(totalFields[totalFields.length - 1].value == "") return false
 
-    newField.children[0].value = "";
+    newField.name="ingredients[]"
+    newField.value=""
+    newField.placeholder="Ingrediente"
+
     ingredients.appendChild(newField);
 }
 

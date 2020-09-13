@@ -126,6 +126,20 @@ module.exports = {
             let results = await Recipe.find(req.params.id)
             const recipe = results.rows[0]
 
+            const recipesOldIngredients = recipe.ingredients[0].split(",")
+            recipe.ingredients.splice(0, 1)
+
+            for (recipesOldIngredient of recipesOldIngredients) {
+                recipe.ingredients.push(recipesOldIngredient)
+            }
+
+            const recipesOldsteps = recipe.preparation[0].split(",")
+            recipe.preparation.splice(0, 1)
+
+            for (recipesOldstep of recipesOldsteps) {
+                recipe.preparation.push(recipesOldstep)
+            }
+
             if (!recipe) return res.render("admin/recipes/show", { err: true })
 
             results = await File.findFileByRecipeId(req.params.id)

@@ -94,9 +94,6 @@ module.exports = {
         information = ($5)
         WHERE id = ${ data.id }
         `
-
-        data.ingredients = data.ingredients[0].split(",")
-        data.preparation = data.preparation[0].split(",")
         
         const values = [
             data.chef_id,

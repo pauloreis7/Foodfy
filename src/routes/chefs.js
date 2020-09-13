@@ -6,13 +6,13 @@ const multer = require('../app/middlewares/multer')
 
 const accessCredentials = require('../app/middlewares/session')
 
-routes.get(['/', '/allChefs'], chefsController.index)
+routes.get('/', chefsController.index)
 
 routes.get("/create", accessCredentials.onlyAdmin, chefsController.create) 
 
 routes.post('/', multer.single('photo'), chefsController.post)
 
-routes.get(['/:id', '/chefDetails/:id'], chefsController.show)
+routes.get('/:id', chefsController.show)
 
 routes.get("/:id/edit", accessCredentials.onlyAdmin,chefsController.edit)
 

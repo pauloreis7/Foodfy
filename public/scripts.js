@@ -22,7 +22,7 @@ const showAndHideDetails = {
   changeButtonContent(button) {
 
     if (button.textContent == "ESCONDER") {
-      
+
       button.textContent = "MOSTRAR" 
     } else {
       
