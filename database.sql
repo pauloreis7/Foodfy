@@ -1,3 +1,6 @@
+DROP DATABASE IF EXISTS foodfy;
+CREATE DATABASE foodfy
+
 CREATE TABLE "recipes" (
   "id" serial PRIMARY KEY,
   "chef_id" integer NOT NULL,
@@ -12,7 +15,7 @@ CREATE TABLE "recipes" (
 CREATE TABLE "chefs" (
   "id" serial PRIMARY KEY,
   "name" text NOT NULL,
-  "created_at" timestamp DEFAULT (now())
+  "created_at" timestamp DEFAULT (now()),
   "file_id" integer NOT NULL UNIQUE
 );
 
@@ -64,13 +67,20 @@ ALTER TABLE "recipe_files" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id")
 
 ALTER TABLE "chefs" ADD FOREIGN KEY ("file_id") REFERENCES "files" ("id")
 
--- cascade to delete user
+-- cascade effect
 
 ALTER TABLE "recipes"
 DROP CONSTRAINT recipes_user_id_fkey,
 ADD CONSTRAINT recipes_user_id_fkey
 FOREIGN KEY ("user_id")
 REFERENCES "users" ("id")
+ON DELETE CASCADE;
+
+ALTER TABLE "recipes"
+DROP CONSTRAINT recipes_chef_id_fkey,
+ADD CONSTRAINT recipes_chef_id_fkey
+FOREIGN KEY ("chef_id")
+REFERENCES "chefs" ("id")
 ON DELETE CASCADE;
 
 ALTER TABLE "recipe_files"

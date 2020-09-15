@@ -69,9 +69,10 @@ module.exports = {
             isAdmin
         ]
 
-        const results = await db.query(query, values)
+        let results = await db.query(query, values)
+        results = results.rows[0]
 
-        return password
+        return { results, password }
     },
 
     async update(id, fields) {

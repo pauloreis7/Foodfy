@@ -53,7 +53,7 @@ module.exports = {
             data.ingredients,
             data.preparation,
             data.information,
-            data.userId,
+            data.userId || data.user_id,
             date(Date.now()).iso
         ]
 

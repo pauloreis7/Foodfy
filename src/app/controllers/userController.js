@@ -42,7 +42,7 @@ module.exports = {
 
         try {
             
-            const userPassword = await User.create(req.body)
+            const userPassword = await User.create(req.body).password
 
             await mailer.sendMail({
                 to: req.body.email,
